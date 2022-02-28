@@ -12,3 +12,5 @@ struct AS
     int dob[3];
     int SID;
 };
+
+bool login(AS &as, char* username, char* pass); // input -> check pass -correct-> get info from file -> return true
