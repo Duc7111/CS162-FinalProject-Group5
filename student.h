@@ -1,5 +1,9 @@
 struct student
 {
+    // system data
+    char* username;
+    char* pass;
+    // personal data
     int ID;
     char* fname;
     char* lname;
