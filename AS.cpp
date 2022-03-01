@@ -17,12 +17,17 @@ void destructer(AS &as)
 
 bool checkDob(int dob[3])
 {
-    if(dob[1] > 12) return false;
+    if(dob[0] <= 0 || dob[1] <= 0 || dob[1] > 12 || dob[2] <= 0) return false;
     if(dob[1] == 2)
     {
-        //check leap year
-    }    
-    // Not finished
+        int d = 29;
+        if(dob[2] % 4) d = 28;
+        else if(!(dob[2] % 100) && dob[2] % 400) d = 28;
+        if(dob[0] > d) return false;
+        return true;
+    }
+    if(dob[0] > ml[dob[1] - 1]) return false;
+    return true;
 }
 
 bool checkAS(char* username) // true: existed, nullptr; false: not exist
