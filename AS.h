@@ -13,7 +13,7 @@ struct AS
     int SID;
 };
 
-bool checkAS(char* username);
+int checkAS(char* username);
 
 void save2File(const AS &as);
 

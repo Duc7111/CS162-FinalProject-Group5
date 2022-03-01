@@ -5,8 +5,19 @@
 
 using namespace std;
 
-bool checkAS(char* username) // return true when username existed
+int checkDob(int dob[3])
 {
+    if(dob[1] > 12) return false;
+    if(dob[1] == 2)
+    {
+        //check leap year
+    }    
+    // Not finished
+}
+
+int checkAS(char* username) // 0: emty input, 1: existed, 2: not existed
+{
+    if(username == "") return 0;
     ifstream fin("AS.txt", ios_base::in);
     char temp[200];
     while(fin.getline(temp, 200, ','))
@@ -14,11 +25,12 @@ bool checkAS(char* username) // return true when username existed
         if(temp == username)
         {
             fin.close();
-            return true;
+            return 1;
         }
         fin.ignore(1000, '\n');
     }
-    return false;
+    return 2;
+    // BUG
 }
 
 void save2File(const AS &as)
