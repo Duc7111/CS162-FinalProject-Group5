@@ -17,7 +17,7 @@ int main() {
 			break;
 		}
 		else {
-			char temp[slen];
+			char* temp = new char[slen];
 			cin.ignore(1000, '\n');
 			cin.get(temp, slen, '\n');
 			while (checkAS(temp)) {
