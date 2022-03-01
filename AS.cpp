@@ -18,6 +18,7 @@ bool checkAS(char* username) // return true when username existed
         }
         fin.ignore(1000, '\n');
     }
+    fin.close();
     return false;
 }
 
@@ -25,7 +26,6 @@ void save2File(const AS &as)
 {
     ofstream fout("AS.txt", ios_base::out| ios_base::app);
     fout << as.username << ',' << as.pass << ',' << as.fname << ',' << as.lname << ',' << as.gender << ',' << as.dob[0] << ',' << as.dob[1] << ',' << as.dob[2] << ',' << as.SID << endl;
-
 }
 
 bool login(AS &as, char* username, char* pass)
