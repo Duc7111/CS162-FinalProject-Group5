@@ -1,5 +1,5 @@
 #pragma once
-#pragma once
+
 #include <windows.h>
 #include <conio.h>
 void SetBGColor(WORD color);

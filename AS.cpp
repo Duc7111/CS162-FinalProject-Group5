@@ -1,11 +1,21 @@
+#include <iostream>
 #include <fstream>
-#include <string>
+#include <cstring>
 
 #include "AS.h"
+#include "const.h"
 
 using namespace std;
 
-int checkDob(int dob[3])
+void destructer(AS &as)
+{
+    delete[] as.username;
+	delete[] as.pass;
+	delete[] as.fname;
+	delete[] as.lname;
+}
+
+bool checkDob(int dob[3])
 {
     if(dob[1] > 12) return false;
     if(dob[1] == 2)
@@ -15,50 +25,46 @@ int checkDob(int dob[3])
     // Not finished
 }
 
-int checkAS(char* username) // 0: emty input, 1: existed, 2: not existed
+bool checkAS(char* username) // true: existed, nullptr; false: not exist
 {
-    if(username == "") return 0;
+    if(username[0] == '\0') return true;
     ifstream fin("AS.txt", ios_base::in);
-    char temp[200];
-    while(fin.getline(temp, 200, ','))
+    char temp[slen];
+    while(fin.getline(temp, slen, ','))
     {
-        if(temp == username)
+        if(!strcmp(username, temp))
         {
             fin.close();
-            return 1;
+            return true;
         }
         fin.ignore(1000, '\n');
     }
-<<<<<<< HEAD
     fin.close();
     return false;
-=======
-    return 2;
-    // BUG
->>>>>>> b0a590f764a68893a5de646c9852ec8d84300494
 }
 
 void save2File(const AS &as)
 {
     ofstream fout("AS.txt", ios_base::out| ios_base::app);
     fout << as.username << ',' << as.pass << ',' << as.fname << ',' << as.lname << ',' << as.gender << ',' << as.dob[0] << ',' << as.dob[1] << ',' << as.dob[2] << ',' << as.SID << endl;
+
 }
 
 bool login(AS &as, char* username, char* pass)
 {
     ifstream fin("AS.txt", ios_base::in);
-    char temp[200];
-    while(fin.getline(temp, 200, ','))
+    char temp[slen];
+    while(fin.getline(temp, slen, ','))
     {
         if(temp == username)
         {
             as.username = temp;
-            fin.getline(temp, 200, ',');
+            fin.getline(temp, slen, ',');
             if(temp == pass)
             {
                 as.pass = temp;
-                fin.getline(as.fname, 200, ',');
-                fin.getline(as.lname, 200, ',');
+                fin.getline(as.fname, slen, ',');
+                fin.getline(as.lname, slen, ',');
                 fin >> as.gender; fin.ignore();
                 fin >> as.dob[0]; fin.ignore();
                 fin >> as.dob[1]; fin.ignore();

@@ -3,17 +3,21 @@
 struct AS
 {
     //system data
-    char* username;
-    char* pass;
+    char* username = nullptr;
+    char* pass = nullptr;
     //personal data
-    char* fname;
-    char* lname;
-    bool gender; // 0 = female, 1 = male
-    int dob[3];
-    int SID;
+    char* fname = nullptr;
+    char* lname = nullptr;
+    bool gender = 0; // 0 = female, 1 = male
+    int dob[3] = {0,0,0};
+    int SID = 0;
 };
 
-int checkAS(char* username);
+void destructer(AS &as);
+
+bool checkDob(int dob[3]);
+
+bool checkAS(char* username);
 
 void save2File(const AS &as);
 

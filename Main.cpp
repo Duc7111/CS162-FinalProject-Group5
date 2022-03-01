@@ -1,4 +1,6 @@
 #include<iostream>
+
+#include "const.h"
 #include "console.h"
 #include "Screen.h"
 #include "AS.h"
@@ -15,30 +17,34 @@ int main() {
 			break;
 		}
 		else {
+			char temp[slen];
+			cin.ignore(1000, '\n');
+			cin.get(temp, slen, '\n');
+			while (checkAS(temp)) {
+				cout << "your username: " << temp << endl << "Try again" << endl;
+				cin.ignore(1000, '\n');
+				cin.get(temp, slen, '\n');
+			}
 			AS now;
-			now.username = new char[200];
-			now.pass = new char[20];
-			now.fname = new char[20];
-			now.lname = new char[20];
-			cin.ignore(10, '\n');
-			cin.getline(now.username, 200);
-			while (checkAS(now.username) == false) {
-				cout << "your username: " << now.username << endl << "Try again" << endl;
-				cin.getline(now.username, 30);
-			}//lỗi ở phần while: nếu nhập sai lần đầu, mấy lần sau dù có nhập đúng thì hàm check vẫn bị sai
-			// nhập ở lần tiếp theo khi nhập sai, chuỗi sẽ đổi, nhưng hàm checkAS vẫn cho ra false.
-			// nếu nhập đúng thì chương trình vẫn chạy.
-			cin.getline(now.pass, 20);
-			cin.getline(now.fname, 20);
-			cin.getline(now.lname, 20);
+			now.username = temp;
+
+			now.pass = new char[slen];
+			cin.ignore(1000, '\n');
+			cin.get(now.pass, slen, '\n');
+
+			now.fname = new char[slen];
+			cin.ignore(1000, '\n');
+			cin.get(now.fname, slen, '\n');
+
+			now.lname = new char[slen];
+			cin.ignore(1000, '\n');
+			cin.get(now.lname, slen, '\n');
+
 			cin >> now.gender;
 			cin >> now.dob[0] >> now.dob[1] >> now.dob[2];
 			cin >> now.SID;
 			save2File(now);
-			delete[]now.username;
-			delete[]now.pass;
-			delete[]now.fname;
-			delete[]now.lname;
+			destructer(now);
 			break;
 		}
 	}
