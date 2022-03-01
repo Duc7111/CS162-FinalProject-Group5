@@ -13,4 +13,8 @@ struct AS
     int SID;
 };
 
+int checkAS(char* username);
+
+void save2File(const AS &as);
+
 bool login(AS &as, char* username, char* pass); // input -> check pass -correct-> get info from file -> return true
