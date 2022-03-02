@@ -84,8 +84,25 @@ void SignupSystem() {
 	now.lname = new char[slen];
 	cin.ignore(1000, '\n');
 	cin.get(now.lname, slen, '\n');
-	cout << "Your gender (0:Female, other: male): ";
-	cin >> now.gender;
+	while(true)
+	{
+		cout << "Your gender (0: Female, 1: Male): ";
+		char b[slen];
+		cin.ignore(1000, '\n');
+		cin.get(b, slen, '\n');
+		if(b[1] != '\0') cout << "Invalid input" << endl;
+		else if(b[0] == '0') 
+		{
+			now.gender = 0;
+			break;
+		}
+		else if(b[0] == '1') 
+		{
+			now.gender = 1;
+			break;
+		}
+		else cout << "Invaid input" << endl;
+	}
 	cout << "Your birth: " << endl;
 	cout << "Day: ";
 	cin >> now.dob[0];
