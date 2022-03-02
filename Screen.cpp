@@ -44,7 +44,7 @@ void SignupScreen() {
 void SignupSystem() {
 	system("cls");
 	SignupScreen();
-	char temp[slen];
+	char* temp = new char[slen];
 	cout << "Please submit your username (Your username must be a new one): ";
 	cin.ignore(1000, '\n');
 	cin.get(temp, slen, '\n');
