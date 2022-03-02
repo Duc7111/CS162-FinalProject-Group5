@@ -1,4 +1,5 @@
 #include<iostream>
+#include<cstring>
 
 #include "const.h"
 #include "console.h"
@@ -13,39 +14,12 @@ int main() {
 	choice = StartScreen();
 	while (choice != 3) {
 		if (choice == 1) {
-			
+
 			break;
 		}
 		else {
-			char temp[slen];
-			cin.ignore(1000, '\n');
-			cin.get(temp, slen, '\n');
-			while (checkAS(temp)) {
-				cout << "your username: " << temp << endl << "Try again" << endl;
-				cin.ignore(1000, '\n');
-				cin.get(temp, slen, '\n');
-			}
-			AS now;
-			now.username = temp;
-
-			now.pass = new char[slen];
-			cin.ignore(1000, '\n');
-			cin.get(now.pass, slen, '\n');
-
-			now.fname = new char[slen];
-			cin.ignore(1000, '\n');
-			cin.get(now.fname, slen, '\n');
-
-			now.lname = new char[slen];
-			cin.ignore(1000, '\n');
-			cin.get(now.lname, slen, '\n');
-
-			cin >> now.gender;
-			cin >> now.dob[0] >> now.dob[1] >> now.dob[2];
-			cin >> now.SID;
-			save2File(now);
-			destructer(now);
-			break;
+			SignupSystem();
+			choice = StartScreen();
 		}
 	}
 	system("cls");

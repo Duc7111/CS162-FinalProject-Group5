@@ -9,7 +9,6 @@ using namespace std;
 
 void destructer(AS &as)
 {
-    delete[] as.username;
 	delete[] as.pass;
 	delete[] as.fname;
 	delete[] as.lname;
