@@ -148,3 +148,20 @@ void SignupSystem() {
 	destructer(now);
 
 }
+
+short loginp1() {
+	system("cls");
+	SetColor(1);
+	cout << "Welcome to sign up section." << endl;
+	cout << "_______________________________" << endl << endl << endl;
+	SetColor(0);
+	cout << "You are:" << endl << "1. Student" << endl << "2. Academic staff" << endl << "3. Return to main menu" << endl;
+	short option;
+	cin >> option;
+	while (option <= 0 || option > 3) {
+		cout << "Invalid option. Try again." << endl;
+		cout << "Option: ";
+		cin >> option;
+	}
+	return option;
+}
