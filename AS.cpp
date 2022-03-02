@@ -13,6 +13,7 @@ void destructer(AS &as)
 	delete[] as.pass;
 	delete[] as.fname;
 	delete[] as.lname;
+    delete[] as.SID;
 }
 
 bool checkDob(int dob[3])
@@ -77,7 +78,9 @@ bool login(AS &as, char* username, char* pass) // true: login success, false : f
                 fin >> as.dob[0]; fin.ignore();
                 fin >> as.dob[1]; fin.ignore();
                 fin >> as.dob[2]; fin.ignore();
-                fin >> as.SID;
+
+                as.SID = new char[slen];
+                fin.getline(as.SID, slen);
                 fin.close();
                 return true;
             }

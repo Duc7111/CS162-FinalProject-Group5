@@ -10,7 +10,7 @@ struct AS
     char* lname = nullptr;
     bool gender = 0; // 0 = female, 1 = male
     int dob[3] = {0,0,0};
-    int SID = 0;
+    char* SID = nullptr;
 };
 
 void destructer(AS &as);

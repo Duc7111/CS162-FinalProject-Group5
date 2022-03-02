@@ -104,7 +104,9 @@ void SignupSystem() {
 		cin >> now.dob[2];
 	}
 	cout << "Social Id: ";
-	cin >> now.SID;
+	now.SID = new char[slen];
+	cin.ignore(1000, '\n');
+	cin.get(now.SID, slen, '\n');
 	bool option;
 	cout << "Confirm your account? (0: No)" << endl;
 	cout << "Your option: ";
