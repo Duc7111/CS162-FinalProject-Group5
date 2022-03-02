@@ -1,9 +1,14 @@
+// txt file format
+//
+// <class>
+// ID,pass,fname,lname,gender,dob[0],dob[1],dob[2],SID
+// ...
+// default pass: SID
 #pragma once
 
 struct student
 {
-    // system data
-    char* username = nullptr;
+    // system data (username = ID)
     char* pass = nullptr;
     // personal data
     int ID = 0;
@@ -13,3 +18,9 @@ struct student
     int dob[3] = {0,0,0};
     char* SID = nullptr;
 };
+
+void destructer(student &s);
+
+bool login(student &s, char* username, char* pass);
+
+void changeStudent(student &s);
