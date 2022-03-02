@@ -88,6 +88,7 @@ bool login(AS &as, char* username, char* pass) // true: login success, false : f
             destructer(as);
             return false;
         }
+        else fin.ignore(1000, '\n');
     }
     fin.close();
     destructer(as);
