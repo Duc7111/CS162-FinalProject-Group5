@@ -93,6 +93,16 @@ void SignupSystem() {
 	cin >> now.dob[1];
 	cout << "Year: ";
 	cin >> now.dob[2];
+	while (checkDob(now.dob) == false) {
+		cout << "Invalid Date" << endl;
+		cout << "Your birth: " << endl;
+		cout << "Day: ";
+		cin >> now.dob[0];
+		cout << "Month: ";
+		cin >> now.dob[1];
+		cout << "Year: ";
+		cin >> now.dob[2];
+	}
 	cout << "Social Id: ";
 	cin >> now.SID;
 	bool option;

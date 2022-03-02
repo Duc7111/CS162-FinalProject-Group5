@@ -77,12 +77,15 @@ bool login(AS &as, char* username, char* pass) // true: login success, false : f
                 fin >> as.dob[1]; fin.ignore();
                 fin >> as.dob[2]; fin.ignore();
                 fin >> as.SID;
+                fin.close();
                 return true;
             }
+            fin.close();
             destructer(as);
             return false;
         }
     }
+    fin.close();
     destructer(as);
     return false;
 }
