@@ -114,8 +114,6 @@ void SignupSystem() {
 		cout << "Your account successfully sign up in this System." << endl;
 		system("pause");
 	}
-	delete[] now.pass;
-	delete[] now.fname;
-	delete[] now.lname;
+	destructer(now);
 
 }
