@@ -84,19 +84,19 @@ void SignupSystem() {
 	now.lname = new char[slen];
 	cin.ignore(1000, '\n');
 	cin.get(now.lname, slen, '\n');
-	while(true)
+	while (true)
 	{
 		cout << "Your gender (0: Female, 1: Male): ";
 		char b[slen];
 		cin.ignore(1000, '\n');
 		cin.get(b, slen, '\n');
-		if(b[1] != '\0') cout << "Invalid input" << endl;
-		else if(b[0] == '0') 
+		if (b[1] != '\0') cout << "Invalid input" << endl;
+		else if (b[0] == '0')
 		{
 			now.gender = 0;
 			break;
 		}
-		else if(b[0] == '1') 
+		else if (b[0] == '1')
 		{
 			now.gender = 1;
 			break;
@@ -124,14 +124,26 @@ void SignupSystem() {
 	now.SID = new char[slen];
 	cin.ignore(1000, '\n');
 	cin.get(now.SID, slen, '\n');
-	bool option;
-	cout << "Confirm your account? (0: No)" << endl;
-	cout << "Your option: ";
-	cin >> option;
-	if (option == 1) {
-		save2File(now);
-		cout << "Your account successfully sign up in this System." << endl;
-		system("pause");
+	while (true)
+	{
+		cout << "Confirm your account? (0: No, 1: Yes)" << endl;
+		cout << "Your option: ";
+		char b[slen];
+		cin.ignore(1000, '\n');
+		cin.get(b, slen, '\n');
+		if (b[1] != '\0') cout << "Invalid input" << endl;
+		else if (b[0] == '1')
+		{
+			save2File(now);
+			cout << "Your account successfully sign up in this System." << endl;
+			system("pause");
+			break;
+		}
+		else if (b[0] == '0')
+		{
+			break;
+		}
+		else cout << "Invaid input" << endl;
 	}
 	destructer(now);
 
