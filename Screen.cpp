@@ -187,8 +187,10 @@ short loginp1() {
 	cout << "_______________________________" << endl << endl << endl;
 	SetColor(0);
 	cout << "You are:" << endl << "1. Student" << endl << "2. Academic staff" << endl << "3. Return to main menu" << endl;
+	gotoxy(9, 4);
 	short option;
 	cin >> option;
+	gotoxy(0, 10);
 	while (option <= 0 || option > 3) {
 		cout << "Invalid option. Try again." << endl;
 		cout << "Option: ";
@@ -233,7 +235,6 @@ void loginas(AS& log) {
 	cin.get(passlog, slen);
 	while (login(log, userlog, passlog) == false) {
 		cout << "Wrong or invalid username or password. Try again\n";
-		cout << userlog << endl << passlog << endl;
 		cout << "Your username: ";
 		cin.ignore(100, '\n');
 		cin.get(userlog, slen);
@@ -241,5 +242,103 @@ void loginas(AS& log) {
 		cin.ignore(100, '\n');
 		cin.get(passlog, slen);
 	}
-	destructer(log);
+}
+
+int start(AS log) {
+	system("cls");
+	gotoxy(7, 0);
+	cout << "Welcome to Course Registration System";
+	gotoxy(12, 1);
+	cout << "Made by Group 5-APCS21";
+	gotoxy(0, 2);
+	cout << "__________________________________________________";
+	gotoxy(60, 0);
+	cout << "Welcome " << log.lname;
+	gotoxy(0, 5);
+	SetColor(0);
+	cout << "Option:" << endl;
+	cout << "1.View your profile." << endl;
+	cout << "2.Change password." << endl;
+	cout << "3.Log out of system." << endl;
+	cout << "Your option: ";
+	cin.ignore(100, '\n');
+	char opin[slen];
+	cin.get(opin, slen);
+	int in = convert(opin);
+	while (in < 0 || in >= 4) {
+		cout << "Invalid option. Try again." << endl;
+		cout << "Your option: ";
+		cin.ignore(100, '\n');
+		cin.get(opin, slen);
+		in = convert(opin);
+	}
+	return in;
+}
+
+void viewprofile(AS log) {
+	system("cls");
+	gotoxy(7, 0);
+	cout << "Welcome to Course Registration System";
+	gotoxy(12, 1);
+	cout << "Made by Group 5-APCS21";
+	gotoxy(0, 2);
+	cout << "__________________________________________________";
+	gotoxy(60, 0);
+	cout << "Welcome " << log.lname;
+	gotoxy(0, 5);
+	cout << "Your name: " << log.fname << " " << log.lname << "       ";
+	cout << "DOB: " << log.dob[0] << "/" << log.dob[1] << "/" << log.dob[2] << endl;
+	if (log.gender == true)
+		cout << "Gender: Male" << endl;
+	else
+		cout << "Gender: Female" << endl;
+	cout << "Social ID: " << log.SID << endl;
+	system("pause");
+}
+
+void changepass(AS& log) {
+	system("cls");
+	gotoxy(7, 0);
+	cout << "Welcome to Course Registration System";
+	gotoxy(12, 1);
+	cout << "Made by Group 5-APCS21";
+	gotoxy(0, 2);
+	cout << "__________________________________________________";
+	gotoxy(60, 0);
+	cout << "Welcome " << log.lname;
+	gotoxy(0, 5);
+	cout << "Your password: ";
+	char* temp2 = new char[slen];
+	cin.ignore(1000, '\n');
+	cin.get(temp2, slen, '\n');
+	while (strcmp(temp2, log.pass) != 0) {
+		cout << "Wrong password. Try again." << endl << "Now, submit your password: ";
+		cin.ignore(1000, '\n');
+		cin.get(temp2, slen, '\n');
+	}
+	delete[] temp2;
+	cout << "Your new password: ";
+	char* temp = new char[slen];
+	cin.ignore(1000, '\n');
+	cin.get(temp, slen, '\n');
+	while (checkspecial(temp) == false) {
+		cout << "Invalid password. Try again." << endl << "Now, submit your password: ";
+		cin.ignore(1000, '\n');
+		cin.get(temp, slen, '\n');
+	}
+	cout << "Confirm your password: ";
+	char* check = new char[slen];
+	cin.ignore(1000, '\n');
+	cin.get(check, slen, '\n');
+	while (strcmp(check, temp) != 0) {
+		cout << "Wrong password. Try again." << endl << "Confirm your password: ";
+		cin.ignore(1000, '\n');
+		cin.get(check, slen, '\n');
+	}
+	delete[] log.pass;
+	delete[] check;
+	log.pass = temp;
+	cout << "Your password changed successfully.\n";
+	changeAS(log);
+	system("pause");
 }

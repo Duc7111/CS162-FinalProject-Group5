@@ -10,6 +10,7 @@
 using namespace std;
 
 
+
 int main() {
 	int choice;
 	choice = StartScreen();
@@ -22,8 +23,20 @@ int main() {
 			else if (opt == 2) {
 				AS log;
 				loginas(log);
+				int op1=start(log);
+				while (op1 != 3) {
+					if (op1 == 1) {
+						viewprofile(log);
+						op1 = start(log);
+					}
+					else {
+						changepass(log);
+						op1 = start(log);
+					}
+				}
+				destructer(log);
 				break;
-			}// sửa ngay đây
+			}
 			else {
 				choice = StartScreen();
 			}

@@ -7,3 +7,5 @@ short loginp1();
 bool checkspecial(char* str);
 int convert(char* str);
 void loginas(AS& log);
+int start(AS log);
+void viewprofile(AS log);
