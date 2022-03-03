@@ -45,23 +45,29 @@ void SignupSystem() {
 	system("cls");
 	SignupScreen();
 	char* temp = new char[slen];
-	cout << "Please submit your username (Your username must be a new one): ";
+	cout << "Please submit your username (Your username must be a new one and only contain letter and number): ";
 	cin.ignore(1000, '\n');
 	cin.get(temp, slen, '\n');
-	while (checkAS(temp)) {
+	while (checkAS(temp)==true||checkspecial(temp)==false) {
 		system("cls");
 		SignupScreen();
-		cout << "Your username: " << temp << " already existed." << endl << "Try again" << endl;
-		cout << "Please submit your username (Your username must be a new one) : ";
+		cout << "Your username: " << temp << " invalid or already existed." << endl << "Try again" << endl;
+		cout << "Please submit your username (Your username must be a new one and only contain letter and number) : ";
 		cin.ignore(1000, '\n');
 		cin.get(temp, slen, '\n');
 	}
 	AS now;
 	now.username = temp;
 	cout << "Your username is accepted." << endl << "Now, submit your password: ";
-	now.pass = new char[slen];
+	char* temp2 = new char[slen];
 	cin.ignore(1000, '\n');
-	cin.get(now.pass, slen, '\n');
+	cin.get(temp2, slen, '\n');
+	while(checkspecial(temp2)==false){
+		cout << "Invalid password. Try again." << endl << "Now, submit your password: ";
+		cin.ignore(1000, '\n');
+		cin.get(temp2, slen, '\n');
+	}
+	now.pass = temp2;
 	char pass[slen];
 	cout << "Confirm your password again: ";
 	cin.ignore(1000, '\n');
@@ -77,13 +83,25 @@ void SignupSystem() {
 	cout << "Your account created successfully." << endl;
 	cout << "Now please fill in your information:" << endl;
 	cout << "Your first name: ";
-	now.fname = new char[slen];
+	char* temp3 = new char[slen];
 	cin.ignore(1000, '\n');
-	cin.get(now.fname, slen, '\n');
+	cin.get(temp3, slen, '\n');
+	while (checkspecial(temp3) == false) {
+		cout << "Invalid name. Try again." << endl << "Your first name: ";
+		cin.ignore(1000, '\n');
+		cin.get(temp3, slen, '\n');
+	}
+	now.fname = temp3;
 	cout << "Your last name: ";
-	now.lname = new char[slen];
+	char* temp4 = new char[slen];
 	cin.ignore(1000, '\n');
-	cin.get(now.lname, slen, '\n');
+	cin.get(temp4, slen, '\n');
+	while (checkspecial(temp4) == false) {
+		cout << "Invalid name. Try again." << endl << "Your last name: ";
+		cin.ignore(1000, '\n');
+		cin.get(temp4, slen, '\n');
+	}
+	now.lname = temp4;
 	while (true)
 	{
 		cout << "Your gender (0: Female, 1: Male): ";
@@ -103,22 +121,35 @@ void SignupSystem() {
 		}
 		else cout << "Invaid input" << endl;
 	}
+	char date[10];
 	cout << "Your birth: " << endl;
 	cout << "Day: ";
-	cin >> now.dob[0];
+	cin.ignore(10, '\n');
+	cin.get(date, 10);
+	now.dob[0] = convert(date);
 	cout << "Month: ";
-	cin >> now.dob[1];
+	cin.ignore(10, '\n');
+	cin.get(date, 10);
+	now.dob[1] = convert(date);
 	cout << "Year: ";
-	cin >> now.dob[2];
+	cin.ignore(10, '\n');
+	cin.get(date, 10);
+	now.dob[2] = convert(date);
 	while (checkDob(now.dob) == false) {
 		cout << "Invalid Date" << endl;
 		cout << "Your birth: " << endl;
 		cout << "Day: ";
-		cin >> now.dob[0];
+		cin.ignore(10, '\n');
+		cin.get(date, 10);
+		now.dob[0] = convert(date);
 		cout << "Month: ";
-		cin >> now.dob[1];
+		cin.ignore(10, '\n');
+		cin.get(date, 10);
+		now.dob[1] = convert(date);
 		cout << "Year: ";
-		cin >> now.dob[2];
+		cin.ignore(10, '\n');
+		cin.get(date, 10);
+		now.dob[2] = convert(date);
 	}
 	cout << "Social Id: ";
 	now.SID = new char[slen];
@@ -164,4 +195,51 @@ short loginp1() {
 		cin >> option;
 	}
 	return option;
+}
+
+
+bool checkspecial(char* str) {
+	int i = 0;
+	while(str[i]!='\0')  {
+		if (((str[i] >= 48 && str[i] <= 57) || (str[i] >= 65 && str[i] <= 90) || (str[i] >= 97 && str[i] <= 122))) {
+			i++;
+		}
+		else
+			return false;
+	}
+	return true;
+}
+
+int convert(char* str) {
+	int t = 0;
+	for (int i = 0; str[i] != '\0'; i++) {
+		if (str[i] >= 48 && str[i] <= 57) {
+			t = t * 10 + (str[i] - 48);
+		}
+		else
+			return -1;
+	}
+	return t;
+}
+
+void loginas(AS& log) {
+	char userlog[slen];
+	char passlog[slen];
+	cout << "Your username: ";
+	cin.ignore(100, '\n');
+	cin.get(userlog, slen);
+	cout << "Your password: ";
+	cin.ignore(100, '\n');
+	cin.get(passlog, slen);
+	while (login(log, userlog, passlog) == false) {
+		cout << "Wrong or invalid username or password. Try again\n";
+		cout << userlog << endl << passlog << endl;
+		cout << "Your username: ";
+		cin.ignore(100, '\n');
+		cin.get(userlog, slen);
+		cout << "Your password: ";
+		cin.ignore(100, '\n');
+		cin.get(passlog, slen);
+	}
+	destructer(log);
 }
