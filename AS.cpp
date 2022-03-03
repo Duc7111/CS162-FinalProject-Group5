@@ -94,3 +94,24 @@ bool login(AS &as, char* username, char* pass) // true: login success, false : f
     destructer(as);
     return false;
 }
+
+void changeAS(AS &as)
+{
+    ifstream fin("student.txt");
+    ofstream fout("temp.txt");
+    char temp[7*slen];
+    while(fin.getline(temp, 7*slen))
+    {
+        int i = 0;
+        while(as.username[i] != '\0' && as.username[i] == temp[i]) ++i;
+        if(as.username[i] == '\0' && temp[i] == ',')
+        {
+            fout << as.username << ',' << as.pass << ',' << as.fname << ',' << as.lname << ',' << as.gender << ',' << as.dob[0] << ',' << as.dob[1] << ',' << as.dob[2] << ',' << as.SID << endl;
+            break;
+        }
+    }
+    while(fin.getline(temp, 7*slen)) fout << temp << endl;
+    fin.close(), fout.close();
+    remove("AS.txt");
+    rename("temp.txt", "AS.txt");
+}

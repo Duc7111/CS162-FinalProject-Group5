@@ -1,7 +1,9 @@
 // txt file format
 //
-// <class>
-// ID,pass,fname,lname,gender,dob[0],dob[1],dob[2],SID
+// -<class>,num
+//  ID,pass,fname,lname,gender,dob[0],dob[1],dob[2],SID
+// ^
+// |Intentional leading space
 // ...
 // default pass: SID
 #pragma once
