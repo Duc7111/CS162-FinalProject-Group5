@@ -97,7 +97,7 @@ bool login(AS &as, char* username, char* pass) // true: login success, false : f
 
 void changeAS(AS &as)
 {
-    ifstream fin("student.txt");
+    ifstream fin("AS.txt");
     ofstream fout("temp.txt");
     char temp[7*slen];
     while(fin.getline(temp, 7*slen))
