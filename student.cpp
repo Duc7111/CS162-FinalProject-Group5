@@ -80,7 +80,7 @@ void changeStudent(student &s)
             break;
         }
     }
-    while(fin.getline(temp, 5*slen)) fout << temp;
+    while(fin.getline(temp, 5*slen)) fout << temp << endl;
     fin.close(); fout.close();
     remove("student.txt");
     rename("temp.txt", "student.txt");
