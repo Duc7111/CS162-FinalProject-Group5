@@ -109,6 +109,7 @@ void changeAS(AS &as)
             fout << as.username << ',' << as.pass << ',' << as.fname << ',' << as.lname << ',' << as.gender << ',' << as.dob[0] << ',' << as.dob[1] << ',' << as.dob[2] << ',' << as.SID << endl;
             break;
         }
+        else fout << temp << endl;
     }
     while(fin.getline(temp, 7*slen)) fout << temp << endl;
     fin.close(), fout.close();
