@@ -1,3 +1,9 @@
+// txt file format
+// 
+// username,pass,fname,lname,gender,dob[0], dob[1], dob[2],SID
+// ...
+//
+
 #pragma once
 
 struct AS
