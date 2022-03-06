@@ -7,7 +7,7 @@
 
 using namespace std;
 
-void destructer(AS &as)
+void destructer(AS &as) // deleting stuffs
 {
     delete[] as.username;
 	delete[] as.pass;
@@ -16,7 +16,7 @@ void destructer(AS &as)
     delete[] as.SID;
 }
 
-bool checkDob(int dob[3])
+bool checkDob(int dob[3]) //Check if dob is a valid date
 {
     if(dob[0] <= 0 || dob[1] <= 0 || dob[1] > 12 || dob[2] <= 0) return false;
     if(dob[1] == 2)
@@ -49,7 +49,7 @@ bool checkAS(char* username) // true: existed, nullptr; false: not exist
     return false;
 }
 
-void save2File(const AS &as)
+void save2File(const AS &as) //add an AS to file
 {
     ofstream fout("AS.txt", ios_base::out| ios_base::app);
     fout << as.username << ',' << as.pass << ',' << as.fname << ',' << as.lname << ',' << as.gender << ',' << as.dob[0] << ',' << as.dob[1] << ',' << as.dob[2] << ',' << as.SID << endl;
@@ -95,7 +95,7 @@ bool login(AS &as, char* username, char* pass) // true: login success, false : f
     return false;
 }
 
-void changeAS(AS &as)
+void changeAS(AS &as) // change info of an AS in file
 {
     ifstream fin("AS.txt");
     ofstream fout("temp.txt");
