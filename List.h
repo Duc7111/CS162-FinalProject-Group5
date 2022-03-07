@@ -1,4 +1,5 @@
 #pragma once
+
 template<class T>
 struct Node
 {
@@ -6,9 +7,8 @@ struct Node
     T data;
     Node* next;
 
-    Node(T t);
-    //destructor
-    ~Node();
+    Node() : data(), next(nullptr){};
+    Node(T t) : data(t), next(nullptr){};
 };
 
 template<class T>
@@ -16,7 +16,22 @@ struct list
 {
     Node<T>* pHead;
     Node<T>* pTail;
-    
-    void destructor();
-    void add(T data);
+
+    list() : pHead = new Node<T>(), pTail(nullptr){};
+    ~list()
+    {
+        while(pHead)
+        {
+            pTail = pHead;
+            pHead = pHead->next;
+            delete pTail;
+        }
+        pTail = nullptr;
+    }
+
+    void add(T data)
+    {
+        pTail->next = new Node(data);
+        pTail = pTail->next;
+    }
 };
