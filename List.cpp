@@ -11,7 +11,7 @@ struct Node
     //destructor
     ~Node() 
     {
-        delete data
+        delete data;
     }
 };
 
