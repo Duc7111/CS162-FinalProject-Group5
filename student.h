@@ -19,6 +19,8 @@ struct student
     bool gender = 0; // 0 = female / 1 = male
     int dob[3] = {0,0,0};
     char* SID = nullptr;
+    //class data
+    int No;
 };
 
 void destructer(student &s);
