@@ -17,7 +17,7 @@ struct list
     Node<T>* pHead;
     Node<T>* pTail;
 
-    list() : pHead = new Node<T>(), pTail(nullptr){};
+    list() : pHead (new Node<T>), pTail(nullptr){};
     ~list()
     {
         while(pHead)

@@ -6,6 +6,7 @@
 #include "Screen.h"
 #include "AS.h"
 #include "student.h"
+#include "list.h"
 
 using namespace std;
 

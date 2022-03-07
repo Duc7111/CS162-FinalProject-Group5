@@ -25,6 +25,6 @@ struct student
 
 void destructer(student &s);
 
-bool login(student &s, char* username, char* pass);
+bool login(student &s, int ID, char* pass);
 
 void changeStudent(student &s);
