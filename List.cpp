@@ -9,7 +9,10 @@ struct Node
 
     Node(T t) : data(t), next(nullptr);
     //destructor
-    ~Node() delete data;
+    ~Node() 
+    {
+        delete data
+    }
 };
 
 template<class T>

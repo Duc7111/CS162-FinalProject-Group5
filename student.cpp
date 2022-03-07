@@ -44,6 +44,8 @@ bool login(student &s, int ID, char* pass)
 
                 s.SID = new char[slen];
                 fin.getline(s.SID, slen);
+
+                fin >> s.No;
                 fin.close();
                 return true;
             }
@@ -76,7 +78,7 @@ void changeStudent(student &s)
         if(ID != s.ID) fout << temp << endl;
         else 
         {
-            fout << s.ID << ',' << s.pass << ',' << s.fname << ',' << s.lname << ',' << s.gender << ',' << s.dob[0] << ',' << s.dob[1] << ',' << s.dob[2] << ',' << s.SID << endl;
+            fout << s.ID << ',' << s.pass << ',' << s.fname << ',' << s.lname << ',' << s.gender << ',' << s.dob[0] << ',' << s.dob[1] << ',' << s.dob[2] << ',' << s.SID << ',' << s.No << endl;
             break;
         }
     }
