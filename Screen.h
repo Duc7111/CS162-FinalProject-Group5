@@ -10,3 +10,4 @@ void loginas(AS& log);
 int start(AS log);
 void viewprofile(AS log);
 void changepass(AS& log);
+int menuformainAS(AS log);

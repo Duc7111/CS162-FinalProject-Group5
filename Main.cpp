@@ -24,13 +24,20 @@ int main() {
 				AS log;
 				loginas(log);
 				int op1=start(log);
-				while (op1 != 3) {
+				while (op1 != 4) {
 					if (op1 == 1) {
 						viewprofile(log);
 						op1 = start(log);
 					}
-					else {
+					else if (op1==2){
 						changepass(log);
+						op1 = start(log);
+					}
+					else {
+						int optmain = menuformainAS(log);
+						while (optmain != 4) {
+							break;
+						}
 						op1 = start(log);
 					}
 				}

@@ -259,13 +259,14 @@ int start(AS log) {
 	cout << "Option:" << endl;
 	cout << "1.View your profile." << endl;
 	cout << "2.Change password." << endl;
-	cout << "3.Log out of system." << endl;
+	cout << "3.Go to main section." << endl;
+	cout << "4.Log out of system." << endl;
 	cout << "Your option: ";
 	cin.ignore(100, '\n');
 	char opin[slen];
 	cin.get(opin, slen);
 	int in = convert(opin);
-	while (in < 0 || in >= 4) {
+	while (in < 0 || in >= 5) {
 		cout << "Invalid option. Try again." << endl;
 		cout << "Your option: ";
 		cin.ignore(100, '\n');
@@ -341,4 +342,35 @@ void changepass(AS& log) {
 	cout << "Your password changed successfully.\n";
 	changeAS(log);
 	system("pause");
+}
+
+int menuformainAS(AS log) {
+	system("cls");
+	gotoxy(7, 0);
+	cout << "Welcome to Course Registration System";
+	gotoxy(12, 1);
+	cout << "Made by Group 5-APCS21";
+	gotoxy(0, 2);
+	cout << "__________________________________________________";
+	gotoxy(60, 0);
+	cout << "Welcome " << log.lname;
+	gotoxy(0, 5);
+	cout << "What section of this school year? (Note: You should finish the last section before go to the next one)" << endl;
+	SetColor(0);
+	cout << "1. Start of a school year." << endl;
+	cout << "2. Start of a semester." << endl;
+	cout << "3. End of a semester." << endl;
+	cout << "4. Go to menu." << endl;
+	char opin[slen];
+	cin.ignore(slen, '\n');
+	cin.get(opin, slen);
+	int in = convert(opin);
+	while (in < 0 || in >= 5) {
+		cout << "Invalid option. Try again." << endl;
+		cout << "Your option: ";
+		cin.ignore(100, '\n');
+		cin.get(opin, slen);
+		in = convert(opin);
+	}
+	return in;
 }
