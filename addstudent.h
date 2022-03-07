@@ -7,7 +7,7 @@ struct Student
     int ID;
     char* FirstName = nullptr;
     char* LastName = nullptr;
-    bool gender = 0;
+    bool gender ; // 0: Female ; // 1: Male
     int dob[3] = { 0,0,0 };
     char* SID = nullptr;
     Student* next;
