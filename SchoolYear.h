@@ -4,7 +4,7 @@
 #include "List.h"
 using namespace std;
 
-struct Classes
+struct ClassList
 {
 	int ClassType;
 	/*
@@ -34,6 +34,6 @@ struct YearList
 	YearList* next;
 };
 
-void CreateYearInfo(SchoolYear* CurY);
-void SaveYearInfo(SchoolYear* CurY);
-void LoadYearInfo(SchoolYear* CurY);
+void CreateYearInfo(YearList* CurY);
+void SaveYearInfo(YearList* CurY);
+void LoadYearInfo(YearList* CurY);
