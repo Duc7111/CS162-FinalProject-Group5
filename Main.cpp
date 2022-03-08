@@ -7,12 +7,14 @@
 #include "AS.h"
 #include "student.h"
 #include "list.h"
+#include "SchoolYear.h"
 
 using namespace std;
 
 
 
 int main() {
+	YearList* t = nullptr;
 	int choice;
 	choice = StartScreen();
 	while (choice != 3) {
@@ -37,7 +39,13 @@ int main() {
 					else {
 						int optmain = menuformainAS(log);
 						while (optmain != 4) {
-							break;
+							if (optmain == 1) {
+								CreateYearInfo(t, log);
+								optmain = menuformainAS(log);
+							}
+							else {
+								optmain = menuformainAS(log);
+							}
 						}
 						op1 = start(log);
 					}

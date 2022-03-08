@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <fstream>
+#include "AS.h"
 #include "List.h"
 using namespace std;
 
@@ -34,6 +35,6 @@ struct YearList
 	YearList* next;
 };
 
-void CreateYearInfo(YearList* CurY);
-void SaveYearInfo(YearList* CurY);
-void LoadYearInfo(YearList* CurY);
+void CreateYearInfo(YearList* CurY, AS log);
+//void SaveYearInfo(YearList* CurY);
+//void LoadYearInfo(YearList* CurY);

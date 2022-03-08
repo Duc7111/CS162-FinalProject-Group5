@@ -11,3 +11,4 @@ int start(AS log);
 void viewprofile(AS log);
 void changepass(AS& log);
 int menuformainAS(AS log);
+void Inscreen(AS log);

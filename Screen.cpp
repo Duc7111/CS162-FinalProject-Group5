@@ -345,6 +345,7 @@ void changepass(AS& log) {
 }
 
 int menuformainAS(AS log) {
+	SetColor(1);
 	system("cls");
 	gotoxy(7, 0);
 	cout << "Welcome to Course Registration System";
@@ -373,4 +374,19 @@ int menuformainAS(AS log) {
 		in = convert(opin);
 	}
 	return in;
+}
+
+void Inscreen(AS log) {
+	SetColor(1);
+	system("cls");
+	gotoxy(7, 0);
+	cout << "Welcome to Course Registration System";
+	gotoxy(12, 1);
+	cout << "Made by Group 5-APCS21";
+	gotoxy(0, 2);
+	cout << "__________________________________________________";
+	gotoxy(60, 0);
+	cout << "Welcome " << log.lname;
+	gotoxy(0, 5);
+	SetColor(0);
 }
