@@ -1,7 +1,7 @@
 // txt file format
 //
 // -<class>,num
-//  ID,pass,fname,lname,gender,dob[0],dob[1],dob[2],SID
+//  ID,pass,fname,lname,gender,dob[0],dob[1],dob[2],SID,No
 // ^
 // |Intentional leading space
 // ...
@@ -21,6 +21,8 @@ struct student
     char* SID = nullptr;
     //class data
     int No;
+    //list pointer
+    student* next;
 };
 
 void destructer(student &s);
