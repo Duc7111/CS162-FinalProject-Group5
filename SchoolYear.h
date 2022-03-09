@@ -2,7 +2,6 @@
 #include <iostream>
 #include <fstream>
 #include "AS.h"
-#include "List.h"
 using namespace std;
 
 struct ClassList
