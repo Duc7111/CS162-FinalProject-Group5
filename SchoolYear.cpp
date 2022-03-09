@@ -38,7 +38,7 @@ void CreateYearInfo(YearList* CurY, AS log)
 	cin.ignore(slen, '\n');
 	cin.get(opin, slen);
 	CT = convert(opin);
-	while (CT < 1 || CT >= 3) {
+	while (CT < 1 || CT >= 4) {
 		cout << "Invalid option. Try again." << endl;
 		cout << "Your option: ";
 		cin.ignore(100, '\n');
