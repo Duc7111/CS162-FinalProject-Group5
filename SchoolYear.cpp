@@ -6,7 +6,9 @@
 #include "Screen.h"
 #include "AS.h"
 #include "student.h"
-#include "SchoolYear.h"
+#include "schoolyear.h"
+
+using namespace std;
 
 void CreateYearInfo(YearList* CurY, AS log)
 {

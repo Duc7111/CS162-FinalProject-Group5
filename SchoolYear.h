@@ -1,37 +1,18 @@
 #pragma once
-#include <iostream>
-#include <fstream>
 #include "AS.h"
-using namespace std;
+#include "Class.h"
 
-struct ClassList
+struct schoolyear
 {
-	int ClassType;
-	/*
-	* 1 = APCS
-	* 2 = CLC
-	* 3 = VP
-	*/
-	int ClassNo;
-};
-/*
-struct SchoolYear
-{
-	int StartYear;
-	Classes CurrentClasses;
+	int start;
+	semester* pHead;
 	SchoolYear* sNext;
 };
-*/
+
 struct InitYear
 {
 	int StartYear;
 	ClassList* classes;
-};
-
-struct YearList
-{
-	InitYear year;
-	YearList* next;
 };
 
 void CreateYearInfo(YearList* CurY, AS log);
