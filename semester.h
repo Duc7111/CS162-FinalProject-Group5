@@ -8,5 +8,7 @@ struct semester
     int schoolYear //start year
     int sdate[3]; //start date
     int edate[3]; //end date
-    course* pHead;
+    course* colist;
+
+    semester* next;
 };

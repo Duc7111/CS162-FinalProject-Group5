@@ -4,5 +4,8 @@
 struct Class
 {
     char* name;
-    student* pHead;
+    student* stlist;
+
+    Class* next;
 };
+

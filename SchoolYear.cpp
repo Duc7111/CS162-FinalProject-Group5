@@ -9,7 +9,7 @@
 #include "schoolyear.h"
 
 using namespace std;
-
+/*
 void CreateYearInfo(YearList* CurY, AS log)
 {
 	Inscreen(log);
@@ -99,4 +99,4 @@ void CreateYearInfo(YearList* CurY, AS log)
 		system("cls");
 	}
 	delete tmp;
-}
+}*/
