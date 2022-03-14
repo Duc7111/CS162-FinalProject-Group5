@@ -11,7 +11,6 @@ struct Student
     int dob[3] = { 0,0,0 };
     char* SID = nullptr;
     Student* next;
-
 };
 void AddStudent(Student*& list);
 // save student into text file
