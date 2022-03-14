@@ -9,6 +9,6 @@ struct semester
     int sdate[3]; //start date
     int edate[3]; //end date
     course* colist;
-
+    //list pointer
     semester* next;
 };

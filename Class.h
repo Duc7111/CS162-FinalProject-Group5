@@ -9,3 +9,4 @@ struct Class
     Class* next;
 };
 
+void save2File(Class c);

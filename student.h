@@ -1,12 +1,14 @@
 // txt file format
 //
-// -<class>,num
+// -<class>
 //  ID,pass,fname,lname,gender,dob[0],dob[1],dob[2],SID,No
 // ^
 // |Intentional leading space
 // ...
 // default pass: SID
 #pragma once
+
+#include "course.h"
 
 struct student
 {
@@ -20,7 +22,11 @@ struct student
     int dob[3] = {0,0,0};
     char* SID = nullptr;
     //class data
+    char* clname;
     int No;
+    //course data
+    course* colist = nullptr;
+    int conum = 0;
     //list pointer
     student* next;
 };
