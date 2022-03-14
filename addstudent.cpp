@@ -340,4 +340,3 @@ void QuickInput(Student*& list)
     cur->next = nullptr;
     fin.close();
 }
-

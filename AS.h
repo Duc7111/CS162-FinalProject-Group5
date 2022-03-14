@@ -15,18 +15,18 @@ struct AS
     char* fname = nullptr;
     char* lname = nullptr;
     bool gender = 0; // 0 = female, 1 = male
-    int dob[3] = {0,0,0};
+    int dob[3] = { 0,0,0 };
     char* SID = nullptr;
 };
 
-void destructer(AS &as);
+void destructer(AS& as);
 
 bool checkDob(int dob[3]);
 
 bool checkAS(char* username);
 
-void save2File(const AS &as);
+void save2File(const AS& as);
 
-bool login(AS &as, char* username, char* pass); // input -> check pass -correct-> get info from file -> return true
+bool login(AS& as, char* username, char* pass); // input -> check pass -correct-> get info from file -> return true
 
-void changeAS(AS &as);
+void changeAS(AS& as);

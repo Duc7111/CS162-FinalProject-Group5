@@ -19,7 +19,7 @@ struct student
     char* fname = nullptr;
     char* lname = nullptr;
     bool gender = 0; // 0 = female / 1 = male
-    int dob[3] = {0,0,0};
+    int dob[3] = { 0,0,0 };
     char* SID = nullptr;
     //class data
     char* clname;
@@ -31,8 +31,8 @@ struct student
     student* next;
 };
 
-void destructer(student &s);
+void destructer(student& s);
 
-bool login(student &s, int ID, char* pass);
+bool login(student& s, int ID, char* pass);
 
-void changeStudent(student &s);
+void changeStudent(student& s);

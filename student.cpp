@@ -5,31 +5,31 @@
 
 using namespace std;
 
-void destructer(student &s)
+void destructer(student& s)
 {
-	delete[] s.pass;
-	delete[] s.fname;
-	delete[] s.lname;
+    delete[] s.pass;
+    delete[] s.fname;
+    delete[] s.lname;
     delete[] s.SID;
 }
 
-bool login(student &s, int ID, char* pass)
+bool login(student& s, int ID, char* pass)
 {
     ifstream fin("student.txt", ios_base::in);
     char temp;
-    while(fin.get(temp))
+    while (fin.get(temp))
     {
-        if(temp != ' ') 
+        if (temp != ' ')
         {
             fin.ignore(1000, '\n');
             continue;
         }
         fin >> s.ID; fin.ignore();
-        if(s.ID == ID)
+        if (s.ID == ID)
         {
             s.pass = new char[slen];
             fin.getline(s.pass, slen, ',');
-            if(!strcmp(s.pass, pass))
+            if (!strcmp(s.pass, pass))
             {
                 s.fname = new char[slen];
                 fin.getline(s.fname, slen, ',');
@@ -60,29 +60,29 @@ bool login(student &s, int ID, char* pass)
     return false;
 }
 
-void changeStudent(student &s)
+void changeStudent(student& s)
 {
     ifstream fin("student.txt");
     ofstream fout("temp.txt");
-    char temp[5*slen];
-    while(fin.getline(temp, 5*slen))
+    char temp[5 * slen];
+    while (fin.getline(temp, 5 * slen))
     {
-        if(temp[0] == '-')
+        if (temp[0] == '-')
         {
             fout << temp << endl;
             continue;
         }
         int i = 0;
         int ID = 0;
-        while(temp[++i] != ',') ID = ID*10 + temp[i] - '0';
-        if(ID != s.ID) fout << temp << endl;
-        else 
+        while (temp[++i] != ',') ID = ID * 10 + temp[i] - '0';
+        if (ID != s.ID) fout << temp << endl;
+        else
         {
             fout << s.ID << ',' << s.pass << ',' << s.fname << ',' << s.lname << ',' << s.gender << ',' << s.dob[0] << ',' << s.dob[1] << ',' << s.dob[2] << ',' << s.SID << ',' << s.No << endl;
             break;
         }
     }
-    while(fin.getline(temp, 5*slen)) fout << temp << endl;
+    while (fin.getline(temp, 5 * slen)) fout << temp << endl;
     fin.close(); fout.close();
     remove("student.txt");
     rename("temp.txt", "student.txt");

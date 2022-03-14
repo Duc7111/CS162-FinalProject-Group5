@@ -48,7 +48,7 @@ void SignupSystem() {
 	cout << "Please submit your username (Your username must be a new one and only contain letter and number): ";
 	cin.ignore(1000, '\n');
 	cin.get(temp, slen, '\n');
-	while (checkAS(temp)==true||checkspecial(temp)==false) {
+	while (checkAS(temp) == true || checkspecial(temp) == false) {
 		system("cls");
 		SignupScreen();
 		cout << "Your username: " << temp << " invalid or already existed." << endl << "Try again" << endl;
@@ -62,7 +62,7 @@ void SignupSystem() {
 	char* temp2 = new char[slen];
 	cin.ignore(1000, '\n');
 	cin.get(temp2, slen, '\n');
-	while(checkspecial(temp2)==false){
+	while (checkspecial(temp2) == false) {
 		cout << "Invalid password. Try again." << endl << "Now, submit your password: ";
 		cin.ignore(1000, '\n');
 		cin.get(temp2, slen, '\n');
@@ -202,7 +202,7 @@ short loginp1() {
 
 bool checkspecial(char* str) {
 	int i = 0;
-	while(str[i]!='\0')  {
+	while (str[i] != '\0') {
 		if (((str[i] >= 48 && str[i] <= 57) || (str[i] >= 65 && str[i] <= 90) || (str[i] >= 97 && str[i] <= 122))) {
 			i++;
 		}
