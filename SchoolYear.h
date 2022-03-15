@@ -5,12 +5,11 @@
 struct schoolyear
 {
 	//data
-	int start;
+	char* name;
 	bool se[3];
-	se[0] = false;
-	se[1] = false;
-	se[2] = false;
 	semester* selist;
 	//listpointer
 	schoolyear* next;
+
+	schoolyear() : name(nullptr), se({false, false, false}), selist(nullptr), next(nullptr){};
 };
