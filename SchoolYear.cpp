@@ -30,7 +30,6 @@ void CreateYearInfo(YearList* CurY, AS log)
 	}
 	system("cls");
 	Inscreen(log);
-
 	cout << "Please enter a class type:" << endl;
 	cout << "Enter 1 if APCS" << endl;
 	cout << "Enter 2 if CLC" << endl;
@@ -47,7 +46,6 @@ void CreateYearInfo(YearList* CurY, AS log)
 		CT = convert(opin);
 	}
 	system("cls");
-
 	Inscreen(log);
 	cout << "Please enter the class number: ";
 	cin.ignore(slen, '\n');
@@ -62,7 +60,6 @@ void CreateYearInfo(YearList* CurY, AS log)
 	}
 	system("cls");
 	Inscreen(log);
-
 	int choice;
 	cout << "Do you want to save the information?" << endl;
 	cout << "1. Yes                         2. No" << endl;

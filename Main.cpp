@@ -13,7 +13,7 @@ using namespace std;
 
 
 int main() {
-	YearList* t = nullptr;
+	//YearList* t = nullptr;
 	int choice;
 	choice = StartScreen();
 	while (choice != 3) {
@@ -25,13 +25,13 @@ int main() {
 			else if (opt == 2) {
 				AS log;
 				loginas(log);
-				int op1=start(log);
+				int op1 = start(log);
 				while (op1 != 4) {
 					if (op1 == 1) {
 						viewprofile(log);
 						op1 = start(log);
 					}
-					else if (op1==2){
+					else if (op1 == 2) {
 						changepass(log);
 						op1 = start(log);
 					}
@@ -39,7 +39,7 @@ int main() {
 						int optmain = menuformainAS(log);
 						while (optmain != 4) {
 							if (optmain == 1) {
-								CreateYearInfo(t, log);
+								//CreateYearInfo(t, log);
 								optmain = menuformainAS(log);
 							}
 							else {

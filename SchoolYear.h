@@ -1,7 +1,7 @@
 #pragma once
 #include "AS.h"
 #include "Class.h"
-
+#include "semester.h"
 struct schoolyear
 {
 	//data
