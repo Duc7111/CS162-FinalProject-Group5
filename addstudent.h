@@ -1,26 +1,14 @@
 #pragma once
 
+#include "Class.h"
+#include "student.h"
 
-struct Student
-{
-    int no;
-    int ID;
-    char* FirstName = nullptr;
-    char* LastName = nullptr;
-    bool gender; // 0: Female ; // 1: Male
-    int dob[3] = { 0,0,0 };
-    char* SID = nullptr;
-    Student* next;
-};
-void AddStudent(Student*& list);
-// save student into text file
-void SaveStudent(Student*& list);
-// check if ID, no, SID are already entered
-bool Check(Student*& list, int& id);
+void AddStudent(Class*& clist);
 
-// load Student already entered
-void LoadStudent(Student*& list);
 
-//QuickInput
 
-void QuickInput(Student*& list);
+void QuickInput(Class*& clist);
+
+
+
+char* CreatePassword(student*& x);
