@@ -42,6 +42,9 @@ int main() {
 								//CreateYearInfo(t, log);
 								optmain = menuformainAS(log);
 							}
+							else if (optmain == 2) {
+
+							}
 							else {
 								optmain = menuformainAS(log);
 							}

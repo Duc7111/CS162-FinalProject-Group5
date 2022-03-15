@@ -4,6 +4,8 @@
 #include "Screen.h"
 #include "AS.h"
 #include "Class.h"
+#include "const.h"
+
 using namespace std;
 
 
@@ -18,7 +20,10 @@ void AddStudent(Class*& clist)
     if (cur->ID == 0)
     {
         cout << "ID: ";
-        cin >> cur->ID;
+        char* id = new char[30];
+        cin.ignore(30, '\n');
+        cin.get(id, 30, '\n');
+        cur->ID = convert(id);
         while (cur->ID != 0)
         {
             cout << "First name: ";
@@ -49,7 +54,7 @@ void AddStudent(Class*& clist)
             while (checkDob(cur->dob) == false)
             {
                 cout << "Invalid Date" << endl;
-                cout << "DOB: day: ";
+                cout << "DOB: Day: ";
                 cin.ignore(10, '\n');
                 cin.get(date, 10);
                 cur->dob[0] = convert(date);
@@ -73,7 +78,9 @@ void AddStudent(Class*& clist)
             cur->next = new student;
             cur = cur->next;
             cout << "ID: ";
-            cin >> cur->ID;
+            cin.ignore(30, '\n');
+            cin.get(id, 30, '\n');
+            cur->ID = convert(id);
         }
     }
     else
@@ -84,7 +91,10 @@ void AddStudent(Class*& clist)
             cur = cur->next;
         }
         cout << "ID: ";
-        cin >> cur->ID;
+        char* id = new char[30];
+        cin.ignore(30, '\n');
+        cin.get(id, 30, '\n');
+        cur->ID = convert(id);
         while (cur->ID != 0)
         {
             cout << "First name: ";
