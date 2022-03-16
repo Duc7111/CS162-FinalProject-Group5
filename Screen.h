@@ -12,3 +12,4 @@ void viewprofile(AS log);
 void changepass(AS& log);
 int menuformainAS(AS log);
 void Inscreen(AS log);
+int schoolyearScreen(AS log);

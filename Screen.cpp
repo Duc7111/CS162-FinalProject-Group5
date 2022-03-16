@@ -390,3 +390,22 @@ void Inscreen(AS log) {
 	gotoxy(0, 5);
 	SetColor(0);
 }
+
+int schoolyearScreen(AS log) {
+	Inscreen(log);
+	cout << "Your activity: " << endl;
+	cout << "1. Create a new school year. " << endl;
+	cout << "2. New school year is already availabled" << endl;
+	cout << "Your choice: ";
+	char* choice1 = new char[slen];
+	cin.ignore(slen, '\n');
+	cin.get(choice1, slen, '\n');
+	int yearC = convert(choice1);
+	while (yearC != 1 && yearC != 2) {
+		cout << "Invalid input. Try again.";
+		cin.ignore(slen, '\n');
+		cin.get(choice1, slen, '\n');
+		yearC = convert(choice1);
+	}
+	return yearC;
+}

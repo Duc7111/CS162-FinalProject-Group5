@@ -7,7 +7,9 @@
 #include "AS.h"
 #include "student.h"
 #include "SchoolYear.h"
-
+#include "course.h"
+#include "semester.h"
+#include "Class.h"
 using namespace std;
 
 
@@ -39,6 +41,8 @@ int main() {
 						int optmain = menuformainAS(log);
 						while (optmain != 4) {
 							if (optmain == 1) {
+								int yearC = schoolyearScreen(log);
+								
 								//CreateYearInfo(t, log);
 								optmain = menuformainAS(log);
 							}

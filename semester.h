@@ -12,3 +12,4 @@ struct semester
     //list pointer
     semester* next;
 };
+
