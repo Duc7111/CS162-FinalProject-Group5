@@ -44,3 +44,7 @@ struct schoolyear
 	//semester* selist;
 	schoolyear* next;
 };
+
+void CreateNY(schoolyear*& y, int data);
+void CreateNC(schoolyear*& y, int CurY);
+void CreateGeneralInfo(schoolyear*& y);
