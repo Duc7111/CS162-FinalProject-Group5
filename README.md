@@ -30,3 +30,5 @@ File format:
       <class>\\
         data.txt
         student.txt
+    AS.txt // AS data
+    student.txt // student login data
