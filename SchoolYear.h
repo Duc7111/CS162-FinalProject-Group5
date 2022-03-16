@@ -11,5 +11,5 @@ struct schoolyear
 	//listpointer
 	schoolyear* next;
 
-	schoolyear() : name(nullptr), se({false, false, false}), selist(nullptr), next(nullptr){};
+	schoolyear();
 };

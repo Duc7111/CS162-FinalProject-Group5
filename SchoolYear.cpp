@@ -11,6 +11,7 @@
 using namespace std;
 
 schoolyear::schoolyear() : name(nullptr), se({false, false, false}), selist(nullptr), next(nullptr){};
+
 /*
 void CreateYearInfo(YearList* CurY, AS log)
 {
