@@ -10,5 +10,4 @@ void AddStudent(Class*& clist);
 void QuickInput(Class*& clist);
 
 
-
-char* CreatePassword(student*& x);
+// char* CreatePassword(student*& x);

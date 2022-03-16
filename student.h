@@ -1,3 +1,4 @@
+#pragma once
 // txt file format
 //
 // -<class>
@@ -6,8 +7,6 @@
 // |Intentional leading space
 // ...
 // default pass: SID
-#pragma once
-
 #include "course.h"
 
 struct student
@@ -30,6 +29,7 @@ struct student
     //list pointer
     student* next;
 };
+
 
 void destructer(student& s);
 
