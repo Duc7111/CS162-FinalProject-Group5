@@ -1,11 +1,12 @@
 #pragma once
 #include "student.h"
+
 struct course
 {
     int ID;
     char* name;
     char* teacher;
-    int credit;
+    int credits;
     int ms = 50; // = 50
     int cur = 0; //current number of student = 0
     student* stlist;
