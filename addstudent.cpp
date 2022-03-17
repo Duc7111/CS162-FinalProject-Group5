@@ -12,18 +12,13 @@ using namespace std;
 
 void AddStudent(Class*& clist)
 {
-
+    
     student* cur;
-    student* head;
-    head = clist->stlist;
     cur = clist->stlist;
-    if (cur->ID == 0)
+    if (cur->ID == 0)      
     {
         cout << "ID: ";
-        char* id = new char[30];
-        cin.ignore(30, '\n');
-        cin.get(id, 30, '\n');
-        cur->ID = convert(id);
+        cin >> cur->ID;
         while (cur->ID != 0)
         {
             cout << "First name: ";
@@ -39,7 +34,7 @@ void AddStudent(Class*& clist)
             cout << "Gender: ";
             cin >> cur->gender;
             char date[10];
-            cout << "DOB: day: ";
+            cout << "DOB: Day: ";
             cin.ignore(10, '\n');
             cin.get(date, 10);
             cur->dob[0] = convert(date);
@@ -75,12 +70,11 @@ void AddStudent(Class*& clist)
             cur->SID = temp2;
             cout << "No: ";
             cin >> cur->No;
+            cur->pass = CreatePassword(cur);
             cur->next = new student;
             cur = cur->next;
             cout << "ID: ";
-            cin.ignore(30, '\n');
-            cin.get(id, 30, '\n');
-            cur->ID = convert(id);
+            cin >> cur->ID;
         }
     }
     else
@@ -91,10 +85,7 @@ void AddStudent(Class*& clist)
             cur = cur->next;
         }
         cout << "ID: ";
-        char* id = new char[30];
-        cin.ignore(30, '\n');
-        cin.get(id, 30, '\n');
-        cur->ID = convert(id);
+        cin >> cur->ID;
         while (cur->ID != 0)
         {
             cout << "First name: ";
@@ -110,7 +101,7 @@ void AddStudent(Class*& clist)
             cout << "Gender: ";
             cin >> cur->gender;
             char date[10];
-            cout << "DOB: day: ";
+            cout << "DOB: Day: ";
             cin.ignore(10, '\n');
             cin.get(date, 10);
             cur->dob[0] = convert(date);
@@ -125,7 +116,7 @@ void AddStudent(Class*& clist)
             while (checkDob(cur->dob) == false)
             {
                 cout << "Invalid Date" << endl;
-                cout << "DOB: day: ";
+                cout << "DOB: Day: ";
                 cin.ignore(10, '\n');
                 cin.get(date, 10);
                 cur->dob[0] = convert(date);
@@ -146,19 +137,16 @@ void AddStudent(Class*& clist)
             cur->SID = temp2;
             cout << "No: ";
             cin >> cur->No;
-
-
-
+            cur->pass = CreatePassword(cur);
             cur->next = new student;
             cur = cur->next;
             cout << "ID: ";
             cin >> cur->ID;
         }
     }
-
+    
     cur->next = nullptr;
 }
-
 
 
 void QuickInput(Class*& clist)
@@ -193,15 +181,16 @@ void QuickInput(Class*& clist)
 
             fin >> cur->No;
             fin.ignore();
+            cur->pass = CreatePassword(cur);
             cur->next = new student;
             cur = cur->next;
             fin >> cur->ID;
         }
-
+        
         cur->next = nullptr;
     }
 
-
+   
 
     else
     {
@@ -227,6 +216,7 @@ void QuickInput(Class*& clist)
 
             fin >> cur->No;
             fin.ignore();
+            cur->pass = CreatePassword(cur);
             cur->next = new student;
             cur = cur->next;
             fin >> cur->ID;
@@ -234,6 +224,29 @@ void QuickInput(Class*& clist)
         cur->next = nullptr;
     }
 
-
+    
     fin.close();
+}
+
+
+int intToAscii(int number) {
+    return '0' + number;
+}
+
+char* CreatePassword(student*& x)
+{
+    char* a = new char[9];
+    
+    a[0] = intToAscii(x->dob[0] / 10);
+    a[1] = intToAscii(x->dob[0] % 10);
+    a[2] = intToAscii(x->dob[1] / 10);
+    a[3] = intToAscii(x->dob[1] % 10);
+    a[4] = intToAscii(x->dob[2] / 1000);
+    int temp = x->dob[2] / 100;
+    a[5] = intToAscii(temp % 10);
+    temp = x->dob[2] / 10;
+    a[6] = intToAscii(temp % 10);
+    a[7] = intToAscii(x->dob[2] % 10);
+    a[8] = NULL;
+    return a;
 }
