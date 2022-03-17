@@ -100,27 +100,63 @@ void CreateYearInfo(YearList* CurY, AS log)
 	delete tmp;
 }*/
 
+void CreateGeneralInfo(schoolyear* &year)
+{
+    //schoolyear* year = new schoolyear();
+    cout << "1. create a new school year." << endl;
+    cout << "2. Insert a new class." << endl;
+    cout << "3. return to menu." << endl;
+    cout << "Your choice: ";
+    int choice_1; cin >> choice_1;
+    system("cls");
+
+    if (choice_1 == 1)
+    {
+        int new_year;
+        cout << "Please enter the first year of the school year: ";
+        cin >> new_year;
+        system("cls");
+
+        cout << "Your new school year is " << new_year << "-" << new_year + 1 << endl;
+        cout << "confirm creating this new school year?" << endl;
+        cout << "1. Yes                           2. No" << endl;
+        cout << "Your choice: ";
+        int choice_2; cin >> choice_2;
+        system("cls");
+
+        if (choice_2 == 1) CreateNY(year, new_year);
+    }
+    if (choice_1 == 2)
+    {
+        cout << "Please enter class's school year: ";
+        int new_year;
+        cin >> new_year;
+        CreateNC(year, new_year);
+    }
+}
+
 void CreateNY(schoolyear*& y, int data)
 {
-	if (y == NULL) y->year = data;
+	schoolyear* new_y = new schoolyear();
+	new_y->year = data;
+	new_y->newclass = NULL;
+	new_y->next = NULL;
+	
+	if (y == NULL) y = new_y;
 	else
 	{
-		schoolyear* new_y = new schoolyear();
-		new_y->year = data;
-		new_y->newclass = NULL;
-		new_y->next = NULL;
-
 		schoolyear* tmp = y;
 		while (tmp != NULL)
 			tmp = tmp->next;
 		tmp = new_y;
 	}
+	cout << "New school year is created!";
 }
 
 
 void CreateNC(schoolyear*& y, int CurY)
 {
-    classname* data = new classname();
+    Class* data = new Class();
     schoolyear* tmp = y;
     bool flag = false;
 
@@ -142,11 +178,12 @@ void CreateNC(schoolyear*& y, int CurY)
         if (tmp->newclass = NULL) tmp->newclass = data;
         else
         {
-            classname* new_class = tmp->newclass;
+            Class* new_class = tmp->newclass;
             while (new_class != NULL)
                 new_class = new_class->next;
             new_class = data;
         }
+	cout << "new class is created!";
     }
-    else cout << "invalid value, please try again later!";
+    else cout << "School year for this class does not exist, please try again";
 }
