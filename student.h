@@ -8,7 +8,6 @@
 // ...
 // default pass: SID
 #include "course.h"
-#include <string.h>
 
 using std::string;
 

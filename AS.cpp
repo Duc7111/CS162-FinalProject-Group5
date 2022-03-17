@@ -1,6 +1,9 @@
 #include <iostream>
 #include <fstream>
+<<<<<<< HEAD
 #include <cstring>
+=======
+>>>>>>> 1d38d48bd8b86d8195a04091d6dc73b180577946
 #include <string>
 
 #include "AS.h"
