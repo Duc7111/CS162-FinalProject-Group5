@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <cstring>
+#include <string>
 
 #include "AS.h"
 #include "const.h"

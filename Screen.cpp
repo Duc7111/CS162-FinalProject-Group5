@@ -59,7 +59,7 @@ void SignupSystem() {
 	AS now;
 	now.username = temp;
 	cout << "Your username is accepted." << endl << "Now, submit your password: ";
-	cin.ignore(1000, '\n');
+	//cin.ignore(1000, '\n');
 	getline(cin, temp);
 	while (checkspecial(temp) == false) {
 		cout << "Invalid password. Try again." << endl << "Now, submit your password: ";
@@ -69,33 +69,33 @@ void SignupSystem() {
 	now.pass = temp;
 	string pass;
 	cout << "Confirm your password again: ";
-	cin.ignore(1000, '\n');
+	//cin.ignore(1000, '\n');
 	getline(cin, pass);
 	if (pass != now.pass) {
 		cout << "Your password is not correct." << endl;
 		cout << "Confirm your password again: ";
-		cin.ignore(1000, '\n');
-		cin >> pass;
+		//cin.ignore(1000, '\n');
+		getline(cin, pass);
 	}
 	system("cls");
 	SignupScreen();
 	cout << "Your account created successfully." << endl;
 	cout << "Now please fill in your information:" << endl;
 	cout << "Your first name: ";
-	cin.ignore(1000, '\n');
+	//cin.ignore(1000, '\n');
 	getline(cin, temp);
 	while (checkspecial(temp) == false) {
 		cout << "Invalid name. Try again." << endl << "Your first name: ";
-		cin.ignore(1000, '\n');
+		//cin.ignore(1000, '\n');
 		getline(cin, temp);
 	}
 	now.fname = temp;
 	cout << "Your last name: ";
-	cin.ignore(1000, '\n');
+	//cin.ignore(1000, '\n');
 	getline(cin, temp);
 	while (checkspecial(temp) == false) {
 		cout << "Invalid name. Try again." << endl << "Your last name: ";
-		cin.ignore(1000, '\n');
+		//cin.ignore(1000, '\n');
 		getline(cin, temp);
 	}
 	now.lname = temp;
@@ -103,7 +103,7 @@ void SignupSystem() {
 	{
 		cout << "Your gender (0: Female, 1: Male): ";
 		char b[slen];
-		cin.ignore(1000, '\n');
+		//cin.ignore(1000, '\n');
 		cin.get(b, slen, '\n');
 		if (b[1] != '\0') cout << "Invalid input" << endl;
 		else if (b[0] == '0')
@@ -405,14 +405,14 @@ int schoolyearScreen(AS log) {
 	cout << "1. Create a new school year. " << endl;
 	cout << "2. New school year is already availabled" << endl;
 	cout << "Your choice: ";
-	string choice1;
+	char choice1[slen];
 	cin.ignore(1000, '\n');
-	getline(cin, choice1);
+	cin.get (choice1,slen);
 	int yearC = convert(choice1);
 	while (yearC != 1 && yearC != 2) {
 		cout << "Invalid input. Try again.";
 		cin.ignore(slen, '\n');
-		getline(cin, choice1);
+		cin.get(choice1, slen);
 		yearC = convert(choice1);
 	}
 	return yearC;
