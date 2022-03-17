@@ -3,7 +3,7 @@
 
 struct Class
 {
-    char* name;
+    string name;
     student* stlist;
 
     Class* next;

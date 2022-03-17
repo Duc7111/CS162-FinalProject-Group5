@@ -7,15 +7,6 @@
 
 using namespace std;
 
-void destructer(AS& as) // deleting stuffs
-{
-    delete[] as.username;
-    delete[] as.pass;
-    delete[] as.fname;
-    delete[] as.lname;
-    delete[] as.SID;
-}
-
 bool checkDob(int dob[3]) //Check if dob is a valid date
 {
     if (dob[0] <= 0 || dob[1] <= 0 || dob[1] > 12 || dob[2] <= 0) return false;
@@ -31,14 +22,14 @@ bool checkDob(int dob[3]) //Check if dob is a valid date
     return true;
 }
 
-bool checkAS(char* username) // true: existed, nullptr; false: not exist
+bool checkAS(string username) // true: existed, nullptr; false: not exist
 {
     if (username[0] == '\0') return true;
     ifstream fin("AS.txt", ios_base::in);
-    char temp[slen];
-    while (fin.getline(temp, slen, ','))
+    string temp;
+    while (getline(fin, temp, ','))
     {
-        if (!strcmp(username, temp))
+        if (temp == username)
         {
             fin.close();
             return true;
@@ -56,31 +47,23 @@ void save2File(const AS& as) //add an AS to file
     fout.close();
 }
 
-bool login(AS& as, char* username, char* pass) // true: login success, false : fail;
+bool login(AS& as, string username, string pass) // true: login success, false : fail;
 {
     ifstream fin("AS.txt", ios_base::in);
-    as.username = new char[slen];
-    while (fin.getline(as.username, slen, ','))
+    while (getline(fin, as.username, ','))
     {
-        if (!strcmp(as.username, username))
+        if (username == as.username)
         {
-            as.pass = new char[slen];
-            fin.getline(as.pass, slen, ',');
-            if (!strcmp(as.pass, pass))
+            getline(fin, as.pass, ',');
+            if (pass == as.pass)
             {
-                as.fname = new char[slen];
-                fin.getline(as.fname, slen, ',');
-
-                as.lname = new char[slen];
-                fin.getline(as.lname, slen, ',');
-
+                getline(fin, as.fname, ',');
+                getline(fin, as.lname, ',');
                 fin >> as.gender; fin.ignore();
                 fin >> as.dob[0]; fin.ignore();
                 fin >> as.dob[1]; fin.ignore();
                 fin >> as.dob[2]; fin.ignore();
-
-                as.SID = new char[slen];
-                fin.getline(as.SID, slen);
+                getline(fin, as.SID);
                 fin.close();
                 return true;
             }
@@ -99,8 +82,8 @@ void changeAS(AS& as) // change info of an AS in file
 {
     ifstream fin("AS.txt");
     ofstream fout("temp.txt");
-    char temp[7 * slen];
-    while (fin.getline(temp, 7 * slen))
+    string temp;
+    while (getline(fin, temp))
     {
         int i = 0;
         while (as.username[i] != '\0' && as.username[i] == temp[i]) ++i;
@@ -111,7 +94,7 @@ void changeAS(AS& as) // change info of an AS in file
         }
         else fout << temp << endl;
     }
-    while (fin.getline(temp, 7 * slen)) fout << temp << endl;
+    while (getline(fin, temp)) fout << temp << endl;
     fin.close(), fout.close();
     remove("AS.txt");
     rename("temp.txt", "AS.txt");

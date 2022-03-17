@@ -5,15 +5,7 @@
 
 using namespace std;
 
-void destructer(student& s)
-{
-    delete[] s.pass;
-    delete[] s.fname;
-    delete[] s.lname;
-    delete[] s.SID;
-}
-
-bool login(student& s, int ID, char* pass)
+bool login(student& s, int ID, string pass)
 {
     ifstream fin("student.txt", ios_base::in);
     char temp;
@@ -28,35 +20,27 @@ bool login(student& s, int ID, char* pass)
         if (s.ID == ID)
         {
             s.pass = new char[slen];
-            fin.getline(s.pass, slen, ',');
-            if (!strcmp(s.pass, pass))
+            getline(fin, s.pass, ',');
+            if (s.pass == pass)
             {
-                s.fname = new char[slen];
-                fin.getline(s.fname, slen, ',');
-
-                s.lname = new char[slen];
-                fin.getline(s.lname, slen, ',');
-
+                getline(fin, s.fname, ',');
+                getline(fin, s.lname, ',');
                 fin >> s.gender; fin.ignore();
                 fin >> s.dob[0]; fin.ignore();
                 fin >> s.dob[1]; fin.ignore();
                 fin >> s.dob[2]; fin.ignore();
-
-                s.SID = new char[slen];
-                fin.getline(s.SID, slen);
+                getline(fin, s.SID);
 
                 fin >> s.No;
                 fin.close();
                 return true;
             }
             fin.close();
-            destructer(s);
             return false;
         }
         else fin.ignore(1000, '\n');
     }
     fin.close();
-    destructer(s);
     return false;
 }
 

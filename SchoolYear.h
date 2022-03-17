@@ -1,5 +1,5 @@
 #pragma once
-/*
+
 #include "AS.h"
 #include "Class.h"
 #include "semester.h"
@@ -7,14 +7,13 @@
 struct schoolyear
 {
 	//data
-	char* name;
+	string name;
 	semester* selist;
 	//listpointer
 	schoolyear* next;
 
 	schoolyear();
 };
-*/
 
 #include<iostream>
 #include<cstring>

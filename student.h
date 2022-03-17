@@ -9,19 +9,21 @@
 // default pass: SID
 #include "course.h"
 
+using std::string;
+
 struct student
 {
     // system data (username = ID)
-    char* pass = nullptr;
+    string pass = nullptr;
     // personal data
     int ID = 0;
-    char* fname = nullptr;
-    char* lname = nullptr;
+    string fname = nullptr;
+    string lname = nullptr;
     bool gender = 0; // 0 = female / 1 = male
     int dob[3] = { 0,0,0 };
-    char* SID = nullptr;
+    string SID = nullptr;
     //class data
-    char* clname;
+    string clname;
     int No;
     //course data
     course* colist = nullptr;
@@ -30,9 +32,6 @@ struct student
     student* next;
 };
 
-
-void destructer(student& s);
-
-bool login(student& s, int ID, char* pass);
+bool login(student& s, int ID, string pass);
 
 void changeStudent(student& s);
