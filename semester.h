@@ -1,6 +1,8 @@
 #pragma once
 #include "SchoolYear.h"
 #include "course.h"
+#include <string>
+
 
 struct semester
 {

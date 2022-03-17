@@ -1,6 +1,6 @@
 #pragma once
 #include "student.h"
-
+#include <string>
 struct Class
 {
     string name;
