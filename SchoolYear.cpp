@@ -102,20 +102,21 @@ void CreateYearInfo(YearList* CurY, AS log)
 
 void CreateNY(schoolyear*& y, int data)
 {
-    if (y == NULL) y->year = data;
-    else
-    {
-        schoolyear* new_y = new schoolyear();
-        new_y->year = data;
-        new_y->newclass = NULL;
-        new_y->next = NULL;
+	if (y == NULL) y->year = data;
+	else
+	{
+		schoolyear* new_y = new schoolyear();
+		new_y->year = data;
+		new_y->newclass = NULL;
+		new_y->next = NULL;
 
-        schoolyear* tmp = y;
-        while (tmp != NULL)
-            tmp = tmp->next;
-        tmp = new_y;
-    }
+		schoolyear* tmp = y;
+		while (tmp != NULL)
+			tmp = tmp->next;
+		tmp = new_y;
+	}
 }
+
 
 void CreateNC(schoolyear*& y, int CurY)
 {
