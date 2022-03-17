@@ -247,6 +247,6 @@ char* CreatePassword(student*& x)
     temp = x->dob[2] / 10;
     a[6] = intToAscii(temp % 10);
     a[7] = intToAscii(x->dob[2] % 10);
-    a[8] = NULL;
+    a[8] = '\0';
     return a;
 }

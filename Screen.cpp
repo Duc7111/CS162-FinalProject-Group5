@@ -44,34 +44,33 @@ void SignupScreen() {
 void SignupSystem() {
 	system("cls");
 	SignupScreen();
-	char* temp = new char[slen];
+	string temp;
 	cout << "Please submit your username (Your username must be a new one and only contain letter and number): ";
 	cin.ignore(1000, '\n');
-	cin.get(temp, slen, '\n');
+	getline(cin, temp);
 	while (checkAS(temp) == true || checkspecial(temp) == false) {
 		system("cls");
 		SignupScreen();
 		cout << "Your username: " << temp << " invalid or already existed." << endl << "Try again" << endl;
 		cout << "Please submit your username (Your username must be a new one and only contain letter and number) : ";
 		cin.ignore(1000, '\n');
-		cin.get(temp, slen, '\n');
+		getline(cin, temp);
 	}
 	AS now;
 	now.username = temp;
 	cout << "Your username is accepted." << endl << "Now, submit your password: ";
-	char* temp2 = new char[slen];
 	cin.ignore(1000, '\n');
-	cin.get(temp2, slen, '\n');
-	while (checkspecial(temp2) == false) {
+	getline(cin, temp);
+	while (checkspecial(temp) == false) {
 		cout << "Invalid password. Try again." << endl << "Now, submit your password: ";
 		cin.ignore(1000, '\n');
-		cin.get(temp2, slen, '\n');
+		getline(cin, temp);
 	}
-	now.pass = temp2;
+	now.pass = temp;
 	string pass;
 	cout << "Confirm your password again: ";
 	cin.ignore(1000, '\n');
-	cin >> pass;
+	getline(cin, pass);
 	if (pass != now.pass) {
 		cout << "Your password is not correct." << endl;
 		cout << "Confirm your password again: ";
@@ -83,25 +82,23 @@ void SignupSystem() {
 	cout << "Your account created successfully." << endl;
 	cout << "Now please fill in your information:" << endl;
 	cout << "Your first name: ";
-	char* temp3 = new char[slen];
 	cin.ignore(1000, '\n');
-	cin.get(temp3, slen, '\n');
-	while (checkspecial(temp3) == false) {
+	getline(cin, temp);
+	while (checkspecial(temp) == false) {
 		cout << "Invalid name. Try again." << endl << "Your first name: ";
 		cin.ignore(1000, '\n');
-		cin.get(temp3, slen, '\n');
+		getline(cin, temp);
 	}
-	now.fname = temp3;
+	now.fname = temp;
 	cout << "Your last name: ";
-	char* temp4 = new char[slen];
 	cin.ignore(1000, '\n');
-	cin.get(temp4, slen, '\n');
-	while (checkspecial(temp4) == false) {
+	getline(cin, temp);
+	while (checkspecial(temp) == false) {
 		cout << "Invalid name. Try again." << endl << "Your last name: ";
 		cin.ignore(1000, '\n');
-		cin.get(temp4, slen, '\n');
+		getline(cin, temp);
 	}
-	now.lname = temp4;
+	now.lname = temp;
 	while (true)
 	{
 		cout << "Your gender (0: Female, 1: Male): ";
@@ -202,7 +199,7 @@ short loginp1() {
 }
 
 
-bool checkspecial(char* str) {
+bool checkspecial(string str) {
 	int i = 0;
 	while (str[i] != '\0') {
 		if (((str[i] >= 48 && str[i] <= 57) || (str[i] >= 65 && str[i] <= 90) || (str[i] >= 97 && str[i] <= 122))) {
@@ -226,7 +223,7 @@ bool checkstring(string str) {
 	return true;
 }
 
-int convert(char* str) {
+int convert(string str) {
 	int t = 0;
 	for (int i = 0; str[i] != '\0'; i++) {
 		if (str[i] >= 48 && str[i] <= 57) {
@@ -408,14 +405,14 @@ int schoolyearScreen(AS log) {
 	cout << "1. Create a new school year. " << endl;
 	cout << "2. New school year is already availabled" << endl;
 	cout << "Your choice: ";
-	char* choice1 = new char[slen];
-	cin.ignore(slen, '\n');
-	cin.get(choice1, slen, '\n');
+	string choice1;
+	cin.ignore(1000, '\n');
+	getline(cin, choice1);
 	int yearC = convert(choice1);
 	while (yearC != 1 && yearC != 2) {
 		cout << "Invalid input. Try again.";
 		cin.ignore(slen, '\n');
-		cin.get(choice1, slen, '\n');
+		getline(cin, choice1);
 		yearC = convert(choice1);
 	}
 	return yearC;

@@ -5,20 +5,19 @@
 //
 
 #pragma once
-#include <string>
 
 using std::string;
 struct AS
 {
     //system data
-    string username = nullptr;
-    string pass = nullptr;
+    string username;
+    string pass;
     //personal data
-    string fname = nullptr;
-    string lname = nullptr;
-    bool gender = 0; // 0 = female, 1 = male
-    int dob[3] = { 0,0,0 };
-    string SID = nullptr;
+    string fname;
+    string lname;
+    bool gender; // 0 = female, 1 = male
+    int dob[3];
+    string SID;
 };
 
 // void destructer(AS& as);
