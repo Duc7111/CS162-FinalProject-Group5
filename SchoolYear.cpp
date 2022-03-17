@@ -103,11 +103,12 @@ void CreateYearInfo(YearList* CurY, AS log)
 void CreateGeneralInfo(schoolyear* &year)
 {
     //schoolyear* year = new schoolyear();
-    cout << "1. create a new school year." << endl;
+    cout << "1. Create a new school year." << endl;
     cout << "2. Insert a new class." << endl;
     cout << "3. return to menu." << endl;
     cout << "Your choice: ";
-    int choice_1; cin >> choice_1;
+    int choice_1; 
+	cin >> choice_1;
     system("cls");
 
     if (choice_1 == 1)
@@ -161,7 +162,7 @@ void CreateNC(schoolyear*& y, int CurY)
     bool flag = false;
 
     cout << "please enter the class name (numbers at the beginning of the name is not allowed): ";
-    cin >> data->cname;
+    cin >> data->name;
     data->next = NULL;
 
     while (tmp != NULL)

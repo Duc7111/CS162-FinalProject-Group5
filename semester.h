@@ -2,7 +2,7 @@
 #include "SchoolYear.h"
 #include "course.h"
 #include <string>
-
+using std::string;
 
 struct semester
 {

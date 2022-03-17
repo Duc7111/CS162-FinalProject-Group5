@@ -56,7 +56,7 @@ int main() {
 						op1 = start(log);
 					}
 				}
-				destructer(log);
+				//destructer(log);
 				break;
 			}
 			else {

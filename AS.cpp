@@ -68,13 +68,13 @@ bool login(AS& as, string username, string pass) // true: login success, false :
                 return true;
             }
             fin.close();
-            destructer(as);
+            //destructer(as);
             return false;
         }
         else fin.ignore(1000, '\n');
     }
     fin.close();
-    destructer(as);
+    //destructer(as);
     return false;
 }
 

@@ -68,15 +68,15 @@ void SignupSystem() {
 		cin.get(temp2, slen, '\n');
 	}
 	now.pass = temp2;
-	char pass[slen];
+	string pass;
 	cout << "Confirm your password again: ";
 	cin.ignore(1000, '\n');
-	cin.get(pass, slen, '\n');
-	if (strcmp(now.pass, pass) != 0) {
+	cin >> pass;
+	if (pass != now.pass) {
 		cout << "Your password is not correct." << endl;
 		cout << "Confirm your password again: ";
 		cin.ignore(1000, '\n');
-		cin.get(pass, slen, '\n');
+		cin >> pass;
 	}
 	system("cls");
 	SignupScreen();
@@ -152,9 +152,13 @@ void SignupSystem() {
 		now.dob[2] = convert(date);
 	}
 	cout << "Social Id: ";
-	now.SID = new char[slen];
 	cin.ignore(1000, '\n');
-	cin.get(now.SID, slen, '\n');
+	cin >> now.SID;
+	while (checkstring(now.SID) == false) {
+		cout << "Invalid data. Try again. " << endl;
+		cout << "Social Id: ";
+		cin >> now.SID;
+	}
 	while (true)
 	{
 		cout << "Confirm your account? (0: No, 1: Yes)" << endl;
@@ -176,8 +180,6 @@ void SignupSystem() {
 		}
 		else cout << "Invaid input" << endl;
 	}
-	destructer(now);
-
 }
 
 short loginp1() {
@@ -201,6 +203,18 @@ short loginp1() {
 
 
 bool checkspecial(char* str) {
+	int i = 0;
+	while (str[i] != '\0') {
+		if (((str[i] >= 48 && str[i] <= 57) || (str[i] >= 65 && str[i] <= 90) || (str[i] >= 97 && str[i] <= 122))) {
+			i++;
+		}
+		else
+			return false;
+	}
+	return true;
+}
+
+bool checkstring(string str) {
 	int i = 0;
 	while (str[i] != '\0') {
 		if (((str[i] >= 48 && str[i] <= 57) || (str[i] >= 65 && str[i] <= 90) || (str[i] >= 97 && str[i] <= 122))) {
@@ -309,35 +323,32 @@ void changepass(AS& log) {
 	cout << "Welcome " << log.lname;
 	gotoxy(0, 5);
 	cout << "Your password: ";
-	char* temp2 = new char[slen];
+	string temp2;
 	cin.ignore(1000, '\n');
-	cin.get(temp2, slen, '\n');
-	while (strcmp(temp2, log.pass) != 0) {
+	cin >> temp2;
+	while (temp2!=log.pass) {
 		cout << "Wrong password. Try again." << endl << "Now, submit your password: ";
 		cin.ignore(1000, '\n');
-		cin.get(temp2, slen, '\n');
+		cin >> temp2;
 	}
-	delete[] temp2;
 	cout << "Your new password: ";
-	char* temp = new char[slen];
+	string temp;
 	cin.ignore(1000, '\n');
-	cin.get(temp, slen, '\n');
-	while (checkspecial(temp) == false) {
+	cin >> temp;
+	while (checkstring(temp) == false) {
 		cout << "Invalid password. Try again." << endl << "Now, submit your password: ";
 		cin.ignore(1000, '\n');
-		cin.get(temp, slen, '\n');
+		cin >> temp;
 	}
 	cout << "Confirm your password: ";
-	char* check = new char[slen];
+	string check;
 	cin.ignore(1000, '\n');
-	cin.get(check, slen, '\n');
-	while (strcmp(check, temp) != 0) {
+	cin >> check;
+	while (check!=temp) {
 		cout << "Wrong password. Try again." << endl << "Confirm your password: ";
 		cin.ignore(1000, '\n');
-		cin.get(check, slen, '\n');
+		cin >> temp;
 	}
-	delete[] log.pass;
-	delete[] check;
 	log.pass = temp;
 	cout << "Your password changed successfully.\n";
 	changeAS(log);

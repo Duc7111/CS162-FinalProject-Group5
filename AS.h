@@ -21,7 +21,7 @@ struct AS
     string SID = nullptr;
 };
 
-void destructer(AS& as);
+// void destructer(AS& as);
 
 bool checkDob(int dob[3]);
 

@@ -1,8 +1,8 @@
 #pragma once
 #include "student.h"
-#include <string.h>
+#include <string>
 
-
+using std::string;
 struct course
 {
     int ID;
