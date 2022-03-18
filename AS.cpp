@@ -25,7 +25,7 @@ bool checkDob(int dob[3]) //Check if dob is a valid date
 bool checkAS(string username) // true: existed, nullptr; false: not exist
 {
     if (username[0] == '\0') return true;
-    ifstream fin("AS.txt", ios_base::in);
+    ifstream fin("data\\AS.txt", ios_base::in);
     string temp;
     while (getline(fin, temp, ','))
     {
@@ -42,14 +42,14 @@ bool checkAS(string username) // true: existed, nullptr; false: not exist
 
 void save2File(const AS& as) //add an AS to file
 {
-    ofstream fout("AS.txt", ios_base::out | ios_base::app);
+    ofstream fout("data\\AS.txt", ios_base::out | ios_base::app);
     fout << as.username << ',' << as.pass << ',' << as.fname << ',' << as.lname << ',' << as.gender << ',' << as.dob[0] << ',' << as.dob[1] << ',' << as.dob[2] << ',' << as.SID << endl;
     fout.close();
 }
 
 bool login(AS& as, string username, string pass) // true: login success, false : fail;
 {
-    ifstream fin("AS.txt", ios_base::in);
+    ifstream fin("data\\AS.txt", ios_base::in);
     while (getline(fin, as.username, ','))
     {
         if (username == as.username)
@@ -68,19 +68,17 @@ bool login(AS& as, string username, string pass) // true: login success, false :
                 return true;
             }
             fin.close();
-            //destructer(as);
             return false;
         }
         else fin.ignore(1000, '\n');
     }
     fin.close();
-    //destructer(as);
     return false;
 }
 
 void changeAS(AS& as) // change info of an AS in file
 {
-    ifstream fin("AS.txt");
+    ifstream fin("data\\AS.txt");
     ofstream fout("temp.txt");
     string temp;
     while (getline(fin, temp))
@@ -96,6 +94,6 @@ void changeAS(AS& as) // change info of an AS in file
     }
     while (getline(fin, temp)) fout << temp << endl;
     fin.close(), fout.close();
-    remove("AS.txt");
-    rename("temp.txt", "AS.txt");
+    remove("data\\AS.txt");
+    rename("temp.txt", "data\\AS.txt");
 }

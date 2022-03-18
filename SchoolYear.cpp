@@ -10,7 +10,7 @@
 
 using namespace std;
 
-//schoolyear::schoolyear() : name(nullptr), selist(nullptr), next(nullptr){};
+schoolyear::schoolyear() : name(""), selist(nullptr), next(nullptr){};
 /*
 void CreateYearInfo(YearList* CurY, AS log)
 {
@@ -136,10 +136,10 @@ void CreateGeneralInfo(schoolyear* &year)
     }
 }
 
-void CreateNY(schoolyear*& y, int data)
+void CreateNY(schoolyear*& y, string name)
 {
 	schoolyear* new_y = new schoolyear();
-	new_y->year = data;
+	new_y->name = name;
 	new_y->newclass = NULL;
 	new_y->next = NULL;
 	
@@ -155,19 +155,20 @@ void CreateNY(schoolyear*& y, int data)
 }
 
 
-void CreateNC(schoolyear*& y, int CurY)
+void CreateNC(schoolyear*& y, string CurY)
 {
     Class* data = new Class();
     schoolyear* tmp = y;
     bool flag = false;
 
-    cout << "please enter the class name (numbers at the beginning of the name is not allowed): ";
-    cin >> data->name;
-    data->next = NULL;
+    cout << "please enter the class name: ";
+    cin.ignore(1000, '\n');
+	getline(cin, data->name);
+    data->next = nullptr;
 
     while (tmp != NULL)
     {
-        if (tmp->year == CurY)
+        if (tmp->name == CurY)
         {
             flag = true;
             break;

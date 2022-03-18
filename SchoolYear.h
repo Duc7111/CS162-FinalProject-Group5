@@ -13,14 +13,14 @@ using namespace std;
 struct schoolyear
 {
 	//data
-	int year;
+	string name; //schoolyear name(2021-2022)
 	Class* newclass;
 	semester* selist;
 	
 	//listpointer
 	schoolyear* next;
 
-	// schoolyear();
+	schoolyear();
 };
 
 void CreateNY(schoolyear*& y, int data);

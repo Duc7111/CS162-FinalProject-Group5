@@ -7,22 +7,27 @@ using namespace std;
 
 bool login(student& s, int ID, string pass)
 {
-    ifstream fin("student.txt", ios_base::in);
-    char temp;
-    while (fin.get(temp))
+    ifstream fin("data\\student.txt", ios_base::in);
+    while (!fin.eof())
     {
-        if (temp != ' ')
-        {
-            fin.ignore(1000, '\n');
-            continue;
-        }
         fin >> s.ID; fin.ignore();
         if (s.ID == ID)
         {
-            s.pass = new char[slen];
             getline(fin, s.pass, ',');
             if (s.pass == pass)
             {
+                fin.close();
+                string dir;
+                fin.ignore(1000, '\n');
+                getline(fin, dir);
+                dir = "data\\class\\" + dir + "\\student.txt";
+                fin.open(dir);
+                while(!fin.eof())
+                {
+                    fin >> ID; fin.ignore();
+                    if(ID == s.ID) break;
+                    else fin.ignore(1000, '\n');
+                }
                 getline(fin, s.fname, ',');
                 getline(fin, s.lname, ',');
                 fin >> s.gender; fin.ignore();
@@ -46,7 +51,7 @@ bool login(student& s, int ID, string pass)
 
 void changeStudent(student& s)
 {
-    ifstream fin("student.txt");
+    ifstream fin("data\\student.txt");
     ofstream fout("temp.txt");
     char temp[5 * slen];
     while (fin.getline(temp, 5 * slen))
@@ -62,12 +67,12 @@ void changeStudent(student& s)
         if (ID != s.ID) fout << temp << endl;
         else
         {
-            fout << s.ID << ',' << s.pass << ',' << s.fname << ',' << s.lname << ',' << s.gender << ',' << s.dob[0] << ',' << s.dob[1] << ',' << s.dob[2] << ',' << s.SID << ',' << s.No << endl;
+            fout << s.ID << ',' << s.pass << ',' << s.clname << endl;
             break;
         }
     }
     while (fin.getline(temp, 5 * slen)) fout << temp << endl;
     fin.close(); fout.close();
-    remove("student.txt");
-    rename("temp.txt", "student.txt");
+    remove("data\\student.txt");
+    rename("temp.txt", "data\\student.txt");
 }
