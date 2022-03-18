@@ -1,5 +1,7 @@
 #include<iostream>
 #include<cstring>
+#include<fstream>
+#include<direct.h>
 
 #include "const.h"
 #include "console.h"
@@ -11,6 +13,14 @@
 using namespace std;
 
 schoolyear::schoolyear() : name(""), selist(nullptr), next(nullptr){};
+
+void save2File(schoolyear* y)
+{
+	while(y)
+	{
+		
+	}
+}
 /*
 void CreateYearInfo(YearList* CurY, AS log)
 {

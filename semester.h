@@ -2,6 +2,8 @@
 #include "SchoolYear.h"
 #include "course.h"
 #include <string>
+#include <fstream>
+
 using std::string;
 
 struct semester
@@ -15,3 +17,4 @@ struct semester
     semester* next;
 };
 
+void save2File(const semester& s);
