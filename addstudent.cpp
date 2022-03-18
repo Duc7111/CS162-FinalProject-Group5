@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <string>
 #include "addstudent.h"
 #include "Screen.h"
 #include "AS.h"
