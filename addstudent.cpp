@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <string>
 #include "addstudent.h"
 #include "Screen.h"
 #include "AS.h"
@@ -15,22 +16,17 @@ void AddStudent(Class*& clist)
     
     student* cur;
     cur = clist->stlist;
-    if (cur->ID == 0)      
+    if (cur->ID == 0)
     {
         cout << "ID: ";
         cin >> cur->ID;
         while (cur->ID != 0)
         {
             cout << "First name: ";
-            char* temp = new char[100];
-            cin.ignore(1000, '\n');
-            cin.get(temp, 100, '\n');
-            cur->fname = temp;
+            cin.ignore();
+            getline(cin, cur->fname);
             cout << "Last name: ";
-            char* temp1 = new char[100];
-            cin.ignore(1000, '\n');
-            cin.get(temp1, 100, '\n');
-            cur->lname = temp1;
+            getline(cin, cur->lname);
             cout << "Gender: ";
             cin >> cur->gender;
             char date[10];
@@ -64,13 +60,11 @@ void AddStudent(Class*& clist)
 
             }
             cout << "Social ID: ";
-            char* temp2 = new char[100];
-            cin.ignore(1000, '\n');
-            cin.get(temp2, 100, '\n');
-            cur->SID = temp2;
+            cin.ignore();
+            getline(cin, cur->SID);
             cout << "No: ";
             cin >> cur->No;
-            cur->pass = CreatePassword(cur);
+            cur->pass = cur->SID;
             cur->next = new student;
             cur = cur->next;
             cout << "ID: ";
@@ -89,15 +83,10 @@ void AddStudent(Class*& clist)
         while (cur->ID != 0)
         {
             cout << "First name: ";
-            char* temp = new char[100];
-            cin.ignore(1000, '\n');
-            cin.get(temp, 100, '\n');
-            cur->fname = temp;
+            cin.ignore();
+            getline(cin, cur->fname);
             cout << "Last name: ";
-            char* temp1 = new char[100];
-            cin.ignore(1000, '\n');
-            cin.get(temp1, 100, '\n');
-            cur->lname = temp1;
+            getline(cin, cur->lname);
             cout << "Gender: ";
             cin >> cur->gender;
             char date[10];
@@ -131,13 +120,11 @@ void AddStudent(Class*& clist)
 
             }
             cout << "Social ID: ";
-            char* temp2 = new char[100];
-            cin.ignore(1000, '\n');
-            cin.get(temp2, 100, '\n');
-            cur->SID = temp2;
+            cin.ignore();
+            getline(cin, cur->SID);
             cout << "No: ";
             cin >> cur->No;
-            cur->pass = CreatePassword(cur);
+            cur->pass = cur->SID;
             cur->next = new student;
             cur = cur->next;
             cout << "ID: ";
@@ -147,7 +134,6 @@ void AddStudent(Class*& clist)
     
     cur->next = nullptr;
 }
-
 
 void QuickInput(Class*& clist)
 {
@@ -164,24 +150,16 @@ void QuickInput(Class*& clist)
         while (cur->ID != 0)
         {
             fin.ignore();
-            char* name = new char[100];
-            fin.getline(name, 100, ',');
-            cur->fname = name;
-            char* name1 = new char[100];
-            fin.getline(name1, 100, ',');
-            cur->lname = name1;
+            getline(fin, cur->fname,',');
+            getline(fin, cur->lname,',');
             fin >> cur->gender; fin.ignore();
             fin >> cur->dob[0]; fin.ignore();
             fin >> cur->dob[1]; fin.ignore();
             fin >> cur->dob[2]; fin.ignore();
-            char* SID = new char[100];
-            fin.getline(SID, 100, ',');
-
-            cur->SID = SID;
-
+            getline(fin, cur->SID, ',');
             fin >> cur->No;
             fin.ignore();
-            cur->pass = CreatePassword(cur);
+            cur->pass = cur->SID;
             cur->next = new student;
             cur = cur->next;
             fin >> cur->ID;
@@ -199,24 +177,16 @@ void QuickInput(Class*& clist)
         while (cur->ID != 0)
         {
             fin.ignore();
-            char* name = new char[100];
-            fin.getline(name, 100, ',');
-            cur->fname = name;
-            char* name1 = new char[100];
-            fin.getline(name1, 100, ',');
-            cur->lname = name1;
+            getline(fin, cur->fname, ',');
+            getline(fin, cur->lname, ',');
             fin >> cur->gender; fin.ignore();
             fin >> cur->dob[0]; fin.ignore();
             fin >> cur->dob[1]; fin.ignore();
             fin >> cur->dob[2]; fin.ignore();
-            char* SID = new char[100];
-            fin.getline(SID, 100, ',');
-
-            cur->SID = SID;
-
+            getline(fin, cur->SID, ',');
             fin >> cur->No;
             fin.ignore();
-            cur->pass = CreatePassword(cur);
+            cur->pass = cur->SID;
             cur->next = new student;
             cur = cur->next;
             fin >> cur->ID;
@@ -228,25 +198,3 @@ void QuickInput(Class*& clist)
     fin.close();
 }
 
-
-int intToAscii(int number) {
-    return '0' + number;
-}
-
-char* CreatePassword(student*& x)
-{
-    char* a = new char[9];
-    
-    a[0] = intToAscii(x->dob[0] / 10);
-    a[1] = intToAscii(x->dob[0] % 10);
-    a[2] = intToAscii(x->dob[1] / 10);
-    a[3] = intToAscii(x->dob[1] % 10);
-    a[4] = intToAscii(x->dob[2] / 1000);
-    int temp = x->dob[2] / 100;
-    a[5] = intToAscii(temp % 10);
-    temp = x->dob[2] / 10;
-    a[6] = intToAscii(temp % 10);
-    a[7] = intToAscii(x->dob[2] % 10);
-    a[8] = '\0';
-    return a;
-}

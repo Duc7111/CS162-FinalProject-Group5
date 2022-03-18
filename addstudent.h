@@ -6,7 +6,3 @@
 void AddStudent(Class*& clist);
 
 void QuickInput(Class*& clist);
-
-int intToAscii(int number);
-
-char* CreatePassword(student*& x);
