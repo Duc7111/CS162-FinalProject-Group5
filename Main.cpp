@@ -42,16 +42,14 @@ int main() {
 						while (optmain != 4) {
 							if (optmain == 1) {
 								int yearC = schoolyearScreen(log);
-								
+								//cin.ignore(10, '\n');
 								//CreateYearInfo(t, log);
-								optmain = menuformainAS(log);
 							}
 							else if (optmain == 2) {
-
 							}
 							else {
-								optmain = menuformainAS(log);
 							}
+							optmain = menuformainAS(log);
 						}
 						op1 = start(log);
 					}
