@@ -7,7 +7,7 @@ const int ml[12] = {31, 30, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
 void dataBase()
 {
-    mkdir("data");
-    mkdir("data\\schoolyears");
-    mkdir("data\\classes");
+    _mkdir("data");
+    _mkdir("data\\schoolyears");
+    _mkdir("data\\classes");
 }
