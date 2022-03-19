@@ -1,5 +1,5 @@
 #pragma once
-#include<direct.h>
+#include <direct.h>
 
 #define slen 30 
 
