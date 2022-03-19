@@ -1,8 +1,10 @@
 #pragma once
-#include "SchoolYear.h"
-#include "course.h"
 #include <string>
 #include <fstream>
+
+#include "SchoolYear.h"
+#include "course.h"
+#include "data.h"
 
 using std::string;
 
@@ -12,9 +14,7 @@ struct semester
     string SY; //school year name
     int sdate[3]; //start date
     int edate[3]; //end date
-    course* colist; // course list
-    //list pointer
-    semester* next;
+    list<course>* colist; // course list
 };
 
 void save2File(const semester& s);

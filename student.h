@@ -1,10 +1,12 @@
-#pragma once
 // txt file format
 //
 // 
 // ID,pass,clname
 // ...
 // default pass: SID
+#pragma once
+
+#include "data.h"
 #include "course.h"
 
 using std::string;
@@ -19,15 +21,13 @@ struct student
     string lname;
     bool gender = 0; // 0 = female / 1 = male
     int dob[3] = { 0,0,0 };
-    string SID = nullptr;
-    //class data
+    string SID;
+    // class data
     string clname;
     int No;
     //course data
-    course* colist = nullptr;
+    list<course>* colist;
     int conum = 0;
-    //list pointer
-    student* next;
 };
 
 bool login(student& s, int ID, string pass);

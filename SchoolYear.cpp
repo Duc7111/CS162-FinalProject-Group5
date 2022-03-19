@@ -12,13 +12,15 @@
 
 using namespace std;
 
-schoolyear::schoolyear() : name(""), selist(nullptr), next(nullptr){};
+schoolyear::schoolyear() : name(""), selist(nullptr){};
 
 void save2File(schoolyear* y)
 {
 	while(y)
 	{
-		
+		string dir = "data\\schoolyear\\" + y->name;
+		const char* d = dir.c_str();
+		_mkdir(d); 
 	}
 }
 /*
@@ -145,7 +147,7 @@ void CreateGeneralInfo(schoolyear* &year)
         CreateNC(year, new_year);
     }
 }
-
+/*
 void CreateNY(schoolyear*& y, string name)
 {
 	schoolyear* new_y = new schoolyear();
@@ -199,3 +201,4 @@ void CreateNC(schoolyear*& y, string CurY)
     }
     else cout << "School year for this class does not exist, please try again";
 }
+*/

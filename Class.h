@@ -1,12 +1,13 @@
 #pragma once
-#include "student.h"
 #include <string>
+
+#include "student.h"
+#include "const.h"
+
 struct Class
 {
-    string name;
-    student* stlist;
-
-    Class* next;
+    std::string name;
+    list<student> stlist;
 };
 
 void save2File(Class c);
