@@ -199,3 +199,10 @@ void CreateNC(schoolyear*& y, string CurY)
     }
     else cout << "School year for this class does not exist, please try again";
 }
+
+void CreateNY(schoolyear*& y, int data) {
+	return;
+}
+void CreateNC(schoolyear*& y, int CurY) {
+	return;
+}

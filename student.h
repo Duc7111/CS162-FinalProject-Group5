@@ -19,7 +19,7 @@ struct student
     string lname;
     bool gender = 0; // 0 = female / 1 = male
     int dob[3] = { 0,0,0 };
-    string SID = nullptr;
+    string SID;
     //class data
     string clname;
     int No;

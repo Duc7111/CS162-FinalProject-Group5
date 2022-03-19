@@ -63,7 +63,7 @@ void SignupSystem() {
 	getline(cin, temp);
 	while (checkspecial(temp) == false) {
 		cout << "Invalid password. Try again." << endl << "Now, submit your password: ";
-		cin.ignore(1000, '\n');
+		//cin.ignore(1000, '\n');
 		getline(cin, temp);
 	}
 	now.pass = temp;

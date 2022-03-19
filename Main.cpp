@@ -16,6 +16,7 @@ using namespace std;
 
 int main() {
 	//YearList* t = nullptr;
+	dataBase();
 	int choice;
 	choice = StartScreen();
 	while (choice != 3) {
