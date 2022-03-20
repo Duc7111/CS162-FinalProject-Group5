@@ -14,17 +14,15 @@ Note:
 
 File format:
   data\\
-    schoolyears\\
+    schoolyear\\
       schoolyear.txt // school year list
       <schoolyear>\\
           <semester>\\ // as a school year have 3 semester, there's no need for a list
             data.txt
-            courses\\
-              course.txt // courses list
-              <course>\\
-                data.txt
-                student.txt // paticipant list && data
-    classes\\
+            <course>\\
+              data.txt
+              student.txt // paticipant list && data
+    class\\
       class.txt // class list
       <class>\\
         data.txt

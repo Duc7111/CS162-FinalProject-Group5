@@ -5,6 +5,21 @@
 
 using namespace std;
 
+void student::save2File()
+{
+    ofstream fout("data\\student.txt", ios_base::app);
+    fout << ID << ',' << pass << endl;
+    fout.close();
+    fout.open("data\\class\\" + clname + "\\student.txt", ios_base::app);
+    fout << fname << ',' << lname << ',' << gender << ',' << dob[0] << ',' << dob[1] << ',' << dob[2] << ',' << SID << ',' << No;
+    list<course>* temp = colist;
+    while(temp)
+    {
+        fout << ',' << temp->data.ID;
+        temp = temp->next;
+    }
+}
+
 bool login(student& s, int ID, string pass)
 {
     ifstream fin("data\\student.txt", ios_base::in);
@@ -37,6 +52,7 @@ bool login(student& s, int ID, string pass)
                 getline(fin, s.SID);
 
                 fin >> s.No;
+                //course list missing
                 fin.close();
                 return true;
             }

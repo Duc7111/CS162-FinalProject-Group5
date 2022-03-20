@@ -30,10 +30,12 @@ void schoolyear::save2File()
 	if(selist)
 	{
 		dir += "\\semester";
-		char sn = '0' + selist->data.sn;
-		d = (dir + sn).c_str();
-		_mkdir(d);
-		ofstream fout(d);
+		selist->data.save2File(dir);
+		if(selist->next)
+		{
+			selist->next->data.save2File(dir);
+			if(selist->next->next) selist->next->next->data.save2File(dir);
+		}
 	}
 }
 /*

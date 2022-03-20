@@ -14,6 +14,6 @@ struct semester
     int sdate[3]; //start date
     int edate[3]; //end date
     list<course>* colist; // course list
-};
 
-void save2File(const semester& s);
+    void save2File(const string& dir);
+};

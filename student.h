@@ -28,6 +28,8 @@ struct student
     //course data
     list<course>* colist;
     int conum = 0;
+
+    void save2File();
 };
 
 bool login(student& s, int ID, string pass);
