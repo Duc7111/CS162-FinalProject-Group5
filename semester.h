@@ -11,7 +11,6 @@ using std::string;
 struct semester
 {
     int sn; //1(Fall), 2(Summer), 3(Autumn)
-    string SY; //school year name
     int sdate[3]; //start date
     int edate[3]; //end date
     list<course>* colist; // course list

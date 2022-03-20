@@ -14,13 +14,26 @@ using namespace std;
 
 schoolyear::schoolyear() : name(""), selist(nullptr){};
 
-void save2File(schoolyear* y)
+bool schoolyear::checkSe(const semester& s) // true: 
 {
-	while(y)
+	if(selist && selist->data.sn == s.sn) return true;
+	if(selist->next && selist->next->data.sn == s.sn) return true;
+	if(selist->next->next && selist->next->next->data.sn == s.sn) return true;
+	return false;
+}
+
+void schoolyear::save2File()
+{
+	string dir = "data\\schoolyear\\" + name;
+	const char* d = dir.c_str();
+	_mkdir(d);
+	if(selist)
 	{
-		string dir = "data\\schoolyear\\" + y->name;
-		const char* d = dir.c_str();
-		_mkdir(d); 
+		dir += "\\semester";
+		char sn = '0' + selist->data.sn;
+		d = (dir + sn).c_str();
+		_mkdir(d);
+		ofstream fout(d);
 	}
 }
 /*

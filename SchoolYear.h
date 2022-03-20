@@ -17,9 +17,10 @@ struct schoolyear
 	list<semester>* selist;
 
 	schoolyear();
+	
+	bool checkSe(const semester& s);
+	void save2File();
 };
-
-void save2File(schoolyear* y);
 
 void CreateNY(schoolyear*& y, int data);
 void CreateNC(schoolyear*& y, int CurY);

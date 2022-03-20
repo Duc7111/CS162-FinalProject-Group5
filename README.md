@@ -17,7 +17,6 @@ File format:
     schoolyears\\
       schoolyear.txt // school year list
       <schoolyear>\\
-        semesters\\
           <semester>\\ // as a school year have 3 semester, there's no need for a list
             data.txt
             courses\\

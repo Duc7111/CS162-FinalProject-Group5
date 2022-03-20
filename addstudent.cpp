@@ -10,7 +10,7 @@
 using namespace std;
 
 
-
+/*
 void AddStudent(Class*& clist)
 {
     
@@ -197,4 +197,4 @@ void QuickInput(Class*& clist)
     
     fin.close();
 }
-
+*/
