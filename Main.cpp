@@ -10,6 +10,7 @@
 #include "course.h"
 #include "semester.h"
 #include "Class.h"
+#include "data.h"
 using namespace std;
 
 
