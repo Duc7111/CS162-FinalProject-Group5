@@ -1,11 +1,12 @@
 #pragma once
 #include<iostream>
-#include<string>
-using std::string; 
+#include<string> 
 
 #include "AS.h"
 #include "semester.h"
 #include "data.h"
+
+using std::string;
 
 struct schoolyear
 {
