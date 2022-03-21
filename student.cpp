@@ -22,7 +22,7 @@ void student::save2File()
 
 bool login(student& s, int ID, string pass)
 {
-    ifstream fin("data\\student.txt", ios_base::in);
+    ifstream fin("student.txt", ios_base::in);
     while (!fin.eof())
     {
         fin >> s.ID; fin.ignore();

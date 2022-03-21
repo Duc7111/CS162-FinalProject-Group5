@@ -47,7 +47,7 @@ void save2File(const AS& as) //add an AS to file
     fout.close();
 }
 
-bool login(AS& as, string username, string pass) // true: login success, false : fail;
+bool loginforAS(AS& as, string username, string pass) // true: login success, false : fail;
 {
     ifstream fin("data\\AS.txt", ios_base::in);
     while (getline(fin, as.username, ','))

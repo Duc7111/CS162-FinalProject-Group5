@@ -1,5 +1,6 @@
 #pragma once
 #include "AS.h"
+#include "student.h"
 int StartScreen();
 void SignupScreen();
 void SignupSystem();
@@ -14,3 +15,4 @@ int menuformainAS(AS log);
 void Inscreen(AS log);
 int schoolyearScreen(AS log);
 bool checkstring(string str);
+void loginSt(student& s);
