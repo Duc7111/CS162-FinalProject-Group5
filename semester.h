@@ -2,7 +2,6 @@
 #include <string>
 #include <fstream>
 
-#include "SchoolYear.h"
 #include "course.h"
 #include "data.h"
 
