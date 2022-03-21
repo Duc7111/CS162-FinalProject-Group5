@@ -24,6 +24,8 @@ bool schoolyear::checkSe(const semester& s) // true:
 
 void schoolyear::save2File()
 {
+	ofstream fout("data\\schoolyear\\schoolyear.txt", ios_base::app);
+	fout << name << endl;
 	string dir = "data\\schoolyear\\" + name;
 	const char* d = dir.c_str();
 	_mkdir(d);

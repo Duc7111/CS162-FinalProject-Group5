@@ -17,7 +17,7 @@ File format:
     schoolyear\\
       schoolyear.txt // school year list
       <schoolyear>\\
-          <semester>\\ // as a school year have 3 semester, there's no need for a list
+          <semester>\\ // as a school year have 3 semesters, there's no need for a list
             data.txt
             <course>\\
               data.txt
@@ -29,3 +29,4 @@ File format:
         student.txt
     AS.txt // AS data
     student.txt // student login data
+    course.txt;

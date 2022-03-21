@@ -26,9 +26,11 @@ struct student
     string clname;
     int No;
     //course data
-    list<course>* colist;
     int conum = 0;
+    list<course>* colist;
 
+    student();
+    student(int id); // get info from file only !!!
     void save2File();
 };
 

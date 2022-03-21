@@ -5,8 +5,6 @@
 
 using namespace std;
 
-
-
 void semester::save2File(const string& dir)
 {
     char s = '0' + sn;

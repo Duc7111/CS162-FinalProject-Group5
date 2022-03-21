@@ -5,13 +5,48 @@
 
 using namespace std;
 
+student::student(){}
+
+student::student(int id)
+{
+    ifstream fin("data\\student.txt");
+    while(!fin.eof())
+    {
+        fin >> ID;
+        if(ID == id)
+        {
+            fin.ignore();
+            getline(fin, pass, ',');
+            getline(fin, clname);
+            fin.close();
+            fin.open("data\\class\\" + clname + "\\student.txt");
+            while(!fin.eof())
+            {
+                fin >> id;
+                if(ID == id)
+                {
+                    getline(fin, fname, ',');
+                    getline(fin, lname, ',');
+                    fin >> gender; fin.ignore();
+                    fin >> dob[0]; fin.ignore();
+                    fin >> dob[1]; fin.ignore();
+                    fin >> dob[2]; fin.ignore();
+                    getline(fin, clname, ',');
+                    
+                }
+            }
+        }
+        else fin.ignore(1000, '\n');
+    }
+}
+
 void student::save2File()
 {
     ofstream fout("data\\student.txt", ios_base::app);
-    fout << ID << ',' << pass << endl;
+    fout << ID << ',' << pass << ',' << clname << endl;
     fout.close();
     fout.open("data\\class\\" + clname + "\\student.txt", ios_base::app);
-    fout << fname << ',' << lname << ',' << gender << ',' << dob[0] << ',' << dob[1] << ',' << dob[2] << ',' << SID << ',' << No;
+    fout << ID << ',' << fname << ',' << lname << ',' << gender << ',' << dob[0] << ',' << dob[1] << ',' << dob[2] << ',' << SID << ',' << No;
     list<course>* temp = colist;
     while(temp)
     {
@@ -32,11 +67,10 @@ bool login(student& s, int ID, string pass)
             if (s.pass == pass)
             {
                 fin.close();
-                string dir;
+                string clname;
                 fin.ignore(1000, '\n');
-                getline(fin, dir);
-                dir = "data\\class\\" + dir + "\\student.txt";
-                fin.open(dir);
+                getline(fin, clname);
+                fin.open("data\\class\\" + clname + "\\student.txt");
                 while(!fin.eof())
                 {
                     fin >> ID; fin.ignore();
@@ -50,9 +84,17 @@ bool login(student& s, int ID, string pass)
                 fin >> s.dob[1]; fin.ignore();
                 fin >> s.dob[2]; fin.ignore();
                 getline(fin, s.SID);
-
+                s.clname = clname;
                 fin >> s.No;
-                //course list missing
+                s.colist = new list<course>;
+                list<course>* temp = s.colist;
+                while(fin.get() == ',')
+                {
+                    temp->next = new list<course>;
+                    temp = temp->next;
+                    fin >> temp->data.ID;
+                    
+                }
                 fin.close();
                 return true;
             }
