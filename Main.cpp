@@ -24,6 +24,8 @@ int main() {
 		if (choice == 1) {
 			short opt = loginp1();
 			if (opt == 1) {
+				student st;
+				loginSt(st);
 				break;
 			}
 			else if (opt == 2) {

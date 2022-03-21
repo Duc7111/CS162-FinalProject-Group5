@@ -244,7 +244,7 @@ void loginas(AS& log) {
 	cout << "Your password: ";
 	cin.ignore(100, '\n');
 	cin.get(passlog, slen);
-	while (login(log, userlog, passlog) == false) {
+	while (loginforAS(log, userlog, passlog) == false) {
 		cout << "Wrong or invalid username or password. Try again\n";
 		cout << "Your username: ";
 		cin.ignore(100, '\n');
@@ -416,4 +416,22 @@ int schoolyearScreen(AS log) {
 		yearC = convert(choice1);
 	}
 	return yearC;
+}
+
+void loginSt(student& s) {
+	string userlog;
+	string passlog;
+	cout << "Your username: ";
+	cin.ignore(10, '\n');
+	getline(cin, userlog);
+	int ID = convert(userlog);
+	cout << "Your password: ";
+	getline(cin, passlog);
+	while (login(s, ID, passlog) == false) {
+		cout << "Wrong or invalid username or password. Try again\n";
+		getline(cin, userlog);
+		ID = convert(userlog);
+		cout << "Your password: ";
+		getline(cin, passlog);
+	}
 }

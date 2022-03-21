@@ -28,6 +28,6 @@ bool checkAS(string username);
 
 void save2File(const AS& as);
 
-bool login(AS& as, string username, string pass); // input -> check pass -correct-> get info from file -> return true
+bool loginforAS(AS& as, string username, string pass); // input -> check pass -correct-> get info from file -> return true
 
 void changeAS(AS& as);
