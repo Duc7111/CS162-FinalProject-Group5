@@ -20,6 +20,7 @@ struct schoolyear
 	void save2File();
 };
 
-void CreateNY(schoolyear*& y, int data);
-void CreateNC(schoolyear*& y, int CurY);
-void CreateGeneralInfo(schoolyear*& year);
+void CreateNY(schoolyear& y, int data);
+void CreateNC(schoolyear& y, int CurY);
+void CreateGeneralInfo(schoolyear& year);
+bool CheckDuplicateYear(schoolyear& year);
