@@ -25,9 +25,7 @@ File format:
             student.txt // paticipant list && data
     class\\
       class.txt // class list
-      <class>\\
-        data.txt
-        student.txt
+      <class>.txt // student in class
     AS.txt // AS data
     student.txt // student login data
     course.txt;
