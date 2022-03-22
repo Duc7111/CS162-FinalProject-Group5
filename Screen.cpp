@@ -429,6 +429,7 @@ void loginSt(student& s) {
 	getline(cin, passlog);
 	while (login(s, ID, passlog) == false) {
 		cout << "Wrong or invalid username or password. Try again\n";
+		cout << "Your username: ";
 		getline(cin, userlog);
 		ID = convert(userlog);
 		cout << "Your password: ";
