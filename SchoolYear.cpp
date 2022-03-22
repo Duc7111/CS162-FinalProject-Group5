@@ -82,14 +82,14 @@ void CreateGeneralInfo(schoolyear* &year)
         int choice_2; cin >> choice_2;
         system("cls");
 
-        if (choice_2 == 1) CreateNY(year, new_year);
+        if (choice_2 == 1) CreateNY(*year, new_year);
     }
     if (choice_1 == 2)
     {
         cout << "Please enter class's school year: ";
         int new_year;
         cin >> new_year;
-        CreateNC(year, new_year);
+        CreateNC(*year, new_year);
     }
 }
 
