@@ -14,6 +14,16 @@ using namespace std;
 
 schoolyear::schoolyear() : name(""), selist(nullptr){};
 
+schoolyear::schoolyear(const string& name)
+{
+	ifstream fin("data\\schoolyear\\" + name + "\\semester.txt");
+	while(!fin.eof())
+	{
+		string semester;
+		getline(fin, semester);
+	}
+}
+
 bool schoolyear::checkSe(const semester& s) // true: 
 {
 	if(selist && selist->data.sn == s.sn) return true;
@@ -26,12 +36,12 @@ void schoolyear::save2File()
 {
 	ofstream fout("data\\schoolyear\\schoolyear.txt", ios_base::app);
 	fout << name << endl;
+	fout.close();
 	string dir = "data\\schoolyear\\" + name;
 	const char* d = dir.c_str();
 	_mkdir(d);
 	if(selist)
 	{
-		dir += "\\semester";
 		selist->data.save2File(dir);
 		if(selist->next)
 		{

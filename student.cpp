@@ -53,6 +53,7 @@ void student::save2File()
         fout << ',' << temp->data.ID;
         temp = temp->next;
     }
+    fout.close();
 }
 
 bool login(student& s, int ID, string pass)

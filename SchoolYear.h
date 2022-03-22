@@ -15,6 +15,7 @@ struct schoolyear
 	list<semester>* selist;
 
 	schoolyear();
+	schoolyear(const string& name);
 	
 	bool checkSe(const semester& s);
 	void save2File();

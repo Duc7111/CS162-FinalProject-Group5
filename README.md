@@ -17,11 +17,12 @@ File format:
     schoolyear\\
       schoolyear.txt // school year list
       <schoolyear>\\
-          <semester>\\ // as a school year have 3 semesters, there's no need for a list
+        semester.txt // semester list
+        <semester>\\
+          data.txt
+          <course>\\
             data.txt
-            <course>\\
-              data.txt
-              student.txt // paticipant list && data
+            student.txt // paticipant list && data
     class\\
       class.txt // class list
       <class>\\
