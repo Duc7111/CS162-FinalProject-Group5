@@ -5,6 +5,6 @@
 void dataBase()
 {
     _mkdir("data");
-    _mkdir("data\\schoolyears");
-    _mkdir("data\\classes");
+    _mkdir("data\\schoolyear");
+    _mkdir("data\\class");
 }
