@@ -40,12 +40,24 @@ student::student(int id)
     }
 }
 
-void student::save2File()
+bool student::createAcc()
 {
+    ifstream fin("data\\student.txt");
+    int id;
+    while(!fin.eof())
+    {
+        fin >> id;
+        if(id == ID) return false;
+        else fin.ignore(1000, '\n');
+    }
+    fin.close();
     ofstream fout("data\\student.txt", ios_base::app);
     fout << ID << ',' << pass << ',' << clname << endl;
-    fout.close();
-    fout.open("data\\class\\" + clname + "\\student.txt", ios_base::app);
+}
+
+void student::save2File()
+{
+    ofstream fout("data\\class\\" + clname + ".txt", ios_base::app);
     fout << ID << ',' << fname << ',' << lname << ',' << gender << ',' << dob[0] << ',' << dob[1] << ',' << dob[2] << ',' << SID << ',' << No;
     list<course>* temp = colist;
     while(temp)

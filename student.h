@@ -31,6 +31,7 @@ struct student
 
     student();
     student(int id); // get info from file only !!!
+    bool createAcc();
     void save2File();
 };
 

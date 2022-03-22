@@ -2,12 +2,12 @@
 #include <string>
 
 #include "student.h"
-#include "const.h"
+#include "data.h"
 
 struct Class
 {
     std::string name;
-    list<student> stlist;
-};
+    list<student>* stlist;
 
-void save2File(Class c);
+    void save2File();
+};
