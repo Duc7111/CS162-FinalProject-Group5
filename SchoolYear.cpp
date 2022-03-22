@@ -18,10 +18,15 @@ schoolyear::schoolyear() : name(""), selist(nullptr){};
 schoolyear::schoolyear(const string& name)
 {
 	ifstream fin("data\\schoolyear\\" + name + "\\semester.txt");
+	selist = new list<semester>;
+	list<semester>* temp = selist;
 	while(!fin.eof())
 	{
-		string semester;
-		getline(fin, semester);
+		string se;
+		getline(fin, se);
+		temp->next = new list<semester>;
+		temp = temp->next;
+		temp->data = semester("data\\schoolyear\\" + name + "\\" + se);
 	}
 }
 
