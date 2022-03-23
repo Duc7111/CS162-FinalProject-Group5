@@ -50,3 +50,46 @@ void semester::save2File(string dir)
     }
     fout.close();
 }
+
+void SemesterExecution(list<semester>*& se)
+{
+    int d;
+    cout << "Please enter which semester you want to execute:" << endl;
+    cout << "1. Fall           2. Summer           3. Autunn" << endl;
+        cout << "your choice: ";
+    cin >> se->data.sn;
+    system("cls");
+
+    cout << "In the next section, please enter the start date and the start date of the semester" << endl;
+    system("cls"); 
+
+    cout << "day: ";
+    cin >> se->data.sdate[0];
+    system("cls");
+
+    cout << "month: ";
+    cin >> se->data.sdate[1];
+    system("cls");
+
+    cout << "year: ";
+    cin >> se->data.sdate[2];
+    system("cls");
+
+    cout << "In the next section, please enter the start date and the end date of the semester" << endl;
+    system("cls");
+
+    cout << "day: ";
+    cin >> se->data.edate[0];
+    system("cls");
+
+    cout << "month: ";
+    cin >> se->data.edate[1];
+    system("cls");
+
+    cout << "year: ";
+    cin >> se->data.edate[2];
+    system("cls");
+
+    se->data.save2File();
+    cout << "Your newly executed semester has been saved successfully";
+}
