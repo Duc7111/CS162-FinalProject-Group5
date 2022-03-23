@@ -18,3 +18,5 @@ struct semester
     semester(const string& dir);//full dir
     void save2File(string dir);//schoolyear dir
 };
+
+void SaveSemester(list<semester>*& se);
