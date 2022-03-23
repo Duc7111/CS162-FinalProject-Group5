@@ -60,3 +60,44 @@ void course::save2File(string dir)
     }
     fout.close();
 }
+/*
+void PreCourseRegisttration(CourseRegister& CR)
+{
+    cout << "Enter Course ID: "
+    cin >> CR.RegCourse.ID;
+    system("cls");
+
+    cout << "In the next section, please enter the start date and the start date of the semester" << endl;
+    system("cls");
+
+    cout << "day: ";
+    cin >> CR.sdate[0];
+    system("cls");
+
+    cout << "month: ";
+    cin >> CR.sdate[1];
+    system("cls");
+
+    cout << "year: ";
+    cin >> CR.sdate[2]
+    system("cls");
+
+    cout << "In the next section, please enter the start date and the end date of the semester" << endl;
+    system("cls");
+
+    cout << "day: ";
+    cin >> CR.edate[0];
+    system("cls");
+
+    cout << "month: ";
+    cin >> CR.edate[1];
+    system("cls");
+
+    cout << "year: ";
+    cin >> CR.edate[2];
+    system("cls");
+
+    se->data.save2File();
+    cout << "Your newly executed semester has been saved successfully";
+}
+*/
