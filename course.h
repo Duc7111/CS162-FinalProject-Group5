@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
 #include <fstream>
-
+#include <iostream>
 #include "data.h"
 
 using std::string;
@@ -21,3 +21,13 @@ struct course
     course(int id);
     void save2File(string dir);
 };
+/*
+struct CourseRegister
+{
+    course RegCourse;
+    int sdate[3];
+    int edate[3];
+};
+
+void PreCourseRegisttration(CourseRegister& CR);
+*/
