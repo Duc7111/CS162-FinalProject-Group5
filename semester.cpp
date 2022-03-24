@@ -2,6 +2,7 @@
 #include<direct.h>
 
 #include "semester.h"
+#include "schoolyear.h"
 
 using namespace std;
 
@@ -53,21 +54,21 @@ void semester::save2File(string dir)
 
 void SemesterExecution(list<semester>*& se)
 {
-    int d;
+    //int d;
     cout << "Please enter which semester you want to execute:" << endl;
     cout << "1. Fall           2. Summer           3. Autunn" << endl;
-        cout << "your choice: ";
+    cout << "your choice: ";
     cin >> se->data.sn;
     system("cls");
 
     cout << "In the next section, please enter the start date and the start date of the semester" << endl;
     system("cls"); 
 
-    cout << "day: ";
+    cout << "Day: ";
     cin >> se->data.sdate[0];
     system("cls");
 
-    cout << "month: ";
+    cout << "Month: ";
     cin >> se->data.sdate[1];
     system("cls");
 
@@ -90,6 +91,6 @@ void SemesterExecution(list<semester>*& se)
     cin >> se->data.edate[2];
     system("cls");
 
-    se->data.save2File();
+    //se->data.save2File();
     cout << "Your newly executed semester has been saved successfully";
 }
