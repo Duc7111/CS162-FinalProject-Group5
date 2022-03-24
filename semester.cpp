@@ -6,11 +6,11 @@
 
 using namespace std;
 
-semester::semester():sn(0), colist(nullptr){}
+semester::semester(): name(""), colist(nullptr){}
 
 semester::semester(const string& dir)
 {
-    sn = dir[dir.length() - 1] - '0';
+    
     ifstream fin(dir + "\\data.txt");
     fin >> sdate[0]; fin.ignore(); 
     fin >> sdate[1]; fin.ignore(); 
@@ -32,14 +32,10 @@ semester::semester(const string& dir)
 
 void semester::save2File(string dir)
 {
-    string name = "semester" + ('0' + sn);
-    ofstream fout(dir + "\\semester.txt", ios_base::app);
-    fout << name << endl;
-    fout.close();
     dir += "\\" + name;
     const char* d = dir.c_str();
     _mkdir(d);
-    fout.open(dir + "\\data.txt");
+    ofstream fout(dir + "\\data.txt");
     fout << sdate[0] << ',' << sdate[1] << ',' << sdate[2] << ',' << endl;
     fout << edate[0] << ',' << edate[1] << ',' << edate[2] << ',' << endl;
     list<course>* temp = colist;
@@ -58,7 +54,7 @@ void SemesterExecution(list<semester>*& se)
     cout << "Please enter which semester you want to execute:" << endl;
     cout << "1. Fall           2. Summer           3. Autunn" << endl;
     cout << "your choice: ";
-    cin >> se->data.sn;
+    //cin >> se->data.sn; changed to string name (read semester.h)
     system("cls");
 
     cout << "In the next section, please enter the start date and the start date of the semester" << endl;
