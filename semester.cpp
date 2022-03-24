@@ -79,11 +79,11 @@ void SemesterExecution(list<semester>*& se)
     cout << "In the next section, please enter the start date and the end date of the semester" << endl;
     system("cls");
 
-    cout << "day: ";
+    cout << "Day: ";
     cin >> se->data.edate[0];
     system("cls");
 
-    cout << "month: ";
+    cout << "Month: ";
     cin >> se->data.edate[1];
     system("cls");
 
