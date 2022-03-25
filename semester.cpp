@@ -54,23 +54,18 @@ void SemesterExecution(list<semester>*& se,AS log)
     //int d;
     Inscreen(log);
     cout << "Please enter which semester you want to execute:" << endl;
-<<<<<<< HEAD
     cout << "1. Fall           2. Summer           3. Autumn" << endl;
     cout << "Your choice: ";
     string choice;
     cin.ignore(10, '\n');
     getline(cin, choice);
-    se->data.sn=convert(choice);
-    while (se->data.sn <= 0 || se->data.sn >= 4) {
+    se->data.name=choice;
+    while (se->data.name != "1" || se->data.name != "2" || se->data.name != "3") {
         cout << "Invalid value. Try again." << endl << "Your choice: ";
         getline(cin, choice);
-        se->data.sn = convert(choice);
+        se->data.name = choice;
     }
-=======
-    cout << "1. Fall           2. Summer           3. Autunn" << endl;
-    cout << "your choice: ";
     //cin >> se->data.sn; changed to string name (read semester.h)
->>>>>>> 09f404418e5f02b97091f3307e54a34a862ea9ad
     system("cls");
 
     Inscreen(log);
@@ -102,6 +97,7 @@ void SemesterExecution(list<semester>*& se,AS log)
         se->data.sdate[2] = convert(choice);
     }
     system("cls");
+    Inscreen(log);
     cout << "In the next section, please enter the start date and the end date of the semester" << endl;
     
     cout << "Day: ";
