@@ -76,7 +76,7 @@ void CreateGeneralInfo(schoolyear* &year)
         system("cls");
 
         cout << "Your new school year is " << new_year << "-" << new_year + 1 << endl;
-        cout << "confirm creating this new school year?" << endl;
+        cout << "Confirm creating this new school year?" << endl;
         cout << "1. Yes                           2. No" << endl;
         cout << "Your choice: ";
         int choice_2; cin >> choice_2;

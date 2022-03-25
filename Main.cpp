@@ -18,6 +18,7 @@ using namespace std;
 int main() {
 	//YearList* t = nullptr;
 	dataBase();
+	list<semester> *se=new list<semester>;
 	int choice;
 	choice = StartScreen();
 	while (choice != 3) {
@@ -35,6 +36,7 @@ int main() {
 				while (op1 != 4) {
 					if (op1 == 1) {
 						viewprofile(log);
+						cin.ignore(100, '\n');
 						op1 = start(log);
 					}
 					else if (op1 == 2) {
@@ -42,10 +44,14 @@ int main() {
 						op1 = start(log);
 					}
 					else {
+						cin.ignore(10, '\n');
 						int optmain = menuformainAS(log);
 						while (optmain != 4) {
 							if (optmain == 1) {
 								int yearC = schoolyearScreen(log);
+								SemesterExecution(se, log);
+								se->data.save2File("2021-2022");
+								cout << "finish";
 								//cin.ignore(10, '\n');
 								//CreateYearInfo(t, log);
 							}
@@ -53,6 +59,7 @@ int main() {
 							}
 							else {
 							}
+							
 							optmain = menuformainAS(log);
 						}
 						op1 = start(log);

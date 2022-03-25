@@ -1,9 +1,10 @@
 #include<fstream>
 #include<direct.h>
 
+#include "AS.h"
 #include "semester.h"
 #include "schoolyear.h"
-
+#include "Screen.h"
 using namespace std;
 
 semester::semester():sn(0), colist(nullptr){}
@@ -52,45 +53,82 @@ void semester::save2File(string dir)
     fout.close();
 }
 
-void SemesterExecution(list<semester>*& se)
+void SemesterExecution(list<semester>*& se,AS log)
 {
     //int d;
+    Inscreen(log);
     cout << "Please enter which semester you want to execute:" << endl;
-    cout << "1. Fall           2. Summer           3. Autunn" << endl;
-    cout << "your choice: ";
-    cin >> se->data.sn;
+    cout << "1. Fall           2. Summer           3. Autumn" << endl;
+    cout << "Your choice: ";
+    string choice;
+    cin.ignore(10, '\n');
+    getline(cin, choice);
+    se->data.sn=convert(choice);
+    while (se->data.sn <= 0 || se->data.sn >= 4) {
+        cout << "Invalid value. Try again." << endl << "Your choice: ";
+        getline(cin, choice);
+        se->data.sn = convert(choice);
+    }
     system("cls");
 
+    Inscreen(log);
     cout << "In the next section, please enter the start date and the start date of the semester" << endl;
-    system("cls"); 
 
     cout << "Day: ";
-    cin >> se->data.sdate[0];
-    system("cls");
+    getline(cin, choice);
+    se->data.sdate[0] = convert(choice);
 
     cout << "Month: ";
-    cin >> se->data.sdate[1];
-    system("cls");
+    getline(cin, choice);
+    se->data.sdate[1] = convert(choice);
 
-    cout << "year: ";
-    cin >> se->data.sdate[2];
-    system("cls");
+    cout << "Year: ";
+    getline(cin, choice);
+    se->data.sdate[2] = convert(choice);
+    while (checkDob(se->data.sdate) == false) {
+        cout << "Invalid value. Try again." << endl;
+        cout << "Day: ";
+        getline(cin, choice);
+        se->data.sdate[0] = convert(choice);
 
+        cout << "Month: ";
+        getline(cin, choice);
+        se->data.sdate[1] = convert(choice);
+
+        cout << "Year: ";
+        getline(cin, choice);
+        se->data.sdate[2] = convert(choice);
+    }
+    system("cls");
     cout << "In the next section, please enter the start date and the end date of the semester" << endl;
-    system("cls");
-
+    
     cout << "Day: ";
-    cin >> se->data.edate[0];
-    system("cls");
+    getline(cin, choice);
+    se->data.edate[0] = convert(choice);
 
     cout << "Month: ";
-    cin >> se->data.edate[1];
-    system("cls");
+    getline(cin, choice);
+    se->data.edate[1] = convert(choice);
 
-    cout << "year: ";
-    cin >> se->data.edate[2];
+    cout << "Year: ";
+    getline(cin, choice);
+    se->data.edate[2] = convert(choice);
+    while (checkDob(se->data.edate) == false) {
+        cout << "Invalid value. Try again." << endl;
+        cout << "Day: ";
+        getline(cin, choice);
+        se->data.edate[0] = convert(choice);
+
+        cout << "Month: ";
+        getline(cin, choice);
+        se->data.edate[1] = convert(choice);
+
+        cout << "Year: ";
+        getline(cin, choice);
+        se->data.edate[2] = convert(choice);
+    }
     system("cls");
 
     //se->data.save2File();
-    cout << "Your newly executed semester has been saved successfully";
+    //cout << "Your newly executed semester has been saved successfully";
 }

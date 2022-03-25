@@ -236,22 +236,19 @@ int convert(string str) {
 }
 
 void loginas(AS& log) {
-	char userlog[slen];
-	char passlog[slen];
+	string userlog;
+	string passlog;
 	cout << "Your username: ";
 	cin.ignore(100, '\n');
-	cin.get(userlog, slen);
+	getline(cin,userlog);
 	cout << "Your password: ";
-	cin.ignore(100, '\n');
-	cin.get(passlog, slen);
+	getline(cin, passlog);
 	while (loginforAS(log, userlog, passlog) == false) {
 		cout << "Wrong or invalid username or password. Try again\n";
 		cout << "Your username: ";
-		cin.ignore(100, '\n');
-		cin.get(userlog, slen);
+		getline(cin, userlog);
 		cout << "Your password: ";
-		cin.ignore(100, '\n');
-		cin.get(passlog, slen);
+		getline(cin, passlog);
 	}
 }
 
@@ -273,7 +270,7 @@ int start(AS log) {
 	cout << "3.Go to main section." << endl;
 	cout << "4.Log out of system." << endl;
 	cout << "Your option: ";
-	cin.ignore(100, '\n');
+	//cin.ignore(100, '\n');
 	char opin[slen];
 	cin.get(opin, slen);
 	int in = convert(opin);
@@ -370,15 +367,14 @@ int menuformainAS(AS log) {
 	cout << "2. Start of a semester." << endl;
 	cout << "3. End of a semester." << endl;
 	cout << "4. Go to menu." << endl;
-	char opin[slen];
-	cin.ignore(slen, '\n');
-	cin.get(opin, slen);
+	string opin;
+	//cin.ignore(slen, '\n');
+	getline(cin, opin);
 	int in = convert(opin);
 	while (in < 0 || in >= 5) {
 		cout << "Invalid option. Try again." << endl;
 		cout << "Your option: ";
-		cin.ignore(100, '\n');
-		cin.get(opin, slen);
+		getline(cin, opin);
 		in = convert(opin);
 	}
 	return in;
@@ -405,14 +401,12 @@ int schoolyearScreen(AS log) {
 	cout << "1. Create a new school year. " << endl;
 	cout << "2. New school year is already availabled" << endl;
 	cout << "Your choice: ";
-	char choice1[slen];
-	cin.ignore(1000, '\n');
-	cin.get (choice1,slen);
+	string choice1;
+	getline(cin, choice1);
 	int yearC = convert(choice1);
 	while (yearC != 1 && yearC != 2) {
 		cout << "Invalid input. Try again.";
-		cin.ignore(slen, '\n');
-		cin.get(choice1, slen);
+		getline(cin, choice1);
 		yearC = convert(choice1);
 	}
 	return yearC;

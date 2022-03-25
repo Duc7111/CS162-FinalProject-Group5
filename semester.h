@@ -20,4 +20,4 @@ struct semester
 };
 
 void SaveSemester(list<semester>*& se);
-void SemesterExecution(list<semester>*& se);
+void SemesterExecution(list<semester>*& se, AS log);
