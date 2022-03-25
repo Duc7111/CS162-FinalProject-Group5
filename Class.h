@@ -11,3 +11,5 @@ struct Class
 
     void save2File();
 };
+
+void CreateNC();
