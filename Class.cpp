@@ -18,3 +18,13 @@ void Class::save2File()
         temp = temp->next;
     }
 }
+
+void CreateNC()
+{
+    Class new_class;
+    cout << "Enter the name of the new class: ";
+    cin.ignore(1000, '\n');
+    getline(cin, new_class.name);
+    //course insertion should be right here
+    cout << "New class has been created successfully";
+}
