@@ -17,7 +17,6 @@ File format:
     schoolyear\\
       schoolyear.txt // school year list
       <schoolyear>\\
-        semester.txt // semester list
         <semester>\\
           data.txt
           <course>\\

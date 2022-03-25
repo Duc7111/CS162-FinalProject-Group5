@@ -13,29 +13,14 @@
 
 using namespace std;
 
-schoolyear::schoolyear() : name(""), selist(nullptr){};
+schoolyear::schoolyear() : name(""){};
 
 schoolyear::schoolyear(const string& name)
 {
-	ifstream fin("data\\schoolyear\\" + name + "\\semester.txt");
-	selist = new list<semester>;
-	list<semester>* temp = selist;
-	while(!fin.eof())
-	{
-		string se;
-		getline(fin, se);
-		temp->next = new list<semester>;
-		temp = temp->next;
-		temp->data = semester("data\\schoolyear\\" + name + "\\" + se);
-	}
-}
-
-bool schoolyear::checkSe(const semester& s) // true: 
-{
-	if(selist && selist->data.sn == s.sn) return true;
-	if(selist->next && selist->next->data.sn == s.sn) return true;
-	if(selist->next->next && selist->next->next->data.sn == s.sn) return true;
-	return false;
+	this->name = name;
+    Fall = semester("data\\schoolyear\\" + name + "\\Fall");
+    Autumn = semester("data\\schoolyear\\" + name + "\\Autumn");
+    Summer = semester("data\\schoolyear\\" + name + "\\Summner");
 }
 
 void schoolyear::save2File()
@@ -46,15 +31,25 @@ void schoolyear::save2File()
 	string dir = "data\\schoolyear\\" + name;
 	const char* d = dir.c_str();
 	_mkdir(d);
-	if(selist)
-	{
-		selist->data.save2File(dir);
-		if(selist->next)
-		{
-			selist->next->data.save2File(dir);
-			if(selist->next->next) selist->next->next->data.save2File(dir);
-		}
-	}
+	Fall.save2File(dir);
+	Autumn.save2File(dir);
+	Summer.save2File(dir);
+}
+
+bool checkSchoolYear(schoolyear& sy)
+{
+    ifstream fin("data\\schoolyear\\schoolyear.txt");
+    while(!fin.eof())
+    {
+        string temp;
+        getline(fin, temp);
+        if(sy.name == temp)
+        {
+            sy = schoolyear(temp);
+            return true;
+        }
+    }
+    return false;
 }
 
 void CreateGeneralInfo(schoolyear* &year)

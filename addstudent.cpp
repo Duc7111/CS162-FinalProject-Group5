@@ -10,65 +10,67 @@
 using namespace std;
 
 
-/*
-void AddStudent(Class*& clist)
+
+void AddStudent(Class& clist)
 {
-    
-    student* cur;
-    cur = clist->stlist;
-    if (cur->ID == 0)
+
+    list<student>* cur = clist.stlist;
+
+
+    if (cur->next == nullptr)
     {
         cout << "ID: ";
-        cin >> cur->ID;
-        while (cur->ID != 0)
+        cin >> cur->data.ID;
+
+        while (cur->data.ID != 0)
         {
             cout << "First name: ";
             cin.ignore();
-            getline(cin, cur->fname);
+            getline(cin, cur->data.fname);
             cout << "Last name: ";
-            getline(cin, cur->lname);
+            getline(cin, cur->data.lname);
             cout << "Gender: ";
-            cin >> cur->gender;
+            cin >> cur->data.gender;
             char date[10];
             cout << "DOB: Day: ";
             cin.ignore(10, '\n');
             cin.get(date, 10);
-            cur->dob[0] = convert(date);
+            cur->data.dob[0] = convert(date);
             cout << "Month: ";
             cin.ignore(10, '\n');
             cin.get(date, 10);
-            cur->dob[1] = convert(date);
+            cur->data.dob[1] = convert(date);
             cout << "Year: ";
             cin.ignore(10, '\n');
             cin.get(date, 10);
-            cur->dob[2] = convert(date);
-            while (checkDob(cur->dob) == false)
+            cur->data.dob[2] = convert(date);
+            while (checkDob(cur->data.dob) == false)
             {
                 cout << "Invalid Date" << endl;
                 cout << "DOB: Day: ";
                 cin.ignore(10, '\n');
                 cin.get(date, 10);
-                cur->dob[0] = convert(date);
+                cur->data.dob[0] = convert(date);
                 cout << "Month: ";
                 cin.ignore(10, '\n');
                 cin.get(date, 10);
-                cur->dob[1] = convert(date);
+                cur->data.dob[1] = convert(date);
                 cout << "Year: ";
                 cin.ignore(10, '\n');
                 cin.get(date, 10);
-                cur->dob[2] = convert(date);
+                cur->data.dob[2] = convert(date);
 
             }
             cout << "Social ID: ";
             cin.ignore();
-            getline(cin, cur->SID);
+            getline(cin, cur->data.SID);
             cout << "No: ";
-            cin >> cur->No;
-            cur->pass = cur->SID;
-            cur->next = new student;
+            cin >> cur->data.No;
+            cur->data.pass = cur->data.SID;
+            cur->next = new list<student>;
             cur = cur->next;
             cout << "ID: ";
-            cin >> cur->ID;
+            cin >> cur->data.ID;
         }
     }
     else
@@ -79,122 +81,127 @@ void AddStudent(Class*& clist)
             cur = cur->next;
         }
         cout << "ID: ";
-        cin >> cur->ID;
-        while (cur->ID != 0)
+        cin >> cur->data.ID;
+        while (cur->data.ID != 0)
         {
             cout << "First name: ";
             cin.ignore();
-            getline(cin, cur->fname);
+            getline(cin, cur->data.fname);
             cout << "Last name: ";
-            getline(cin, cur->lname);
+            getline(cin, cur->data.lname);
             cout << "Gender: ";
-            cin >> cur->gender;
+            cin >> cur->data.gender;
             char date[10];
             cout << "DOB: Day: ";
             cin.ignore(10, '\n');
             cin.get(date, 10);
-            cur->dob[0] = convert(date);
+            cur->data.dob[0] = convert(date);
             cout << "Month: ";
             cin.ignore(10, '\n');
             cin.get(date, 10);
-            cur->dob[1] = convert(date);
+            cur->data.dob[1] = convert(date);
             cout << "Year: ";
             cin.ignore(10, '\n');
             cin.get(date, 10);
-            cur->dob[2] = convert(date);
-            while (checkDob(cur->dob) == false)
+            cur->data.dob[2] = convert(date);
+            while (checkDob(cur->data.dob) == false)
             {
                 cout << "Invalid Date" << endl;
                 cout << "DOB: Day: ";
                 cin.ignore(10, '\n');
                 cin.get(date, 10);
-                cur->dob[0] = convert(date);
+                cur->data.dob[0] = convert(date);
                 cout << "Month: ";
                 cin.ignore(10, '\n');
                 cin.get(date, 10);
-                cur->dob[1] = convert(date);
+                cur->data.dob[1] = convert(date);
                 cout << "Year: ";
                 cin.ignore(10, '\n');
                 cin.get(date, 10);
-                cur->dob[2] = convert(date);
+                cur->data.dob[2] = convert(date);
 
             }
             cout << "Social ID: ";
             cin.ignore();
-            getline(cin, cur->SID);
+            getline(cin, cur->data.SID);
             cout << "No: ";
-            cin >> cur->No;
-            cur->pass = cur->SID;
-            cur->next = new student;
+            cin >> cur->data.No;
+            cur->data.pass = cur->data.SID;
+            cur->next = new list<student>;
             cur = cur->next;
             cout << "ID: ";
-            cin >> cur->ID;
+            cin >> cur->data.ID;
         }
     }
-    
+
     cur->next = nullptr;
 }
 
-void QuickInput(Class*& clist)
+void QuickInput(Class& clist)
 {
     ifstream fin("QuickInput.txt", ios_base::in);
     if (!fin.is_open()) {
         return;
     }
-    student* head = clist->stlist;
-    student* cur = clist->stlist;
-    if (clist->stlist->ID == 0)
+
+    list<student>* cur = clist.stlist;
+
+    if (clist.stlist->data.ID == 0)
     {
 
-        fin >> cur->ID;
-        while (cur->ID != 0)
+        fin >> cur->data.ID;
+        while (cur->data.ID != 0)
         {
+
             fin.ignore();
-            getline(fin, cur->fname,',');
-            getline(fin, cur->lname,',');
-            fin >> cur->gender; fin.ignore();
-            fin >> cur->dob[0]; fin.ignore();
-            fin >> cur->dob[1]; fin.ignore();
-            fin >> cur->dob[2]; fin.ignore();
-            getline(fin, cur->SID, ',');
-            fin >> cur->No;
+            getline(fin, cur->data.fname, ',');
+            getline(fin, cur->data.lname, ',');
+            fin >> cur->data.gender; fin.ignore();
+            fin >> cur->data.dob[0]; fin.ignore();
+            fin >> cur->data.dob[1]; fin.ignore();
+            fin >> cur->data.dob[2]; fin.ignore();
+            getline(fin, cur->data.SID, ',');
+            fin >> cur->data.No;
             fin.ignore();
-            cur->pass = cur->SID;
-            cur->next = new student;
+            cur->data.pass = cur->data.SID;
+
+            cur->next = new list<student>;
             cur = cur->next;
-            fin >> cur->ID;
+            fin >> cur->data.ID;
         }
-        
+
         cur->next = nullptr;
     }
 
-   
+
 
     else
     {
         while (cur->next != nullptr) cur = cur->next;
-        fin >> cur->ID;
-        while (cur->ID != 0)
+        fin >> cur->data.ID;
+        while (cur->data.ID != 0)
         {
+
             fin.ignore();
-            getline(fin, cur->fname, ',');
-            getline(fin, cur->lname, ',');
-            fin >> cur->gender; fin.ignore();
-            fin >> cur->dob[0]; fin.ignore();
-            fin >> cur->dob[1]; fin.ignore();
-            fin >> cur->dob[2]; fin.ignore();
-            getline(fin, cur->SID, ',');
-            fin >> cur->No;
+            getline(fin, cur->data.fname, ',');
+            getline(fin, cur->data.lname, ',');
+            fin >> cur->data.gender; fin.ignore();
+            fin >> cur->data.dob[0]; fin.ignore();
+            fin >> cur->data.dob[1]; fin.ignore();
+            fin >> cur->data.dob[2]; fin.ignore();
+            getline(fin, cur->data.SID, ',');
+            fin >> cur->data.No;
             fin.ignore();
-            cur->pass = cur->SID;
-            cur->next = new student;
+            cur->data.pass = cur->data.SID;
+
+            cur->next = new list<student>;
             cur = cur->next;
-            fin >> cur->ID;
+            fin >> cur->data.ID;
         }
         cur->next = nullptr;
     }
 
-    
+
     fin.close();
+
 }
-*/
