@@ -81,7 +81,7 @@ void CreateGeneralInfo(schoolyear& year)
 	    
         if (choice_2 == 1) CreateNY(year, new_year);
     }
-    if (choice_1 == 2) CreateNC();
+    //if (choice_1 == 2) CreateNC();
 }
 
 void CreateNY(schoolyear& y, string name) {

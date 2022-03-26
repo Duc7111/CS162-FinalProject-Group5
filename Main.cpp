@@ -18,7 +18,7 @@ using namespace std;
 int main() {
 	//YearList* t = nullptr;
 	dataBase();
-	list<semester> *se=new list<semester>;
+	semester se;
 	int choice;
 	choice = StartScreen();
 	while (choice != 3) {
@@ -49,9 +49,12 @@ int main() {
 						while (optmain != 4) {
 							if (optmain == 1) {
 								int yearC = schoolyearScreen(log);
+								getnamese(se, log);
 								SemesterExecution(se, log);
-								se->data.save2File("2021-2022");
+								se.save2File("data\\schoolyear\\2021-2022");
 								cout << "finish";
+								system("pause");
+								
 								//cin.ignore(10, '\n');
 								//CreateYearInfo(t, log);
 							}

@@ -49,22 +49,19 @@ void semester::save2File(string dir)
     fout.close();
 }
 
-void SemesterExecution(list<semester>*& se,AS log)
+void SemesterExecution(semester& se,AS log)
 {
     //int d;
-    Inscreen(log);
-    cout << "Please enter which semester you want to execute:" << endl;
-    cout << "1. Fall           2. Summer           3. Autumn" << endl;
-    cout << "Your choice: ";
     string choice;
+    /*
     cin.ignore(10, '\n');
     getline(cin, choice);
-    se->data.name=choice;
-    while (se->data.name != "1" || se->data.name != "2" || se->data.name != "3") {
+    se.name=choice;
+    while (se.name != "1" || se.name != "2" || se.name != "3") {
         cout << "Invalid value. Try again." << endl << "Your choice: ";
         getline(cin, choice);
-        se->data.name = choice;
-    }
+        se.name = choice;
+    }*/
     //cin >> se->data.sn; changed to string name (read semester.h)
     system("cls");
 
@@ -73,28 +70,28 @@ void SemesterExecution(list<semester>*& se,AS log)
 
     cout << "Day: ";
     getline(cin, choice);
-    se->data.sdate[0] = convert(choice);
+    se.sdate[0] = convert(choice);
 
     cout << "Month: ";
     getline(cin, choice);
-    se->data.sdate[1] = convert(choice);
+    se.sdate[1] = convert(choice);
 
     cout << "Year: ";
     getline(cin, choice);
-    se->data.sdate[2] = convert(choice);
-    while (checkDob(se->data.sdate) == false) {
+    se.sdate[2] = convert(choice);
+    while (checkDob(se.sdate) == false) {
         cout << "Invalid value. Try again." << endl;
         cout << "Day: ";
         getline(cin, choice);
-        se->data.sdate[0] = convert(choice);
+        se.sdate[0] = convert(choice);
 
         cout << "Month: ";
         getline(cin, choice);
-        se->data.sdate[1] = convert(choice);
+        se.sdate[1] = convert(choice);
 
         cout << "Year: ";
         getline(cin, choice);
-        se->data.sdate[2] = convert(choice);
+        se.sdate[2] = convert(choice);
     }
     system("cls");
     Inscreen(log);
@@ -102,31 +99,51 @@ void SemesterExecution(list<semester>*& se,AS log)
     
     cout << "Day: ";
     getline(cin, choice);
-    se->data.edate[0] = convert(choice);
+    se.edate[0] = convert(choice);
 
     cout << "Month: ";
     getline(cin, choice);
-    se->data.edate[1] = convert(choice);
+    se.edate[1] = convert(choice);
 
     cout << "Year: ";
     getline(cin, choice);
-    se->data.edate[2] = convert(choice);
-    while (checkDob(se->data.edate) == false) {
+    se.edate[2] = convert(choice);
+    while (checkDob(se.edate) == false) {
         cout << "Invalid value. Try again." << endl;
         cout << "Day: ";
         getline(cin, choice);
-        se->data.edate[0] = convert(choice);
+        se.edate[0] = convert(choice);
 
         cout << "Month: ";
         getline(cin, choice);
-        se->data.edate[1] = convert(choice);
+        se.edate[1] = convert(choice);
 
         cout << "Year: ";
         getline(cin, choice);
-        se->data.edate[2] = convert(choice);
+        se.edate[2] = convert(choice);
     }
     system("cls");
 
     //se->data.save2File();
     //cout << "Your newly executed semester has been saved successfully";
+}
+
+void getnamese(semester& se,AS log) {
+    Inscreen(log);
+    cout << "Please enter which semester you want to execute:" << endl;
+    cout << "1. Fall           2. Summer           3. Autumn" << endl;
+    cout << "Your choice: ";
+    string choice;
+    //cin.ignore(10, '\n');
+    getline(cin, choice);
+    while (choice != "1" && choice != "2" && choice != "3") {
+        cout << "Invalid value. Try again." << endl << "Your choice: ";
+        getline(cin, choice);
+    }
+    if (choice == "1")
+        se.name = "Fall";
+    else if (choice == "2")
+        se.name = "Summer";
+    else
+        se.name = "Autumn";
 }

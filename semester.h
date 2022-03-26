@@ -20,4 +20,5 @@ struct semester
 };
 
 void SaveSemester(list<semester>*& se);
-void SemesterExecution(list<semester>*& se, AS log);
+void SemesterExecution(semester& se, AS log);
+void getnamese(semester& se, AS log);
