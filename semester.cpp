@@ -231,3 +231,26 @@ void AddCourse2Semester(semester& sem)
     }
 }
 
+void ViewCourse(semester& sem)
+{
+    list<course>* cur = sem.colist;
+
+    if (cur->data.ID == 0) cout << "There are no courses" << endl;
+    else
+    {
+        cout << "Courses list:" << endl;
+        while (cur->next != nullptr)
+        {
+            cout << "Course ID: " << cur->data.ID << endl;
+            cout << "Course's name: " << cur->data.name << endl;
+            cout << "Teacher: " << cur->data.teacher << endl;
+            cout << "Number of credits: " << cur->data.credits << endl;
+            cout << "Maximum number of students: " << cur->data.ms << endl;
+            cout << "Current number of students: " << cur->data.cur << endl;
+            PrintSection(cur->data.s[0], cur->data.s[1]);
+            cur = cur->next;
+        }
+    }
+    delete cur;
+}
+
