@@ -5,6 +5,9 @@
 #include "semester.h"
 #include "schoolyear.h"
 #include "Screen.h"
+#include "course.h"
+
+
 using namespace std;
 
 semester::semester(): name(""), colist(nullptr){}
@@ -147,3 +150,84 @@ void getnamese(semester& se,AS log) {
     else
         se.name = "Autumn";
 }
+
+
+void AddCourse2Semester(semester& sem)
+{
+    list<course>* cur = sem.colist;
+    if (cur->next == nullptr)
+    {
+        cout << "Enter the course ID: ";
+        cin >> cur->data.ID;
+        cin.ignore();
+        cout << "Enter the course's name: ";
+        getline(cin, cur->data.name, '\n');
+        cout << "Enter the teacher's name: ";
+        getline(cin, cur->data.teacher,'\n');
+        cout << "Enter the number of credits: ";
+        cin >> cur->data.credits;
+        cout << "Enter the maximum number of student: ";
+        cin >> cur->data.ms;
+        cur->data.cur = 0;
+        cout << "Enter the first session that the course will be performed:" << endl;
+        cout << "(MON = 0, TUE = 1, ..., S1 = 1, S2 = 2 || Section = day*7 + S)" << endl;
+        cin >> cur->data.s[0];
+        while (!CheckSection(cur->data.s[0]))
+        {
+            cout << "Invalid section. Try again" << endl;
+            cout << "Enter the first session that the course will be performed:" << endl;
+            cout << "(MON = 0, TUE = 1, ..., S1 = 1, S2 = 2 || Section = day*7 + S)" << endl;
+            cin >> cur->data.s[0];
+        }
+        cout << "Enter the second session that the course will be performed:" << endl;
+        cout << "(MON = 0, TUE = 1, ..., S1 = 1, S2 = 2 || Section = day*7 + S)" << endl;
+        cin >> cur->data.s[1];
+        while (!CheckSection(cur->data.s[1]) || cur->data.s[1] == cur->data.s[0])
+        {
+            cout << "Invalid section. Try again" << endl;
+            cout << "Enter the second session that the course will be performed:" << endl;
+            cout << "(MON = 0, TUE = 1, ..., S1 = 1, S2 = 2 || Section = day*7 + S)" << endl;
+            cin >> cur->data.s[1];
+        }
+        PrintSection(cur->data.s[0], cur->data.s[1]);
+    }
+    else
+    {
+        while (cur->next != nullptr) cur = cur->next;
+        cur->next = new list<course>;
+        cout << "Enter the course ID: ";
+        cin >> cur->data.ID;
+        cin.ignore();
+        cout << "Enter the course's name: ";
+        getline(cin, cur->data.name, '\n');
+        cout << "Enter the teacher's name: ";
+        getline(cin, cur->data.teacher, '\n');
+        cout << "Enter the number of credits: ";
+        cin >> cur->data.credits;
+        cout << "Enter the maximum number of student: ";
+        cin >> cur->data.ms;
+        cur->data.cur = 0;
+        cout << "Enter the first session that the course will be performed:" << endl;
+        cout << "(MON = 0, TUE = 1, ..., S1 = 1, S2 = 2 || Section = day*7 + S)" << endl;
+        cin >> cur->data.s[0];
+        while (!CheckSection(cur->data.s[0]))
+        {
+            cout << "Invalid section. Try again" << endl;
+            cout << "Enter the first session that the course will be performed:" << endl;
+            cout << "(MON = 0, TUE = 1, ..., S1 = 1, S2 = 2 || Section = day*7 + S)" << endl;
+            cin >> cur->data.s[0];
+        }
+        cout << "Enter the second session that the course will be performed:" << endl;
+        cout << "(MON = 0, TUE = 1, ..., S1 = 1, S2 = 2 || Section = day*7 + S)" << endl;
+        cin >> cur->data.s[1];
+        while (!CheckSection(cur->data.s[1]) || cur->data.s[1] == cur->data.s[0])
+        {
+            cout << "Invalid section. Try again" << endl;
+            cout << "Enter the second session that the course will be performed:" << endl;
+            cout << "(MON = 0, TUE = 1, ..., S1 = 1, S2 = 2 || Section = day*7 + S)" << endl;
+            cin >> cur->data.s[1];
+        }
+        PrintSection(cur->data.s[0], cur->data.s[1]);
+    }
+}
+
