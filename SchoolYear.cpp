@@ -65,10 +65,9 @@ void CreateGeneralInfo(schoolyear& year)
 
     if (choice_1 == 1)
     {
-        string new_year;
         cout << "Please enter the school year (EX: 2000-2001): ";
         cin.ignore(1000, '\n');
-    	getline(cin, new_year);
+    	getline(cin, year.name);
         system("cls");
 
         cout << "Your new school year is " << new_year << endl;
@@ -79,12 +78,12 @@ void CreateGeneralInfo(schoolyear& year)
 	cin >> choice_2;
         system("cls");
 	    
-        if (choice_2 == 1) CreateNY(year, new_year);
+        if (choice_2 == 1) CreateNY(year);
     }
     //if (choice_1 == 2) CreateNC();
 }
 
-void CreateNY(schoolyear& y, string name) {
+void CreateNY(schoolyear& y) {
     if (checkSchoolYear(y)) {
         cout << "This school year has already existed.";
         return;
