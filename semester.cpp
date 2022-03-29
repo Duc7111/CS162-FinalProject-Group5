@@ -155,7 +155,7 @@ void getnamese(semester& se,AS log) {
 void AddCourse2Semester(semester& sem)
 {
     list<course>* cur = sem.colist;
-    if (cur->next == nullptr)
+    if (cur->data.ID == 0)
     {
         cout << "Enter the course ID: ";
         cin >> cur->data.ID;
@@ -195,6 +195,7 @@ void AddCourse2Semester(semester& sem)
     {
         while (cur->next != nullptr) cur = cur->next;
         cur->next = new list<course>;
+        cur = cur->next;
         cout << "Enter the course ID: ";
         cin >> cur->data.ID;
         cin.ignore();
@@ -229,26 +230,29 @@ void AddCourse2Semester(semester& sem)
         }
         PrintSection(cur->data.s[0], cur->data.s[1]);
     }
+    cur->next = nullptr;
 }
 
 void ViewCourse(semester& sem)
 {
     list<course>* cur = sem.colist;
 
-    if (cur->data.ID == 0) cout << "There are no courses" << endl;
+    if (cur->data.ID == 0)
+    {
+        cout << "There are no courses" << endl;
+        return;
+    }
     else
     {
         cout << "Courses list:" << endl;
+        PrintCourse(cur);
+        cout << endl;
         while (cur->next != nullptr)
         {
-            cout << "Course ID: " << cur->data.ID << endl;
-            cout << "Course's name: " << cur->data.name << endl;
-            cout << "Teacher: " << cur->data.teacher << endl;
-            cout << "Number of credits: " << cur->data.credits << endl;
-            cout << "Maximum number of students: " << cur->data.ms << endl;
-            cout << "Current number of students: " << cur->data.cur << endl;
-            PrintSection(cur->data.s[0], cur->data.s[1]);
             cur = cur->next;
+            PrintCourse(cur);
+            cout << endl;
+            
         }
     }
     delete cur;

@@ -33,3 +33,4 @@ void PreCourseRegisttration(CourseRegister& CR);
 */
 bool CheckSection(int section);  //check if the section of the course is valid
 void PrintSection(int section1, int section2); //print out the section of the course
+void PrintCourse(list<course>* cur); //print the course information

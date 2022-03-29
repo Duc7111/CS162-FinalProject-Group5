@@ -1,6 +1,7 @@
 #include <direct.h>
 #include "course.h"
 
+
 using namespace std;
 
 course::course(): ms(50), cur(0){};
@@ -236,4 +237,16 @@ void PrintSection(int section1, int section2)
     }
     }
     
+}
+
+
+void PrintCourse(list<course>* cur)
+{
+    cout << "Course ID: " << cur->data.ID << endl;
+    cout << "Course's name: " << cur->data.name << endl;
+    cout << "Teacher: " << cur->data.teacher << endl;
+    cout << "Number of credits: " << cur->data.credits << endl;
+    cout << "Maximum number of students: " << cur->data.ms << endl;
+    cout << "Current number of students: " << cur->data.cur << endl;
+    PrintSection(cur->data.s[0], cur->data.s[1]);
 }
