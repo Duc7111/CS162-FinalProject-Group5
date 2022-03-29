@@ -63,17 +63,7 @@ void CreateGeneralInfo(schoolyear& year, AS log)
 <<<<<<< HEAD
 	cin >> choice_1;*/
     
-=======
-	cin >> choice_1;
-    system("cls");
 
-    if (choice_1 == 1)
-    {
-        cout << "Please enter the school year (EX: 2000-2001): ";
-        cin.ignore(1000, '\n');
-    	getline(cin, year.name);
-        system("cls");
->>>>>>> e0e65547d9af1a76d8cb291145285c098c615b53
 
     //if (choice_1 == 1)
     //{
@@ -97,22 +87,14 @@ void CreateGeneralInfo(schoolyear& year, AS log)
         getline(cin, choice);
         choice_2 = convert(choice);
         system("cls");
-<<<<<<< HEAD
         if (choice_2 == 1) CreateNY(year,log);
     //}
     //if (choice_1 == 2) CreateNC();
 }
 
-void CreateNY(schoolyear& y,AS log) {
-=======
-	    
-        if (choice_2 == 1) CreateNY(year);
-    }
-    //if (choice_1 == 2) CreateNC();
-}
 
-void CreateNY(schoolyear& y) {
->>>>>>> e0e65547d9af1a76d8cb291145285c098c615b53
+
+void CreateNY(schoolyear& y,AS log) {
     if (checkSchoolYear(y)) {
         Inscreen(log);
         cout << "This school year has already existed.";
