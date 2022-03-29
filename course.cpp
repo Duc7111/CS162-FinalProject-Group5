@@ -101,3 +101,139 @@ void PreCourseRegisttration(CourseRegister& CR)
     cout << "Your newly executed semester has been saved successfully";
 }
 */
+
+bool CheckSection(int section)
+{
+    if (section > 0 && (section % 7) <= 4 && (section % 7) >= 1 && section <= 46) return true;
+    else return false;
+}
+
+void PrintSection(int section1, int section2)
+{
+    cout << "The sections are: " << endl;
+    //section 1
+    switch (section1 / 7)
+    {
+    case 0:
+    {
+        cout << "Monday ";
+        break;
+    }
+    case 1:
+    {
+        cout << "Tuesday ";
+        break;
+    }
+    case 2:
+    {
+        cout << "Wednesday ";
+        break;
+    }
+    case 3:
+    {
+        cout << "Thursday "; 
+        break;
+    }
+    case 4:
+    {
+        cout << "Friday ";
+        break;
+    }
+    case 5:
+    {
+        cout << "Saturday ";
+        break;
+    }
+    case 6:
+    {
+        cout << "Sunday ";
+        break; 
+    }
+    }
+    switch (section1 % 7)
+    {
+    case 1:
+    {
+        cout << "at 7:30" << endl;
+        break;
+    }
+    case 2:
+    {
+        cout << "at 9:30" << endl;
+        break;
+    }
+    case 3:
+    {
+        cout << "at 13:30" << endl;
+        break;
+    }
+    case 4:
+    {
+        cout << "at 15:30" << endl;
+        break;
+    }
+    //section 2
+    }
+    switch (section2 / 7)
+    {
+    case 0:
+    {
+        cout << "Monday ";
+        break;
+    }
+    case 1:
+    {
+        cout << "Tuesday ";
+        break;
+    }
+    case 2:
+    {
+        cout << "Wednesday ";
+        break;
+    }
+    case 3:
+    {
+        cout << "Thursday ";
+        break;
+    }
+    case 4:
+    {
+        cout << "Friday ";
+        break;
+    }
+    case 5:
+    {
+        cout << "Saturday ";
+        break;
+    }
+    case 6:
+    {
+        cout << "Sunday ";
+        break;
+    }
+    }
+    switch (section2 % 7)
+    {
+    case 1:
+    {
+        cout << "at 7:30" << endl;
+        break;
+    }
+    case 2:
+    {
+        cout << "at 9:30" << endl;
+        break;
+    }
+    case 3:
+    {
+        cout << "at 13:30" << endl;
+        break;
+    }
+    case 4:
+    {
+        cout << "at 15:30" << endl;
+        break;
+    }
+    }
+    
+}
