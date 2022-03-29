@@ -20,6 +20,7 @@ struct schoolyear
 	void save2File();
 };
 
-void CreateNY(schoolyear& y, string name);
-void CreateGeneralInfo(schoolyear& year);
+void CreateNY(schoolyear& y, AS log);
+void CreateGeneralInfo(schoolyear& year, AS log);
 bool checkSchoolYear(schoolyear& sy);
+bool checkyear(string year);

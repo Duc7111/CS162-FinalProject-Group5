@@ -19,9 +19,8 @@ void Class::save2File()
     }
 }
 
-void CreateNC()
+void CreateNC(Class &new_class)
 {
-    Class new_class;
     cout << "Enter the name of the new class: ";
     cin.ignore(1000, '\n');
     getline(cin, new_class.name);

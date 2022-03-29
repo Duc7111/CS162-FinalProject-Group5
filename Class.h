@@ -12,4 +12,4 @@ struct Class
     void save2File();
 };
 
-void CreateNC();
+void CreateNC(Class& new_class);
