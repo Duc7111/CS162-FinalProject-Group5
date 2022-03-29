@@ -36,6 +36,7 @@ semester::semester(const string& dir)
 
 void semester::save2File(string dir)
 {
+    if(name == "") return;
     dir += "\\" + name;
     const char* d = dir.c_str();
     _mkdir(d);

@@ -13,7 +13,7 @@
 
 using namespace std;
 
-schoolyear::schoolyear() : name(""){};
+schoolyear::schoolyear() : name(""), Fall(), Summer(), Autumn(){};
 
 schoolyear::schoolyear(const string& name)
 {
@@ -31,6 +31,7 @@ void schoolyear::save2File()
 	string dir = "data\\schoolyear\\" + name;
 	const char* d = dir.c_str();
 	_mkdir(d);
+    fout.open(dir + "\\data.txt");
 	Fall.save2File(dir);
 	Autumn.save2File(dir);
 	Summer.save2File(dir);
@@ -38,7 +39,8 @@ void schoolyear::save2File()
 
 bool checkSchoolYear(schoolyear& sy)
 {
-    ifstream fin("data\\schoolyear\\schoolyear.txt");
+    fstream fin("data\\schoolyear\\schoolyear.txt", ios_base::out | ios_base::app); fin.close();
+    fin.open("data\\schoolyear\\schoolyear.txt", ios_base::in);
     while(!fin.eof())
     {
         string temp;
