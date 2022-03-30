@@ -12,25 +12,27 @@ using namespace std;
 
 semester::semester(): name(""), colist(nullptr){}
 
-semester::semester(const string& dir)
+semester::semester(const string& dir) : semester()
 {
-    
     ifstream fin(dir + "\\data.txt");
-    fin >> sdate[0]; fin.ignore(); 
-    fin >> sdate[1]; fin.ignore(); 
-    fin >> sdate[2]; fin.ignore(); 
-    fin >> edate[0]; fin.ignore(); 
-    fin >> edate[1]; fin.ignore(); 
-    fin >> edate[2]; fin.ignore();
-    colist = new list<course>;
-    list<course>* temp = colist;
-    while(!fin.eof())
+    if(fin.is_open())
     {
-        int ID;
-        fin >> ID; fin.ignore();
-        temp->next = new list<course>;
-        temp->next->data = course(ID);
-        temp = temp->next;
+        fin >> sdate[0]; fin.ignore(); 
+        fin >> sdate[1]; fin.ignore(); 
+        fin >> sdate[2]; fin.ignore(); 
+        fin >> edate[0]; fin.ignore(); 
+        fin >> edate[1]; fin.ignore(); 
+        fin >> edate[2]; fin.ignore();
+        colist = new list<course>;
+        list<course>* temp = colist;
+        while(!fin.eof())
+        {
+            int ID;
+            fin >> ID; fin.ignore();
+            temp->next = new list<course>;
+            temp->next->data = course(ID);
+            temp = temp->next;
+        }
     }
 }
 
