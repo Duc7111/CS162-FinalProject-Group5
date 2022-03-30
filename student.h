@@ -31,8 +31,10 @@ struct student
 
     student();
     student(int id); // get info from file only !!!
+
     bool createAcc();
     void save2File();
+    bool checkCourse(const course& co);
 };
 
 bool login(student& s, int ID, string pass);

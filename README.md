@@ -27,4 +27,4 @@ File format:
       <class>.txt // student in class
     AS.txt // AS data
     student.txt // student login data
-    course.txt;
+    course.txt // course direction

@@ -61,6 +61,19 @@ void course::save2File(string dir)
     }
     fout.close();
 }
+
+bool course::checkCourse()
+{
+    ifstream fin("data\\course.txt");
+    while(!fin.eof())
+    {
+        int temp;
+        cin >> temp;
+        if(ID == temp) return true;
+        fin.ignore(1000, '\n'); 
+    }
+    return false;
+}
 /*
 void PreCourseRegisttration(CourseRegister& CR)
 {
@@ -205,11 +218,6 @@ void PrintSection(int section1, int section2)
     case 5:
     {
         cout << "Saturday ";
-        break;
-    }
-    case 6:
-    {
-        cout << "Sunday ";
         break;
     }
     }

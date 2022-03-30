@@ -68,6 +68,24 @@ void student::save2File()
     fout.close();
 }
 
+bool student::checkCourse(const course& co)
+{
+    bool check[24];
+    list<course>* temp = colist;
+    for(int i = 0; i < 24; ++i)
+    {
+        check[i] = false;
+    }
+    while(temp)
+    {
+        check[temp->data.s[0]/7*4 + temp->data.s[0]%7 - 1] = true;
+        check[temp->data.s[1]/7*4 + temp->data.s[1]%7 - 1] = true;
+        temp = temp->next;
+    }
+    if(check[co.s[0]/7*4 + co.s[0]%7 - 1] || co.s[0]/7*4 + co.s[0]%7 - 1) return false;
+    return true;
+}
+
 bool login(student& s, int ID, string pass)
 {
     ifstream fin("student.txt", ios_base::in);
