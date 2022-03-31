@@ -45,13 +45,10 @@ course::course(int id)
 
 void course::save2File(string dir)
 {
-    dir += "\\" + to_string(ID) + ".txt";
-    ofstream fout("data\\course.txt", ios_base::app);
-    fout << ID << ',' << dir;
-    fout.close(); 
+    dir += "\\" + to_string(ID);
     const char* d = dir.c_str();
     _mkdir(d);
-    fout.open(dir);
+    ofstream fout(dir + "\\data.txt", ios_base::trunc);
     fout << name << ',' << teacher << ',' << credits << ',' << s[0] << ',' << s[1] << ',' << ms << ',' << cur;
     list<int[5]>* temp = stlist;
     while(temp)
@@ -62,11 +59,14 @@ void course::save2File(string dir)
     fout.close();
 }
 
-bool course::checkCourse()
+bool course::checkCourse(const string& dir)
 {
-    ifstream fin("data\\course.txt");
+    ifstream fin(dir + "\\data.txt");
+    if(fin.is_open()) return false;
     while(!fin.eof())
     {
+        fin.ignore(1000, '\n');
+        fin.ignore(1000, '\n');
         int temp;
         cin >> temp;
         if(ID == temp) return true;

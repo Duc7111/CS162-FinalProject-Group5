@@ -20,7 +20,7 @@ struct course
     course();
     course(int id);
     void save2File(string dir);
-    bool checkCourse();
+    bool checkCourse(const string& dir);
 };
 /*
 struct CourseRegister

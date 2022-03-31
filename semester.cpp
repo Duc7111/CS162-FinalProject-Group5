@@ -55,6 +55,12 @@ void semester::save2File(string dir)
     fout.close();
 }
 
+void semester::setCur(const string& dir)
+{
+    ofstream fout("data\\data.txt", ios_base::trunc);
+    fout << dir;
+}
+
 void SemesterExecution(semester& se,AS log)
 {
     //int d;
