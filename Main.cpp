@@ -19,6 +19,7 @@ int main() {
 	//YearList* t = nullptr;
 	dataBase();
 	schoolyear year;
+	schoolyear cur;
 	semester se;
 	int choice;
 	choice = StartScreen();
@@ -47,44 +48,40 @@ int main() {
 					else {
 						cin.ignore(10, '\n');
 						int optmain = menuformainAS(log);
-						while (optmain != 4) {
+						while (optmain != 3) {
 							if (optmain == 1) {
-								int yearC = schoolyearScreen(log);
+								system("cls");
+								CreateGeneralInfo(year, log);
+								/*int yearC = schoolyearScreen(log);
 								while (yearC != 3) {
 									if (yearC == 1) {
-										system("cls");
-										CreateGeneralInfo(year, log);
 										
-									}
-									else {
-										getschoolyear(year, log);
-										string save = "data\\schoolyear\\" + year.name;
-										int sedo = getnamese(log);
-										if (sedo == 1) {
-											year.Fall.name = "Fall";
-											SemesterExecution(year.Fall, log);
-											year.Fall.save2File(save);
-										}
-										else if (sedo == 2) {
-											year.Summer.name = "Summer";
-											SemesterExecution(year.Summer, log);
-											year.Summer.save2File(save);
-										}
-										else {
-											year.Autumn.name = "Autumn";
-											SemesterExecution(year.Autumn, log);
-											year.Autumn.save2File(save);
-										}
-									}
-									yearC = schoolyearScreen(log);
+									}*/
+									/*else {
+										
+									}*/
+									//yearC = schoolyearScreen(log);
+								}
+							else {
+								getschoolyear(year, log);
+								string save = "data\\schoolyear\\" + year.name;
+								int sedo = getnamese(log);
+								if (sedo == 1) {
+									year.Fall.name = "Fall";
+									SemesterExecution(year.Fall, log);
+									year.Fall.save2File(save);
+								}
+								else if (sedo == 2) {
+									year.Summer.name = "Summer";
+									SemesterExecution(year.Summer, log);
+									year.Summer.save2File(save);
+								}
+								else {
+								year.Autumn.name = "Autumn";
+								SemesterExecution(year.Autumn, log);
+								year.Autumn.save2File(save);
 								}
 							}
-							else if (optmain == 2) {
-								
-							}
-							else {
-							}
-							
 							optmain = menuformainAS(log);
 						}
 						op1 = start(log);

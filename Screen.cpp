@@ -363,15 +363,14 @@ int menuformainAS(AS log) {
 	gotoxy(0, 5);
 	cout << "What section of this school year? (Note: You should finish the last section before go to the next one)" << endl;
 	SetColor(0);
-	cout << "1. Start of a school year." << endl;
-	cout << "2. Start of a semester." << endl;
-	cout << "3. End of a semester." << endl;
-	cout << "4. Go to menu." << endl;
+	cout << "1. Create a new school year." << endl;
+	cout << "2. School year already existed." << endl;
+	cout << "3. Go to menu." << endl;
 	string opin;
 	//cin.ignore(slen, '\n');
 	getline(cin, opin);
 	int in = convert(opin);
-	while (in < 0 || in >= 5) {
+	while (in < 0 || in >= 4) {
 		cout << "Invalid option. Try again." << endl;
 		cout << "Your option: ";
 		getline(cin, opin);
