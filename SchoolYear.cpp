@@ -138,12 +138,14 @@ void getschoolyear(schoolyear& year, AS log) {
     Inscreen(log);
     cout << "School year (Format: 2000-2001): ";
     string check;
-    getline(cin, year.name);
+    getline(cin, check);
+    year.name = check;
     while (checkSchoolYear(year) == false) {
         system("cls");
         Inscreen(log);
         cout << "That school year do not available on database. Try again." << endl;
         cout << "School year (Format: 2000-2001): ";
-        getline(cin, year.name);
+        getline(cin, check);
+        year.name = check;
     }
 }
