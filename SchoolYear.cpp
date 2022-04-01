@@ -99,9 +99,9 @@ void CreateGeneralInfo(schoolyear& year, AS log)
 void CreateNY(schoolyear& y,AS log) {
     if (checkSchoolYear(y)) {
         Inscreen(log);
-        cout << "This school year has already existed.";
+        cout << "This school year has already existed." << endl;
         system("pause");
-        return;
+        //return;
     }
     else {
         y.save2File();
@@ -126,9 +126,24 @@ bool checkyear(string year) {
     }
     if (year[4] != '-')
         return false;
-    for (int i = 5; i >= 8; i++) {
+    for (int i = 5; i <= 8; i++) {
         if (year[i] <= 47 || year[i] >= 58)
             return false;
     }
     return true;
+}
+
+void getschoolyear(schoolyear& year, AS log) {
+    system("cls");
+    Inscreen(log);
+    cout << "School year (Format: 2000-2001): ";
+    string check;
+    getline(cin, year.name);
+    while (checkSchoolYear(year) == false) {
+        system("cls");
+        Inscreen(log);
+        cout << "That school year do not available on database. Try again." << endl;
+        cout << "School year (Format: 2000-2001): ";
+        getline(cin, year.name);
+    }
 }

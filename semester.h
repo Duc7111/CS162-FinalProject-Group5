@@ -23,6 +23,6 @@ struct semester
 
 void SaveSemester(list<semester>*& se);
 void SemesterExecution(semester& se, AS log);
-void getnamese(semester& se, AS log);
+int getnamese(AS log);
 void AddCourse2Semester(semester& sem);
 void ViewCourse(semester& sem);

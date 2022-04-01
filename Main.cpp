@@ -50,18 +50,34 @@ int main() {
 						while (optmain != 4) {
 							if (optmain == 1) {
 								int yearC = schoolyearScreen(log);
-								if (yearC == 1) {
-									system("cls");
-									CreateGeneralInfo(year,log);
+								while (yearC != 3) {
+									if (yearC == 1) {
+										system("cls");
+										CreateGeneralInfo(year, log);
+										
+									}
+									else {
+										getschoolyear(year, log);
+										string save = "data\\schoolyear\\" + year.name;
+										int sedo = getnamese(log);
+										if (sedo == 1) {
+											year.Fall.name = "Fall";
+											SemesterExecution(year.Fall, log);
+											year.Fall.save2File(save);
+										}
+										else if (sedo == 2) {
+											year.Summer.name = "Summer";
+											SemesterExecution(year.Summer, log);
+											year.Summer.save2File(save);
+										}
+										else {
+											year.Autumn.name = "Autumn";
+											SemesterExecution(year.Autumn, log);
+											year.Autumn.save2File(save);
+										}
+									}
+									yearC = schoolyearScreen(log);
 								}
-								else{
-									getnamese(se, log);
-									SemesterExecution(se, log);
-									se.save2File("data\\schoolyear\\2021-2022");
-									cout << "finish";
-									system("pause");
-								}
-								
 							}
 							else if (optmain == 2) {
 								

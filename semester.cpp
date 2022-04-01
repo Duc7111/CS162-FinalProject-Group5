@@ -140,7 +140,7 @@ void SemesterExecution(semester& se,AS log)
     //cout << "Your newly executed semester has been saved successfully";
 }
 
-void getnamese(semester& se,AS log) {
+int getnamese(AS log) {
     Inscreen(log);
     cout << "Please enter which semester you want to execute:" << endl;
     cout << "1. Fall           2. Summer           3. Autumn" << endl;
@@ -152,12 +152,8 @@ void getnamese(semester& se,AS log) {
         cout << "Invalid value. Try again." << endl << "Your choice: ";
         getline(cin, choice);
     }
-    if (choice == "1")
-        se.name = "Fall";
-    else if (choice == "2")
-        se.name = "Summer";
-    else
-        se.name = "Autumn";
+    int cse = convert(choice);
+    return cse;
 }
 
 

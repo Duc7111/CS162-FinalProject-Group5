@@ -25,3 +25,4 @@ void CreateNY(schoolyear& y, AS log);
 void CreateGeneralInfo(schoolyear& year, AS log);
 bool checkSchoolYear(schoolyear& sy);
 bool checkyear(string year);
+void getschoolyear(schoolyear& year, AS log);

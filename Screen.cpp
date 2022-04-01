@@ -400,11 +400,12 @@ int schoolyearScreen(AS log) {
 	cout << "Your activity: " << endl;
 	cout << "1. Create a new school year. " << endl;
 	cout << "2. New school year is already availabled" << endl;
+	cout << "3. Go back to main menu" << endl;
 	cout << "Your choice: ";
 	string choice1;
 	getline(cin, choice1);
 	int yearC = convert(choice1);
-	while (yearC != 1 && yearC != 2) {
+	while (yearC != 1 && yearC != 2 && yearC != 3) {
 		cout << "Invalid input. Try again.";
 		getline(cin, choice1);
 		yearC = convert(choice1);
