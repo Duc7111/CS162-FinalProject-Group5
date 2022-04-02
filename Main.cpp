@@ -52,17 +52,8 @@ int main() {
 							if (optmain == 1) {
 								system("cls");
 								CreateGeneralInfo(year, log);
-								/*int yearC = schoolyearScreen(log);
-								while (yearC != 3) {
-									if (yearC == 1) {
-										
-									}*/
-									/*else {
-										
-									}*/
-									//yearC = schoolyearScreen(log);
-								}
-							else {
+							}
+							else if (optmain==2){
 								getschoolyear(year, log);
 								string save = "data\\schoolyear\\" + year.name;
 								int sedo = getnamese(log);
@@ -81,6 +72,9 @@ int main() {
 								SemesterExecution(year.Autumn, log);
 								year.Autumn.save2File(save);
 								}
+							}
+							else {
+								int a = 1;
 							}
 							optmain = menuformainAS(log);
 						}
