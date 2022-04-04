@@ -61,6 +61,7 @@ void AddStudent(Class& clist,AS log)
                 cur->data.dob[2] = convert(date);
 
             }
+            cur->data.clname = clist.name;
             cout << "Social ID: ";
             cin.ignore();
             getline(cin, cur->data.SID);
@@ -123,6 +124,7 @@ void AddStudent(Class& clist,AS log)
                 cur->data.dob[2] = convert(date);
 
             }
+            cur->data.clname = clist.name;
             cout << "Social ID: ";
             cin.ignore();
             getline(cin, cur->data.SID);
@@ -166,7 +168,7 @@ void QuickInput(Class& clist)
             fin >> cur->data.No;
             fin.ignore();
             cur->data.pass = cur->data.SID;
-
+            cur->data.clname = clist.name;
             cur->next = new list<student>;
             cur = cur->next;
             fin >> cur->data.ID;
@@ -195,7 +197,7 @@ void QuickInput(Class& clist)
             fin >> cur->data.No;
             fin.ignore();
             cur->data.pass = cur->data.SID;
-
+            cur->data.clname = clist.name;
             cur->next = new list<student>;
             cur = cur->next;
             fin >> cur->data.ID;

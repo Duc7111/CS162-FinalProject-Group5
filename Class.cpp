@@ -46,6 +46,12 @@ void CreateNC(Class &new_class, AS log)
     cout << "Enter the name of the new class: ";
     //cin.ignore(1000, '\n');
     getline(cin, new_class.name);
+    while (new_class.checkClass() == true) {
+        cout << new_class.name << " Already existed on database." << endl;
+        cout << "Try again" << endl;
+        cout << "Enter the name of the new class: ";
+        getline(cin, new_class.name);
+    }
     //course insertion should be right here
     string choice;
     system("cls");
