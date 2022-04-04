@@ -31,8 +31,17 @@ student::student(int id)
                     fin >> dob[0]; fin.ignore();
                     fin >> dob[1]; fin.ignore();
                     fin >> dob[2]; fin.ignore();
-                    getline(fin, clname, ',');
-                    
+                    getline(fin, SID, ',');
+                    fin >> No;
+                    conum = 0;
+                    colist = new list<course>;
+                    list<course>* temp = colist;
+                    while(fin.get() != '\n')
+                    {
+                        temp->next = new list<course>;
+                        temp = temp->next;
+                        fin >> temp->data.ID;
+                    }
                 }
             }
         }
@@ -58,14 +67,56 @@ bool student::createAcc()
 void student::save2File()
 {
     ofstream fout("data\\class\\" + clname + ".txt", ios_base::app);
-    fout << ID << ',' << fname << ',' << lname << ',' << gender << ',' << dob[0] << ',' << dob[1] << ',' << dob[2] << ',' << SID << ',' << No << endl;
+    fout << ID << ',' << fname << ',' << lname << ',' << gender << ',' << dob[0] << ',' << dob[1] << ',' << dob[2] << ',' << SID << ',' << No;
     list<course>* temp = colist;
     while(temp)
     {
         fout << ',' << temp->data.ID;
         temp = temp->next;
     }
+    fout << endl;
     fout.close();
+}
+
+void student::change()
+{
+    ifstream fin("data\\class\\" + clname + ".txt");
+    ofstream fout("temp");
+    string temp;
+    while(!fin.eof())
+    {
+        int id;
+        fin >> id;
+        if(id == ID)
+        {
+            fout << ID << ',' << fname << ',' << lname << ',' << gender << ',' << dob[0] << ',' << dob[1] << ',' << dob[2] << ',' << SID << ',' << No;
+            list<course>* temp = colist;
+            while(temp)
+            {
+                fout << ',' << temp->data.ID;
+                temp = temp->next;
+            }
+            fout << endl;
+            fin.ignore(1000, '\n');
+            break;
+        }
+        else
+        {
+            fout << id;
+            getline(fin, temp);
+            fout << temp;
+        }
+        while(!fin.eof())
+        {
+            getline(fin, temp);
+            fout << temp;
+        }
+        fin.close();
+        fout.close();
+        const char* d = ("data\\class\\" + clname + ".txt").c_str();
+        remove(d);
+        rename("temp", d);
+    }
 }
 
 bool student::checkCourse(const course& co)

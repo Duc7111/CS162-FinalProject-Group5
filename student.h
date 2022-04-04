@@ -34,6 +34,7 @@ struct student
 
     bool createAcc();
     void save2File();
+    void change();
     bool checkCourse(const course& co);
 };
 
