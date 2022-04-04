@@ -10,7 +10,7 @@ using namespace std;
 
 
 
-void AddStudent(Class& clist)
+void AddStudent(Class& clist,AS log)
 {
 
     list<student>* cur = clist.stlist;
@@ -18,7 +18,8 @@ void AddStudent(Class& clist)
 
     if (cur->next == nullptr)
     {
-        cout << "ID: ";
+        Inscreen(log);
+        cout << "ID (Input 0 to stop): ";
         cin >> cur->data.ID;
 
         while (cur->data.ID != 0)
@@ -68,9 +69,11 @@ void AddStudent(Class& clist)
             cur->data.pass = cur->data.SID;
             cur->next = new list<student>;
             cur = cur->next;
-            cout << "ID: ";
+            Inscreen(log);
+            cout << "ID (Input 0 to stop): ";
             cin >> cur->data.ID;
         }
+        //cur->next = nullptr;
     }
     else
     {

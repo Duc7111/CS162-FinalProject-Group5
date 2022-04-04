@@ -62,7 +62,9 @@ void CreateNC(Class &new_class, AS log)
         classc = convert(choice);
     }
     if (classc == 1) {
-        AddStudent(new_class);
+        Inscreen(log);
+        AddStudent(new_class,log);
+        new_class.save2File();
     }
     else {
         system("cls");
@@ -70,6 +72,7 @@ void CreateNC(Class &new_class, AS log)
         cout << "To Quickly input, you must prepare a text file name: ""QuickInput.txt"" " << endl;
         system("pause");
         QuickInput(new_class);
+        new_class.save2File();
     }
     cout << "New class has been created successfully";
 }
