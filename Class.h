@@ -12,6 +12,8 @@ struct Class
     std::string name;
     list<student>* stlist;
 
+    Class();
+
     void save2File();
     bool checkClass();
 };
