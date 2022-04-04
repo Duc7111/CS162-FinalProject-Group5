@@ -66,12 +66,14 @@ void AddStudent(Class& clist,AS log)
             getline(cin, cur->data.SID);
             cout << "No: ";
             cin >> cur->data.No;
-            cur->data.pass = cur->data.SID;
-            cur->next = new list<student>;
+            cur->data.pass = cur->data.SID; 
             cur = cur->next;
             Inscreen(log);
             cout << "ID (Input 0 to stop): ";
             cin >> cur->data.ID;
+            if(cur->data.ID!=0)
+                cur->next = new list<student>;
+            
         }
         //cur->next = nullptr;
     }
@@ -129,10 +131,11 @@ void AddStudent(Class& clist,AS log)
             cout << "No: ";
             cin >> cur->data.No;
             cur->data.pass = cur->data.SID;
-            cur->next = new list<student>;
-            cur = cur->next;
-            cout << "ID: ";
+            Inscreen(log);
+            cout << "ID (Input 0 to stop): ";
             cin >> cur->data.ID;
+            if (cur->data.ID != 0)
+                cur->next = new list<student>;
         }
     }
 
