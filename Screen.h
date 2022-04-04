@@ -1,6 +1,14 @@
 #pragma once
+#include "const.h"
+#include "console.h"
 #include "AS.h"
 #include "student.h"
+#include "SchoolYear.h"
+#include "course.h"
+#include "semester.h"
+#include "Class.h"
+#include "data.h"
+#include "addstudent.h"
 int StartScreen();
 void SignupScreen();
 void SignupSystem();
@@ -16,3 +24,4 @@ void Inscreen(AS log);
 int schoolyearScreen(AS log);
 bool checkstring(string str);
 void loginSt(student& s);
+void semesterscreen(AS log, schoolyear& year);

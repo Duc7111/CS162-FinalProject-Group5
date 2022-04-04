@@ -11,12 +11,14 @@
 #include "semester.h"
 #include "Class.h"
 #include "data.h"
+#include "addstudent.h"
 using namespace std;
 
 
 
 int main() {
 	//YearList* t = nullptr;
+	Class cl;
 	dataBase();
 	schoolyear year;
 	schoolyear cur;
@@ -48,33 +50,16 @@ int main() {
 					else {
 						cin.ignore(10, '\n');
 						int optmain = menuformainAS(log);
-						while (optmain != 3) {
+						while (optmain != 5) {
 							if (optmain == 1) {
 								system("cls");
 								CreateGeneralInfo(year, log);
 							}
 							else if (optmain==2){
-								getschoolyear(year, log);
-								string save = "data\\schoolyear\\" + year.name;
-								int sedo = getnamese(log);
-								if (sedo == 1) {
-									year.Fall.name = "Fall";
-									SemesterExecution(year.Fall, log);
-									year.Fall.save2File(save);
-								}
-								else if (sedo == 2) {
-									year.Summer.name = "Summer";
-									SemesterExecution(year.Summer, log);
-									year.Summer.save2File(save);
-								}
-								else {
-								year.Autumn.name = "Autumn";
-								SemesterExecution(year.Autumn, log);
-								year.Autumn.save2File(save);
-								}
+								semesterscreen(log, year);
 							}
-							else {
-								int a = 1;
+							else if (optmain == 3 ) {
+								CreateNC(cl,log);
 							}
 							optmain = menuformainAS(log);
 						}

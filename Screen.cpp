@@ -6,6 +6,13 @@
 #include "Screen.h"
 #include "AS.h"
 #include "student.h"
+#include "SchoolYear.h"
+#include "course.h"
+#include "semester.h"
+#include "Class.h"
+#include "data.h"
+#include "addstudent.h"
+
 
 using namespace std;
 
@@ -430,5 +437,26 @@ void loginSt(student& s) {
 		ID = convert(userlog);
 		cout << "Your password: ";
 		getline(cin, passlog);
+	}
+}
+
+void semesterscreen(AS log, schoolyear& year) {
+	getschoolyear(year, log);
+	string save = "data\\schoolyear\\" + year.name;
+	int sedo = getnamese(log);
+	if (sedo == 1) {
+		year.Fall.name = "Fall";
+		SemesterExecution(year.Fall, log);
+		year.Fall.save2File(save);
+	}
+	else if (sedo == 2) {
+		year.Summer.name = "Summer";
+		SemesterExecution(year.Summer, log);
+		year.Summer.save2File(save);
+	}
+	else {
+		year.Autumn.name = "Autumn";
+		SemesterExecution(year.Autumn, log);
+		year.Autumn.save2File(save);
 	}
 }
