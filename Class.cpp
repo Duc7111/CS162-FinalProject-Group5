@@ -17,13 +17,13 @@ void Class::save2File()
     fout << name << endl;
     fout.close();
     fout.open("data\\class\\" + name + ".txt", ios_base::trunc);
-    fout.close();
     list<student>* temp = stlist;
     while(temp)
     {
         temp->data.save2File();
         temp = temp->next;
     }
+    fout.close();
 }
 
 void CreateNC(Class &new_class, AS log)
