@@ -19,6 +19,7 @@ using namespace std;
 int main() {
 	//YearList* t = nullptr;
 	Class cl;
+	cl.stlist = new list<student>;
 	dataBase();
 	schoolyear year;
 	schoolyear cur;
