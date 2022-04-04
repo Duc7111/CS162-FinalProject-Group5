@@ -5,7 +5,7 @@
 
 using namespace std;
 
-student::student(){}
+student::student() : colist(nullptr){}
 
 student::student(int id)
 {
@@ -58,7 +58,7 @@ bool student::createAcc()
 void student::save2File()
 {
     ofstream fout("data\\class\\" + clname + ".txt", ios_base::app);
-    fout << ID << ',' << fname << ',' << lname << ',' << gender << ',' << dob[0] << ',' << dob[1] << ',' << dob[2] << ',' << SID << ',' << No;
+    fout << ID << ',' << fname << ',' << lname << ',' << gender << ',' << dob[0] << ',' << dob[1] << ',' << dob[2] << ',' << SID << ',' << No << endl;
     list<course>* temp = colist;
     while(temp)
     {

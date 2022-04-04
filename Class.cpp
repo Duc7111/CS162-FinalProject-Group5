@@ -24,7 +24,6 @@ void Class::save2File()
         temp->data.save2File();
         temp = temp->next;
     }
-    
 }
 
 bool Class::checkClass()
