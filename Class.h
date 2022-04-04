@@ -13,6 +13,7 @@ struct Class
     list<student>* stlist;
 
     void save2File();
+    bool checkClass();
 };
 
 void CreateNC(Class& new_class,AS log);

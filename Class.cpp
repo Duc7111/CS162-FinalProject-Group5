@@ -26,6 +26,20 @@ void Class::save2File()
     }
 }
 
+bool Class::checkClass()
+{
+    fstream fin("data\\class\\class.txt", ios_base::out | ios_base::app);
+    fin.close();
+    fin.open("data\\class\\class.txt", ios_base::in);
+    string temp;
+    while(!fin.eof())
+    {
+        getline(fin, temp);
+        if(temp == name) return true;
+    }
+    return false;
+}
+
 void CreateNC(Class &new_class, AS log)
 {
     Inscreen(log);
