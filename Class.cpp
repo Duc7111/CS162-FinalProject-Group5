@@ -50,5 +50,12 @@ void CreateNC(Class &new_class, AS log)
     if (classc == 1) {
         AddStudent(new_class);
     }
+    else {
+        system("cls");
+        Inscreen(log);
+        cout << "To Quickly input, you must prepare a text file name: ""QuickInput.txt"" " << endl;
+        system("pause");
+        QuickInput(new_class);
+    }
     cout << "New class has been created successfully";
 }
