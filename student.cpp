@@ -38,6 +38,7 @@ student::student(int id)
                     list<course>* temp = colist;
                     while(fin.get() != '\n')
                     {
+                        ++conum;
                         temp->next = new list<course>;
                         temp = temp->next;
                         fin >> temp->data.ID;
