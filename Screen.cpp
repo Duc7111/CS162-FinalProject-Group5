@@ -460,3 +460,52 @@ void semesterscreen(AS log, schoolyear& year) {
 		year.Autumn.save2File(save);
 	}
 }
+
+void Inscreenst(student st) {
+	SetColor(1);
+	system("cls");
+	gotoxy(7, 0);
+	cout << "Welcome to Course Registration System";
+	gotoxy(12, 1);
+	cout << "Made by Group 5-APCS21";
+	gotoxy(0, 2);
+	cout << "__________________________________________________";
+	gotoxy(60, 0);
+	cout << "Welcome " << st.lname;
+	gotoxy(0, 5);
+	SetColor(0);
+
+}
+
+int studentscreen1(student& st) {
+	Inscreenst(st);
+	cout << "Option:" << endl;
+	cout << "1.View your profile." << endl;
+	cout << "2.Change password." << endl;
+	cout << "3.Go to main section." << endl;
+	cout << "4.Log out of system." << endl;
+	cout << "Your option: ";
+	//cin.ignore(100, '\n');
+	string opin;
+	getline(cin, opin);
+	int in = convert(opin);
+	while (in < 0 || in >= 5) {
+		cout << "Invalid option. Try again." << endl;
+		cout << "Your option: ";
+		getline(cin, opin);
+		in = convert(opin);
+	}
+	return in;
+}
+
+void viewstudent(student log) {
+	Inscreenst(log);
+	cout << "Your name: " << log.fname << " " << log.lname << "       ";
+	cout << "DOB: " << log.dob[0] << "/" << log.dob[1] << "/" << log.dob[2] << endl;
+	if (log.gender == true)
+		cout << "Gender: Male" << endl;
+	else
+		cout << "Gender: Female" << endl;
+	cout << "Social ID: " << log.SID << endl;
+	system("pause");
+}

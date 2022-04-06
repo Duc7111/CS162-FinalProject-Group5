@@ -25,3 +25,6 @@ int schoolyearScreen(AS log);
 bool checkstring(string str);
 void loginSt(student& s);
 void semesterscreen(AS log, schoolyear& year);
+void Inscreenst(student st);
+int studentscreen1(student& st);
+void viewstudent(student log);

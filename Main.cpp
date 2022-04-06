@@ -32,6 +32,19 @@ int main() {
 			if (opt == 1) {
 				student st;
 				loginSt(st);
+				int opst = studentscreen1(st);
+				while (opst != 4) {
+					if (opst == 1) {
+						viewstudent(st);
+						opst = studentscreen1(st);
+					}
+					else if (opst == 2) {
+
+					}
+					else {
+
+					}
+				}
 				break;
 			}
 			else if (opt == 2) {

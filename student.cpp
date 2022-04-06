@@ -140,7 +140,7 @@ bool student::checkCourse(const course& co)
 
 bool login(student& s, int ID, string pass)
 {
-    ifstream fin("student.txt", ios_base::in);
+    ifstream fin("data\\student.txt", ios_base::in);
     while (!fin.eof())
     {
         fin >> s.ID; fin.ignore();
@@ -149,11 +149,11 @@ bool login(student& s, int ID, string pass)
             getline(fin, s.pass, ',');
             if (s.pass == pass)
             {
-                fin.close();
                 string clname;
-                fin.ignore(1000, '\n');
+                //fin.ignore(1000, '\n');
                 getline(fin, clname);
-                fin.open("data\\class\\" + clname + "\\student.txt");
+                fin.close();
+                fin.open("data\\class\\" + clname + ".txt");
                 while(!fin.eof())
                 {
                     fin >> ID; fin.ignore();
@@ -166,7 +166,7 @@ bool login(student& s, int ID, string pass)
                 fin >> s.dob[0]; fin.ignore();
                 fin >> s.dob[1]; fin.ignore();
                 fin >> s.dob[2]; fin.ignore();
-                getline(fin, s.SID);
+                getline(fin, s.SID, ',');
                 s.clname = clname;
                 fin >> s.No;
                 s.colist = new list<course>;
