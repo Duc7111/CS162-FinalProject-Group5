@@ -4,7 +4,7 @@
 
 using namespace std;
 
-course::course(): ms(50), cur(0){};
+course::course(): ms(50), cur(0) ,stlist(nullptr){};
 
 course::course(int id)
 {
@@ -41,6 +41,18 @@ course::course(int id)
     temp = stlist;
     stlist = stlist->next;
     delete temp;
+}
+
+course::course(const course& co) : stlist(co.stlist)
+{
+    ID = co.ID;
+    name = co.name;
+    teacher = co.teacher;
+    credits = co.credits;
+    s[0] = co.s[0];
+    s[1] = co.s[1];
+    ms = co.ms;
+    cur = co.cur;
 }
 
 void course::save2File(string dir)

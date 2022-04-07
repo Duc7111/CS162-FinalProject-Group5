@@ -18,6 +18,7 @@ struct course
     list<int[5]>* stlist; // 0: ID, 1: midterm, 2: final, 3: other, 4: total
     
     course();
+    course(const course& co);
     course(int id);
     void save2File(string dir);
     bool checkCourse(const string& dir);

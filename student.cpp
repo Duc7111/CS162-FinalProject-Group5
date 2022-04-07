@@ -120,21 +120,23 @@ void student::change()
     }
 }
 
-bool student::checkCourse(const course& co)
+bool student::addCourse(const course& co)
 {
-    bool check[24];
+    if(conum == 5) return false;
+    if(conum == 0)
+    {
+        colist = new list<course>(co);
+        ++conum;
+        return true;
+    }
     list<course>* temp = colist;
-    for(int i = 0; i < 24; ++i)
+    while(temp->next)
     {
-        check[i] = false;
+        if(co.s[0] == temp->next->data.s[0] || co.s[0] == temp->next->data.s[1] || 
+           co.s[1] == temp->next->data.s[0] || co.s[1] == temp->next->data.s[1] ) return false;
     }
-    while(temp)
-    {
-        check[temp->data.s[0]/7*4 + temp->data.s[0]%7 - 1] = true;
-        check[temp->data.s[1]/7*4 + temp->data.s[1]%7 - 1] = true;
-        temp = temp->next;
-    }
-    if(check[co.s[0]/7*4 + co.s[0]%7 - 1] || co.s[0]/7*4 + co.s[0]%7 - 1) return false;
+    ++conum;
+    temp->next = new list<course>(co);
     return true;
 }
 
