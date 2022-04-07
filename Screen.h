@@ -28,3 +28,4 @@ void semesterscreen(AS log, schoolyear& year);
 void Inscreenst(student st);
 int studentscreen1(student& st);
 void viewstudent(student log);
+void changepassst(student& st);

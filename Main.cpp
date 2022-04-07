@@ -12,6 +12,7 @@
 #include "Class.h"
 #include "data.h"
 #include "addstudent.h"
+
 using namespace std;
 
 
@@ -39,7 +40,8 @@ int main() {
 						opst = studentscreen1(st);
 					}
 					else if (opst == 2) {
-
+						changepassst(st);
+						opst = studentscreen1(st);
 					}
 					else {
 
@@ -75,6 +77,10 @@ int main() {
 							else if (optmain == 3 ) {
 								CreateNC(cl,log);
 							}
+							else {
+								GotoClass(cl, log);
+							}
+							cin.ignore(10, '\n');
 							optmain = menuformainAS(log);
 						}
 						op1 = start(log);
@@ -91,6 +97,7 @@ int main() {
 			choice = StartScreen();
 		}
 	}
+	delete cl.stlist;
 	system("cls");
 	return 0;
 }

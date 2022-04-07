@@ -15,7 +15,8 @@ struct Class
     Class();
 
     void save2File();
+    void save2FileE();
     bool checkClass();
 };
-
+void GotoClass(Class& new_class, AS log);
 void CreateNC(Class& new_class,AS log);

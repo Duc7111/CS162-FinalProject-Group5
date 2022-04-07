@@ -325,30 +325,27 @@ void changepass(AS& log) {
 	gotoxy(0, 5);
 	cout << "Your password: ";
 	string temp2;
-	cin.ignore(1000, '\n');
-	cin >> temp2;
+	//cin.ignore(1000, '\n');
+	getline(cin, temp2);
 	while (temp2!=log.pass) {
 		cout << "Wrong password. Try again." << endl << "Now, submit your password: ";
-		cin.ignore(1000, '\n');
-		cin >> temp2;
+		//cin.ignore(1000, '\n');
+		getline(cin, temp2);
 	}
 	cout << "Your new password: ";
 	string temp;
-	cin.ignore(1000, '\n');
-	cin >> temp;
+	//cin.ignore(1000, '\n');
+	getline(cin, temp);
 	while (checkstring(temp) == false) {
 		cout << "Invalid password. Try again." << endl << "Now, submit your password: ";
-		cin.ignore(1000, '\n');
-		cin >> temp;
+		getline(cin, temp);
 	}
 	cout << "Confirm your password: ";
 	string check;
-	cin.ignore(1000, '\n');
-	cin >> check;
+	getline(cin, check);
 	while (check!=temp) {
 		cout << "Wrong password. Try again." << endl << "Confirm your password: ";
-		cin.ignore(1000, '\n');
-		cin >> temp;
+		getline(cin, check);
 	}
 	log.pass = temp;
 	cout << "Your password changed successfully.\n";
@@ -428,7 +425,7 @@ void loginSt(student& s) {
 	cin.ignore(10, '\n');
 	getline(cin, userlog);
 	int ID = convert(userlog);
-	cout << "Your password: ";
+	cout << "Your password (default password: Your Social ID): ";
 	getline(cin, passlog);
 	while (login(s, ID, passlog) == false) {
 		cout << "Wrong or invalid username or password. Try again\n";
@@ -507,5 +504,38 @@ void viewstudent(student log) {
 	else
 		cout << "Gender: Female" << endl;
 	cout << "Social ID: " << log.SID << endl;
+	system("pause");
+}
+
+void changepassst(student& st) {
+	Inscreenst(st);
+	cout << "Your password: ";
+	string temp2;
+	//cin.ignore(1000, '\n');
+	getline(cin, temp2);
+	while (temp2 != st.pass) {
+		cout << "Wrong password. Try again." << endl << "Now, submit your password: ";
+		//cin.ignore(1000, '\n');
+		getline(cin, temp2);
+	}
+	cout << "Your new password: ";
+	string temp;
+	//cin.ignore(1000, '\n');
+	getline(cin, temp);
+	while (checkstring(temp) == false) {
+		cout << "Invalid password. Try again." << endl << "Now, submit your password: ";
+		//cin.ignore(1000, '\n');
+		getline(cin, temp);
+	}
+	cout << "Confirm your password: ";
+	string check;
+	getline(cin, check);
+	while (check != temp) {
+		cout << "Wrong password. Try again." << endl << "Confirm your password: ";
+		getline(cin, check);
+	}
+	st.pass = temp;
+	cout << "Your password changed successfully.\n";
+	changeStudent(st);
 	system("pause");
 }
