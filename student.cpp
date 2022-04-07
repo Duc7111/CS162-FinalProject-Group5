@@ -140,7 +140,7 @@ bool student::checkCourse(const course& co)
 
 bool login(student& s, int ID, string pass)
 {
-    ifstream fin("student.txt", ios_base::in);
+    ifstream fin("data\\student.txt", ios_base::in);
     while (!fin.eof())
     {
         fin >> s.ID; fin.ignore();
@@ -149,11 +149,11 @@ bool login(student& s, int ID, string pass)
             getline(fin, s.pass, ',');
             if (s.pass == pass)
             {
-                fin.close();
                 string clname;
                 fin.ignore(1000, '\n');
                 getline(fin, clname);
-                fin.open("data\\class\\" + clname + "\\student.txt");
+                fin.close();
+                fin.open("data\\class\\" + clname + ".txt");
                 while(!fin.eof())
                 {
                     fin >> ID; fin.ignore();
@@ -194,25 +194,20 @@ void changeStudent(student& s)
 {
     ifstream fin("data\\student.txt");
     ofstream fout("temp.txt");
-    char temp[5 * slen];
-    while (fin.getline(temp, 5 * slen))
+    string temp;
+    int id;
+    while (!fin.eof())
     {
-        if (temp[0] == '-')
+        fin >> id;
+        if(id == s.ID)
         {
-            fout << temp << endl;
-            continue;
-        }
-        int i = 0;
-        int ID = 0;
-        while (temp[++i] != ',') ID = ID * 10 + temp[i] - '0';
-        if (ID != s.ID) fout << temp << endl;
-        else
-        {
-            fout << s.ID << ',' << s.pass << ',' << s.clname << endl;
+            fout << s.ID << s.pass << s.clname << endl;
             break;
         }
+        getline(fin, temp);
+        fout << id << temp << endl;
     }
-    while (fin.getline(temp, 5 * slen)) fout << temp << endl;
+    while (getline(fin, temp)) fout << temp << endl;
     fin.close(); fout.close();
     remove("data\\student.txt");
     rename("temp.txt", "data\\student.txt");
