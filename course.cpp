@@ -80,7 +80,7 @@ bool course::checkCourse(const string& dir)
         fin.ignore(1000, '\n');
         fin.ignore(1000, '\n');
         int temp;
-        cin >> temp;
+        fin >> temp;
         if(ID == temp) return true;
         fin.ignore(1000, '\n'); 
     }
