@@ -325,30 +325,27 @@ void changepass(AS& log) {
 	gotoxy(0, 5);
 	cout << "Your password: ";
 	string temp2;
-	cin.ignore(1000, '\n');
-	cin >> temp2;
+	//cin.ignore(1000, '\n');
+	getline(cin, temp2);
 	while (temp2!=log.pass) {
 		cout << "Wrong password. Try again." << endl << "Now, submit your password: ";
-		cin.ignore(1000, '\n');
-		cin >> temp2;
+		//cin.ignore(1000, '\n');
+		getline(cin, temp2);
 	}
 	cout << "Your new password: ";
 	string temp;
-	cin.ignore(1000, '\n');
-	cin >> temp;
+	//cin.ignore(1000, '\n');
+	getline(cin, temp);
 	while (checkstring(temp) == false) {
 		cout << "Invalid password. Try again." << endl << "Now, submit your password: ";
-		cin.ignore(1000, '\n');
-		cin >> temp;
+		getline(cin, temp);
 	}
 	cout << "Confirm your password: ";
 	string check;
-	cin.ignore(1000, '\n');
-	cin >> check;
+	getline(cin, check);
 	while (check!=temp) {
 		cout << "Wrong password. Try again." << endl << "Confirm your password: ";
-		cin.ignore(1000, '\n');
-		cin >> temp;
+		getline(cin, check);
 	}
 	log.pass = temp;
 	cout << "Your password changed successfully.\n";
@@ -428,7 +425,7 @@ void loginSt(student& s) {
 	cin.ignore(10, '\n');
 	getline(cin, userlog);
 	int ID = convert(userlog);
-	cout << "Your password: ";
+	cout << "Your password (default password: Your Social ID): ";
 	getline(cin, passlog);
 	while (login(s, ID, passlog) == false) {
 		cout << "Wrong or invalid username or password. Try again\n";
@@ -459,4 +456,86 @@ void semesterscreen(AS log, schoolyear& year) {
 		SemesterExecution(year.Autumn, log);
 		year.Autumn.save2File(save);
 	}
+}
+
+void Inscreenst(student st) {
+	SetColor(1);
+	system("cls");
+	gotoxy(7, 0);
+	cout << "Welcome to Course Registration System";
+	gotoxy(12, 1);
+	cout << "Made by Group 5-APCS21";
+	gotoxy(0, 2);
+	cout << "__________________________________________________";
+	gotoxy(60, 0);
+	cout << "Welcome " << st.lname;
+	gotoxy(0, 5);
+	SetColor(0);
+
+}
+
+int studentscreen1(student& st) {
+	Inscreenst(st);
+	cout << "Option:" << endl;
+	cout << "1.View your profile." << endl;
+	cout << "2.Change password." << endl;
+	cout << "3.Go to main section." << endl;
+	cout << "4.Log out of system." << endl;
+	cout << "Your option: ";
+	//cin.ignore(100, '\n');
+	string opin;
+	getline(cin, opin);
+	int in = convert(opin);
+	while (in < 0 || in >= 5) {
+		cout << "Invalid option. Try again." << endl;
+		cout << "Your option: ";
+		getline(cin, opin);
+		in = convert(opin);
+	}
+	return in;
+}
+
+void viewstudent(student log) {
+	Inscreenst(log);
+	cout << "Your name: " << log.fname << " " << log.lname << "       ";
+	cout << "DOB: " << log.dob[0] << "/" << log.dob[1] << "/" << log.dob[2] << endl;
+	if (log.gender == true)
+		cout << "Gender: Male" << endl;
+	else
+		cout << "Gender: Female" << endl;
+	cout << "Social ID: " << log.SID << endl;
+	system("pause");
+}
+
+void changepassst(student& st) {
+	Inscreenst(st);
+	cout << "Your password: ";
+	string temp2;
+	//cin.ignore(1000, '\n');
+	getline(cin, temp2);
+	while (temp2 != st.pass) {
+		cout << "Wrong password. Try again." << endl << "Now, submit your password: ";
+		//cin.ignore(1000, '\n');
+		getline(cin, temp2);
+	}
+	cout << "Your new password: ";
+	string temp;
+	//cin.ignore(1000, '\n');
+	getline(cin, temp);
+	while (checkstring(temp) == false) {
+		cout << "Invalid password. Try again." << endl << "Now, submit your password: ";
+		//cin.ignore(1000, '\n');
+		getline(cin, temp);
+	}
+	cout << "Confirm your password: ";
+	string check;
+	getline(cin, check);
+	while (check != temp) {
+		cout << "Wrong password. Try again." << endl << "Confirm your password: ";
+		getline(cin, check);
+	}
+	st.pass = temp;
+	cout << "Your password changed successfully.\n";
+	changeStudent(st);
+	system("pause");
 }

@@ -5,7 +5,7 @@
 #include "AS.h"
 #include "Class.h"
 #include "const.h"
-
+#include "student.h"
 using namespace std;
 
 
@@ -29,7 +29,7 @@ void AddStudent(Class& clist,AS log)
             getline(cin, cur->data.fname);
             cout << "Last name: ";
             getline(cin, cur->data.lname);
-            cout << "Gender: ";
+            cout << "Gender (0:Male & 1:Female): ";
             cin >> cur->data.gender;
             char date[10];
             cout << "DOB: Day: ";
@@ -62,12 +62,14 @@ void AddStudent(Class& clist,AS log)
 
             }
             cur->data.clname = clist.name;
+            
             cout << "Social ID: ";
             cin.ignore();
             getline(cin, cur->data.SID);
             cout << "No: ";
             cin >> cur->data.No;
             cur->data.pass = cur->data.SID;
+            cur->data.createAcc();
             cur->next = new list<student>;
             cur = cur->next;
             Inscreen(log);
@@ -83,7 +85,8 @@ void AddStudent(Class& clist,AS log)
         {
             cur = cur->next;
         }
-        cout << "ID: ";
+        Inscreen(log);
+        cout << "ID (Input 0 to stop): ";
         cin >> cur->data.ID;
         while (cur->data.ID != 0)
         {
@@ -92,7 +95,7 @@ void AddStudent(Class& clist,AS log)
             getline(cin, cur->data.fname);
             cout << "Last name: ";
             getline(cin, cur->data.lname);
-            cout << "Gender: ";
+            cout << "Gender (0:Male & 1:Female): ";
             cin >> cur->data.gender;
             char date[10];
             cout << "DOB: Day: ";
@@ -131,9 +134,11 @@ void AddStudent(Class& clist,AS log)
             cout << "No: ";
             cin >> cur->data.No;
             cur->data.pass = cur->data.SID;
+            cur->data.createAcc();
             cur->next = new list<student>;
             cur = cur->next;
-            cout << "ID: ";
+            Inscreen(log);
+            cout << "ID (Input 0 to stop): ";
             cin >> cur->data.ID;
         }
     }
@@ -169,6 +174,7 @@ void QuickInput(Class& clist)
             fin.ignore();
             cur->data.pass = cur->data.SID;
             cur->data.clname = clist.name;
+            cur->data.createAcc();
             cur->next = new list<student>;
             cur = cur->next;
             fin >> cur->data.ID;
@@ -198,6 +204,7 @@ void QuickInput(Class& clist)
             fin.ignore();
             cur->data.pass = cur->data.SID;
             cur->data.clname = clist.name;
+            cur->data.createAcc();
             cur->next = new list<student>;
             cur = cur->next;
             fin >> cur->data.ID;

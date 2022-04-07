@@ -150,7 +150,7 @@ bool login(student& s, int ID, string pass)
             if (s.pass == pass)
             {
                 string clname;
-                fin.ignore(1000, '\n');
+                //fin.ignore(1000, '\n');
                 getline(fin, clname);
                 fin.close();
                 fin.open("data\\class\\" + clname + ".txt");
@@ -166,7 +166,7 @@ bool login(student& s, int ID, string pass)
                 fin >> s.dob[0]; fin.ignore();
                 fin >> s.dob[1]; fin.ignore();
                 fin >> s.dob[2]; fin.ignore();
-                getline(fin, s.SID);
+                getline(fin, s.SID, ',');
                 s.clname = clname;
                 fin >> s.No;
                 s.colist = new list<course>;

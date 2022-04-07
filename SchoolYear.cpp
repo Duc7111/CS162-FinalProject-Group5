@@ -88,7 +88,7 @@ void CreateGeneralInfo(schoolyear& year, AS log)
         string choice;
         getline(cin, choice);
         choice_2 = convert(choice);
-        system("cls");
+        //system("cls");
         if (choice_2 == 1) CreateNY(year,log);
     //}
     //if (choice_1 == 2) CreateNC();
