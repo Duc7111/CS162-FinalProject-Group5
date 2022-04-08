@@ -438,7 +438,7 @@ void loginSt(student& s) {
 }
 
 void semesterscreen(AS log, schoolyear& year) {
-	getschoolyear(year, log);
+	//getschoolyear(year, log);
 	string save = "data\\schoolyear\\" + year.name;
 	int sedo = getnamese(log);
 	if (sedo == 1) {
