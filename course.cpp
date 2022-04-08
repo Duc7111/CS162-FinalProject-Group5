@@ -232,6 +232,11 @@ void PrintSection(int section1, int section2)
         cout << "Saturday ";
         break;
     }
+    case 6:
+    {
+        cout << "Sunday ";
+        break;
+    }
     }
     switch (section2 % 7)
     {
@@ -258,7 +263,6 @@ void PrintSection(int section1, int section2)
     }
     
 }
-
 
 void PrintCourse(list<course>* cur)
 {

@@ -72,7 +72,20 @@ int main() {
 								CreateGeneralInfo(year, log);
 							}
 							else if (optmain==2){
-								semesterscreen(log, year);
+								int sechoice=SeScreen(log);
+								while (sechoice != 3) {
+									if (sechoice == 1) {
+										semesterscreen(log, year);
+									}
+									else {
+										getschoolyear(year, log);
+										int seme=getnamese(log);
+										if (seme == 1) {
+
+										}
+									}
+									sechoice = SeScreen(log);
+								}
 							}
 							else if (optmain == 3 ) {
 								CreateNC(cl,log);
