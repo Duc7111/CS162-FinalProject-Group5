@@ -6,6 +6,8 @@
 #include "schoolyear.h"
 #include "Screen.h"
 #include "course.h"
+#include "console.h"
+
 
 
 using namespace std;
@@ -263,3 +265,153 @@ void ViewCourse(semester& sem)
     delete cur;
 }
 
+void FindCourse(schoolyear& sy, semester& sem, int& id)
+{
+    int temp;
+    cout << "Enter the ID of the course you want to update: ";
+    cin >> temp;
+    //ifstream fin("data\\schoolyear\\" + sy.name + "\\" + sem.name + "\\data.txt");
+    id = 0;
+    fin.ignore('\n');
+    fin.ignore('\n');
+    
+    while (id != temp)
+    {
+        if (fin.eof())
+        {
+            cout << "invalid ID. Try again: " << endl;
+            return FindCourse(sy, sem,id);
+        }
+        else
+        {
+            fin >> id;
+        }
+    }
+
+
+    fin.close();
+}
+
+void UpdateCourse(schoolyear& sy, semester& sem)
+{
+    int id;
+    FindCourse(sy, sem, id);
+    //ifstream fin("data\\schoolyear\\" + sy.name + "\\" + sem.name + "\\" + id + "\\data.txt" , ios_base::in);
+    list <course>* tmp = new list<course>;
+    getline(fin, tmp->data.name, ',');
+    getline(fin, tmp->data.teacher, ',');
+    fin >> tmp->data.credits; fin.ignore();
+    fin >> tmp->data.s[0]; fin.ignore();
+    fin >> tmp->data.s[1]; fin.ignore();
+    fin >> tmp->data.ms; fin.ignore();
+    fin >> tmp->data.cur; fin.ignore();
+    fin.close();
+   
+    int temp = 1;
+    do
+    {
+        system("cls");
+        cout << "Course ID: " << id << endl;
+        cout << "Course's name: " << tmp->data.name << endl;
+        cout << "Teacher: " << tmp->data.teacher << endl;
+        cout << "Number of credits: " << tmp->data.credits << endl;
+        cout << "Maximum number of students: " << tmp->data.ms << endl;
+        cout << "Current number of students: " << tmp->data.cur << endl;
+        PrintSection(tmp->data.s[0], tmp->data.s[1]);
+        for (int i = 0; i < 5; i++)
+        {
+            gotoxy(80, i + 1);
+            cout << "(" << i + 1 << ")";
+        }
+        for (int i = 5; i < 7; i++)
+        {
+            gotoxy(80, i + 2);
+            cout << "(" << i + 1 << ")";
+        }
+        cout << endl << "Enter the number of the line you want to update: " << endl;
+        int choice;
+        cin >> choice;
+        while (choice <= 0 || choice > 7)
+        {
+            cout << "Invalid choice. Try again" << endl;
+            cout << endl << "Enter the number of the line you want to update: " << endl;
+            cin >> choice;
+        }
+        Update(tmp, choice);
+        cout << "The new course info: " << endl;
+        cout << "Course ID: " << id << endl;
+        cout << "Course's name: " << tmp->data.name << endl;
+        cout << "Teacher: " << tmp->data.teacher << endl;
+        cout << "Number of credits: " << tmp->data.credits << endl;
+        cout << "Maximum number of students: " << tmp->data.ms << endl;
+        cout << "Current number of students: " << tmp->data.cur << endl;
+        PrintSection(tmp->data.s[0], tmp->data.s[1]);
+        cout << "Enter 1 if you want to update another information, enter 0 if you want to stop: ";
+        cin >> temp;
+    } while (temp == 1);
+    //ofstream fout("data\\schoolyear\\" + sy.name + "\\" + sem.name + "\\" + id + "\\data.txt");
+    fout << tmp->data.name << ',' << tmp->data.teacher << ',' << tmp->data.credits << ',' << tmp->data.s[0] << ',' << tmp->data.s[1] << ',' << tmp->data.ms << ',' << tmp->data.cur;
+
+}
+
+
+
+void Update(list <course>* tmp, int choice)
+{
+    switch (choice)
+    {
+    case 1:
+    {
+        cout << "Enter the new course name: ";
+        cin.ignore();
+        getline(cin, tmp->data.name, '\n');
+        break;
+    }
+    case 2:
+    {
+        cout << "Enter the new teacher name: ";
+        cin.ignore();
+        getline(cin, tmp->data.teacher, '\n');
+        break;
+    }case 3:
+    {
+        cout << "Enter the new number of credits: ";
+        cin >> tmp->data.credits;
+        break;
+    }case 4:
+    {
+        cout << "Enter the new maximum number of students: ";
+        cin >> tmp->data.ms;
+        break;
+    }case 5:
+    {
+        cout << "Enter the new current number of student: ";
+        cin >> tmp->data.cur;
+        break;
+    }case 6:
+    {
+        cout << "Enter the new section: ";
+        cin >> tmp->data.s[0];
+        while (!CheckSection(tmp->data.s[0]) || tmp->data.s[0] == tmp->data.s[1])
+        {
+            cout << "Invalid section. Try again" << endl;
+            cout << "Enter the new section: ";
+            cin >> tmp->data.s[0];
+        }
+
+        break;
+    }case 7:
+    {
+        cout << "Enter the new section: ";
+        cin >> tmp->data.s[1];
+        while (!CheckSection(tmp->data.s[1]) || tmp->data.s[1] == tmp->data.s[0])
+        {
+            cout << "Invalid section. Try again" << endl;
+            cout << "Enter the new section: ";
+            cin >> tmp->data.s[1];
+        }
+
+        break;
+    }
+    };
+}
