@@ -8,7 +8,7 @@ using std::string;
 
 struct course
 {
-    int ID;
+    int ID = 0;
     string name;
     string teacher;
     int credits;
