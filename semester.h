@@ -20,12 +20,12 @@ struct semester
     void save2File(string dir);//schoolyear dir
     void setCur(const string& dir);
 };
-
 void SaveSemester(list<semester>*& se);
 void SemesterExecution(semester& se, AS log);
 int getnamese(AS log);
 void AddCourse2Semester(semester& sem);
 void ViewCourse(semester& sem);
-void FindCourse(schoolyear& sy, semester& sem, int& id);
-void UpdateCourse(schoolyear& sy, semester& sem);
+
+//void FindCourse(schoolyear& sy, semester& sem, int& id);
+//void UpdateCourse(schoolyear& sy, semester& sem);
 void Update(list <course>* tmp, int choice);

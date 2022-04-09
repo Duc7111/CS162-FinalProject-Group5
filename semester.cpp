@@ -271,6 +271,7 @@ void FindCourse(schoolyear& sy, semester& sem, int& id)
     cout << "Enter the ID of the course you want to update: ";
     cin >> temp;
     //ifstream fin("data\\schoolyear\\" + sy.name + "\\" + sem.name + "\\data.txt");
+    ifstream fin("abc.txt");
     id = 0;
     fin.ignore('\n');
     fin.ignore('\n');
@@ -280,7 +281,7 @@ void FindCourse(schoolyear& sy, semester& sem, int& id)
         if (fin.eof())
         {
             cout << "invalid ID. Try again: " << endl;
-            return FindCourse(sy, sem,id);
+            //return FindCourse(sy, sem,id);
         }
         else
         {
@@ -297,6 +298,7 @@ void UpdateCourse(schoolyear& sy, semester& sem)
     int id;
     FindCourse(sy, sem, id);
     //ifstream fin("data\\schoolyear\\" + sy.name + "\\" + sem.name + "\\" + id + "\\data.txt" , ios_base::in);
+    ifstream fin("abc.txt");
     list <course>* tmp = new list<course>;
     getline(fin, tmp->data.name, ',');
     getline(fin, tmp->data.teacher, ',');
@@ -350,6 +352,7 @@ void UpdateCourse(schoolyear& sy, semester& sem)
         cin >> temp;
     } while (temp == 1);
     //ofstream fout("data\\schoolyear\\" + sy.name + "\\" + sem.name + "\\" + id + "\\data.txt");
+    ofstream fout("aaa.txt");
     fout << tmp->data.name << ',' << tmp->data.teacher << ',' << tmp->data.credits << ',' << tmp->data.s[0] << ',' << tmp->data.s[1] << ',' << tmp->data.ms << ',' << tmp->data.cur;
 
 }
