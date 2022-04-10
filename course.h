@@ -30,6 +30,7 @@ struct CourseRegister
     int sdate[3];
     int edate[3];
 };
+
 void PreCourseRegisttration(CourseRegister& CR);
 */
 bool CheckSection(int section);  //check if the section of the course is valid

@@ -166,37 +166,48 @@ void AddCourse2Semester(semester& sem)
     {
         cout << "Enter the course ID: ";
         cin >> cur->data.ID;
-        cin.ignore();
-        cout << "Enter the course's name: ";
-        getline(cin, cur->data.name, '\n');
-        cout << "Enter the teacher's name: ";
-        getline(cin, cur->data.teacher,'\n');
-        cout << "Enter the number of credits: ";
-        cin >> cur->data.credits;
-        cout << "Enter the maximum number of student: ";
-        cin >> cur->data.ms;
-        cur->data.cur = 0;
-        cout << "Enter the first session that the course will be performed:" << endl;
-        cout << "(MON = 0, TUE = 1, ..., S1 = 1, S2 = 2 || Section = day*7 + S)" << endl;
-        cin >> cur->data.s[0];
-        while (!CheckSection(cur->data.s[0]))
+        if (cur->data.ID == 0) return;
+        do
         {
-            cout << "Invalid section. Try again" << endl;
+            cin.ignore();
+            cout << "Enter the course's name: ";
+            getline(cin, cur->data.name, '\n');
+            cout << "Enter the teacher's name: ";
+            getline(cin, cur->data.teacher, '\n');
+            cout << "Enter the number of credits: ";
+            cin >> cur->data.credits;
+            cout << "Enter the maximum number of student: ";
+            cin >> cur->data.ms;
+            cur->data.cur = 0;
             cout << "Enter the first session that the course will be performed:" << endl;
             cout << "(MON = 0, TUE = 1, ..., S1 = 1, S2 = 2 || Section = day*7 + S)" << endl;
             cin >> cur->data.s[0];
-        }
-        cout << "Enter the second session that the course will be performed:" << endl;
-        cout << "(MON = 0, TUE = 1, ..., S1 = 1, S2 = 2 || Section = day*7 + S)" << endl;
-        cin >> cur->data.s[1];
-        while (!CheckSection(cur->data.s[1]) || cur->data.s[1] == cur->data.s[0])
-        {
-            cout << "Invalid section. Try again" << endl;
+            while (!CheckSection(cur->data.s[0]))
+            {
+                cout << "Invalid section. Try again" << endl;
+                cout << "Enter the first session that the course will be performed:" << endl;
+                cout << "(MON = 0, TUE = 1, ..., S1 = 1, S2 = 2 || Section = day*7 + S)" << endl;
+                cin >> cur->data.s[0];
+            }
             cout << "Enter the second session that the course will be performed:" << endl;
             cout << "(MON = 0, TUE = 1, ..., S1 = 1, S2 = 2 || Section = day*7 + S)" << endl;
             cin >> cur->data.s[1];
-        }
-        PrintSection(cur->data.s[0], cur->data.s[1]);
+            while (!CheckSection(cur->data.s[1]) || cur->data.s[1] == cur->data.s[0])
+            {
+                cout << "Invalid section. Try again" << endl;
+                cout << "Enter the second session that the course will be performed:" << endl;
+                cout << "(MON = 0, TUE = 1, ..., S1 = 1, S2 = 2 || Section = day*7 + S)" << endl;
+                cin >> cur->data.s[1];
+            }
+            PrintSection(cur->data.s[0], cur->data.s[1]);
+            cur->next = new list <course>;
+            cur = cur->next;
+            cout << "Enter the course ID: ";
+            cin >> cur->data.ID;
+
+
+        } while (cur->data.ID != 0);
+        
     }
     else
     {
@@ -205,39 +216,52 @@ void AddCourse2Semester(semester& sem)
         cur = cur->next;
         cout << "Enter the course ID: ";
         cin >> cur->data.ID;
-        cin.ignore();
-        cout << "Enter the course's name: ";
-        getline(cin, cur->data.name, '\n');
-        cout << "Enter the teacher's name: ";
-        getline(cin, cur->data.teacher, '\n');
-        cout << "Enter the number of credits: ";
-        cin >> cur->data.credits;
-        cout << "Enter the maximum number of student: ";
-        cin >> cur->data.ms;
-        cur->data.cur = 0;
-        cout << "Enter the first session that the course will be performed:" << endl;
-        cout << "(MON = 0, TUE = 1, ..., S1 = 1, S2 = 2 || Section = day*7 + S)" << endl;
-        cin >> cur->data.s[0];
-        while (!CheckSection(cur->data.s[0]))
+        if (cur->data.ID == 0) return;
+        do
         {
-            cout << "Invalid section. Try again" << endl;
+            cin.ignore();
+            cout << "Enter the course's name: ";
+            getline(cin, cur->data.name, '\n');
+            cout << "Enter the teacher's name: ";
+            getline(cin, cur->data.teacher, '\n');
+            cout << "Enter the number of credits: ";
+            cin >> cur->data.credits;
+            cout << "Enter the maximum number of student: ";
+            cin >> cur->data.ms;
+            cur->data.cur = 0;
             cout << "Enter the first session that the course will be performed:" << endl;
             cout << "(MON = 0, TUE = 1, ..., S1 = 1, S2 = 2 || Section = day*7 + S)" << endl;
             cin >> cur->data.s[0];
-        }
-        cout << "Enter the second session that the course will be performed:" << endl;
-        cout << "(MON = 0, TUE = 1, ..., S1 = 1, S2 = 2 || Section = day*7 + S)" << endl;
-        cin >> cur->data.s[1];
-        while (!CheckSection(cur->data.s[1]) || cur->data.s[1] == cur->data.s[0])
-        {
-            cout << "Invalid section. Try again" << endl;
+            while (!CheckSection(cur->data.s[0]))
+            {
+                cout << "Invalid section. Try again" << endl;
+                cout << "Enter the first session that the course will be performed:" << endl;
+                cout << "(MON = 0, TUE = 1, ..., S1 = 1, S2 = 2 || Section = day*7 + S)" << endl;
+                cin >> cur->data.s[0];
+            }
             cout << "Enter the second session that the course will be performed:" << endl;
             cout << "(MON = 0, TUE = 1, ..., S1 = 1, S2 = 2 || Section = day*7 + S)" << endl;
             cin >> cur->data.s[1];
-        }
-        PrintSection(cur->data.s[0], cur->data.s[1]);
+            while (!CheckSection(cur->data.s[1]) || cur->data.s[1] == cur->data.s[0])
+            {
+                cout << "Invalid section. Try again" << endl;
+                cout << "Enter the second session that the course will be performed:" << endl;
+                cout << "(MON = 0, TUE = 1, ..., S1 = 1, S2 = 2 || Section = day*7 + S)" << endl;
+                cin >> cur->data.s[1];
+            }
+            PrintSection(cur->data.s[0], cur->data.s[1]);
+            cur->next = new list <course>;
+            cur = cur->next;
+            cout << "Enter the course ID: ";
+            cin >> cur->data.ID;
+        } while (cur->data.ID != 0);
+        
     }
-    cur->next = nullptr;
+    list <course> *tmp = sem.colist;
+    while (tmp->next->next != nullptr) tmp = tmp->next;
+    delete cur;
+    tmp->next = nullptr;
+
 }
 
 void ViewCourse(semester& sem)
@@ -262,26 +286,26 @@ void ViewCourse(semester& sem)
             
         }
     }
-    delete cur;
 }
 
 void FindCourse(schoolyear& sy, semester& sem, int& id)
 {
+    
     int temp;
     cout << "Enter the ID of the course you want to update: ";
     cin >> temp;
-    //ifstream fin("data\\schoolyear\\" + sy.name + "\\" + sem.name + "\\data.txt");
-    ifstream fin("abc.txt");
+    string dir = "data\\schoolyear\\";
+    ifstream fin( dir + sy.name + "\\" + sem.name + "\\data.txt");
     id = 0;
     fin.ignore('\n');
     fin.ignore('\n');
-    
+    fin.ignore();
     while (id != temp)
     {
         if (fin.eof())
         {
             cout << "invalid ID. Try again: " << endl;
-            //return FindCourse(sy, sem,id);
+            return FindCourse(sy, sem, id);
         }
         else
         {
@@ -291,14 +315,17 @@ void FindCourse(schoolyear& sy, semester& sem, int& id)
 
 
     fin.close();
+
+
 }
 
 void UpdateCourse(schoolyear& sy, semester& sem)
 {
     int id;
     FindCourse(sy, sem, id);
-    //ifstream fin("data\\schoolyear\\" + sy.name + "\\" + sem.name + "\\" + id + "\\data.txt" , ios_base::in);
-    ifstream fin("abc.txt");
+    string dir = "data\\schoolyear\\";
+    string str = to_string(id);
+    ifstream fin(dir + sy.name + "\\" + sem.name + "\\" + str + "\\data.txt" , ios_base::in);
     list <course>* tmp = new list<course>;
     getline(fin, tmp->data.name, ',');
     getline(fin, tmp->data.teacher, ',');
@@ -340,6 +367,7 @@ void UpdateCourse(schoolyear& sy, semester& sem)
             cin >> choice;
         }
         Update(tmp, choice);
+        system("cls");
         cout << "The new course info: " << endl;
         cout << "Course ID: " << id << endl;
         cout << "Course's name: " << tmp->data.name << endl;
@@ -351,10 +379,9 @@ void UpdateCourse(schoolyear& sy, semester& sem)
         cout << "Enter 1 if you want to update another information, enter 0 if you want to stop: ";
         cin >> temp;
     } while (temp == 1);
-    //ofstream fout("data\\schoolyear\\" + sy.name + "\\" + sem.name + "\\" + id + "\\data.txt");
-    ofstream fout("aaa.txt");
+    ofstream fout(dir + sy.name + "\\" + sem.name + "\\" + str + "\\data.txt");
     fout << tmp->data.name << ',' << tmp->data.teacher << ',' << tmp->data.credits << ',' << tmp->data.s[0] << ',' << tmp->data.s[1] << ',' << tmp->data.ms << ',' << tmp->data.cur;
-
+    fout.close();
 }
 
 

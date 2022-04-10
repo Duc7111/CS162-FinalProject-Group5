@@ -5,8 +5,9 @@
 #include "course.h"
 #include "data.h"
 
-using std::string;
 
+using std::string;
+struct schoolyear;
 struct semester
 {
     string name; //1(Fall), 2(Summer), 3(Autumn)
@@ -26,6 +27,6 @@ int getnamese(AS log);
 void AddCourse2Semester(semester& sem);
 void ViewCourse(semester& sem);
 
-//void FindCourse(schoolyear& sy, semester& sem, int& id);
-//void UpdateCourse(schoolyear& sy, semester& sem);
+void FindCourse(schoolyear& sy, semester& sem, int& id);
+void UpdateCourse(schoolyear& sy, semester& sem);
 void Update(list <course>* tmp, int choice);
