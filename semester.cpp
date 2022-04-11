@@ -184,9 +184,16 @@ void AddCourse2Semester(semester& sem, AS log)
             cout << "Enter the teacher's name: ";
             getline(cin, cur->data.teacher, '\n');
             cout << "Enter the number of credits: ";
-            cin >> cur->data.credits;
-            cout << "Enter the maximum number of student: ";
             string num;
+            getline(cin, num);
+            cur->data.credits = convert(num);
+            while (cur->data.credits < 0) {
+                cout << "Invalid Input. Try again." << endl;
+                cout << "Enter the course ID: ";
+                getline(cin, num);
+                cur->data.credits = convert(num);
+            }
+            cout << "Enter the maximum number of student: ";
             getline(cin, num);
             cur->data.ms = convert(num);
             while (cur->data.ms < 0) {
