@@ -19,12 +19,12 @@ using namespace std;
 
 int main() {
 	//YearList* t = nullptr;
+	semester* se;
 	Class cl;
 	cl.stlist = new list<student>;
 	dataBase();
 	schoolyear year;
 	schoolyear cur;
-	semester se;
 	int choice;
 	choice = StartScreen();
 	while (choice != 3) {
@@ -72,17 +72,36 @@ int main() {
 								CreateGeneralInfo(year, log);
 							}
 							else if (optmain==2){
+								getschoolyear(year, log);
 								int sechoice=SeScreen(log);
 								while (sechoice != 3) {
 									if (sechoice == 1) {
 										semesterscreen(log, year);
 									}
 									else {
-										getschoolyear(year, log);
 										int seme=getnamese(log);
 										if (seme == 1) {
-
+											se = &year.Fall;
 										}
+										else if(seme==2) {
+											se = &year.Summer;
+										}
+										else {
+											se = &year.Autumn;
+										}
+										se->colist = new list<course>;
+										int co1=SeScreen2(*se, log);
+										while (co1 != 3) {
+											if (co1 == 1) {
+												AddCourse2Semester(*se,log);
+											}
+											else {
+												UpdateCourse(year, *se);
+											}
+											co1 = SeScreen2(*se, log);
+										}
+										list<course>* del = se->colist;
+										dellist(del);
 									}
 									sechoice = SeScreen(log);
 								}
@@ -110,7 +129,8 @@ int main() {
 			choice = StartScreen();
 		}
 	}
-	delete cl.stlist;
+	dellist(cl.stlist);
+	
 	system("cls");
 	return 0;
 }
