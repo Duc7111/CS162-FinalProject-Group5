@@ -159,13 +159,22 @@ int getnamese(AS log) {
 }
 
 
-void AddCourse2Semester(semester& sem)
+void AddCourse2Semester(semester& sem, AS log)
 {
+    Inscreen(log);
     list<course>* cur = sem.colist;
     if (cur->data.ID == 0)
     {
         cout << "Enter the course ID: ";
-        cin >> cur->data.ID;
+        string id;
+        getline(cin, id);
+        cur->data.ID=convert(id);
+        while (cur->data.ID < 0) {
+            cout << "Invalid Input. Try again." << endl;
+            cout << "Enter the course ID: ";
+            getline(cin, id);
+            cur->data.ID = convert(id);
+        }
         if (cur->data.ID == 0) return;
         do
         {
@@ -202,8 +211,16 @@ void AddCourse2Semester(semester& sem)
             PrintSection(cur->data.s[0], cur->data.s[1]);
             cur->next = new list <course>;
             cur = cur->next;
+            Inscreen(log);
             cout << "Enter the course ID: ";
-            cin >> cur->data.ID;
+            getline(cin, id);
+            cur->data.ID = convert(id);
+            while (cur->data.ID < 0) {
+                cout << "Invalid Input. Try again." << endl;
+                cout << "Enter the course ID: ";
+                getline(cin, id);
+                cur->data.ID = convert(id);
+            }
 
 
         } while (cur->data.ID != 0);
@@ -211,11 +228,19 @@ void AddCourse2Semester(semester& sem)
     }
     else
     {
-        while (cur->next != nullptr) cur = cur->next;
-        cur->next = new list<course>;
-        cur = cur->next;
+        while (cur->data.ID != 0) cur = cur->next;
+        //cur->next = new list<course>;
+        //cur = cur->next;
         cout << "Enter the course ID: ";
-        cin >> cur->data.ID;
+        string id;
+        getline(cin, id);
+        cur->data.ID = convert(id);
+        while (cur->data.ID < 0) {
+            cout << "Invalid Input. Try again." << endl;
+            cout << "Enter the course ID: ";
+            getline(cin, id);
+            cur->data.ID = convert(id);
+        }
         if (cur->data.ID == 0) return;
         do
         {
@@ -257,10 +282,10 @@ void AddCourse2Semester(semester& sem)
         } while (cur->data.ID != 0);
         
     }
-    list <course> *tmp = sem.colist;
+    /*list <course> *tmp = sem.colist;
     while (tmp->next->next != nullptr) tmp = tmp->next;
     delete cur;
-    tmp->next = nullptr;
+    tmp->next = nullptr;*/
 
 }
 

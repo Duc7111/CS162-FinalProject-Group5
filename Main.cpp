@@ -89,7 +89,19 @@ int main() {
 										else {
 											se = &year.Autumn;
 										}
-										SeScreen2(*se, log);
+										se->colist = new list<course>;
+										int co1=SeScreen2(*se, log);
+										while (co1 != 3) {
+											if (co1 == 1) {
+												AddCourse2Semester(*se,log);
+											}
+											else {
+												UpdateCourse(year, *se);
+											}
+											co1 = SeScreen2(*se, log);
+										}
+										list<course>* del = se->colist;
+										dellist(del);
 									}
 									sechoice = SeScreen(log);
 								}
@@ -117,7 +129,8 @@ int main() {
 			choice = StartScreen();
 		}
 	}
-	delete cl.stlist;
+	dellist(cl.stlist);
+	
 	system("cls");
 	return 0;
 }

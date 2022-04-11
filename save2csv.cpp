@@ -45,7 +45,7 @@ void ExportScoreBoard2CSV(string dir, list<CourseSB>*& ScoreBoard)
 
 void Import_StudentInfo_ScoreBoard(list<CourseSB>*& ScoreBoard)
 {
-    list<CourseSB>* CurStudent = new CourseSB();
+    list<CourseSB>* CurStudent = new list<CourseSB>;
     if (ScoreBoard != NULL) CurStudent->data.StuNo = ScoreBoard->data.StuNo + 1;
 
     cout << "Please enter the student's ID: ";

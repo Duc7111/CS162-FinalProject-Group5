@@ -24,7 +24,7 @@ struct semester
 void SaveSemester(list<semester>*& se);
 void SemesterExecution(semester& se, AS log);
 int getnamese(AS log);
-void AddCourse2Semester(semester& sem);
+void AddCourse2Semester(semester& sem, AS log);
 void ViewCourse(semester& sem);
 
 void FindCourse(schoolyear& sy, semester& sem, int& id);

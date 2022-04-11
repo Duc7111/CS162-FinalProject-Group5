@@ -30,6 +30,6 @@ int studentscreen1(student& st);
 void viewstudent(student log);
 void changepassst(student& st);
 int SeScreen(AS log);
-void SeScreen2(semester& se, AS log);
+int SeScreen2(semester& se, AS log);
 void FindCourse(schoolyear& sy, semester& sem, int& id);
 void UpdateCourse(schoolyear& sy, semester& sem);
