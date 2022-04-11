@@ -10,6 +10,11 @@ course::course(int id)
 {
 
     ifstream fin("data\\course.txt");
+    if(!fin.is_open()) 
+    {
+        ms = 50; cur = 0; stlist = nullptr;
+        return;
+    }
     while(!fin.eof())
     {
         fin >> ID;
@@ -75,10 +80,10 @@ bool course::checkCourse(const string& dir)
 {
     ifstream fin(dir + "\\data.txt");
     if(fin.is_open()) return false;
+    fin.ignore(1000, '\n');
+    fin.ignore(1000, '\n');
     while(!fin.eof())
     {
-        fin.ignore(1000, '\n');
-        fin.ignore(1000, '\n');
         int temp;
         fin >> temp;
         if(ID == temp) return true;

@@ -20,7 +20,7 @@ void ExportScoreBoard2CSV(string dir, list<CourseSB>*& ScoreBoard)
     csv_out << "No" << "," << "ID" << "," << "Full Name" << ","
         << "Total Mark" << "," << "Final" << "," << "Midterm";
 
-    list<int>* tmp_ = tmp->data.OtherMark;
+    list<double>* tmp_ = tmp->data.OtherMark;
     for (int i = 0; i < tmp->data.OM_AmountCount(); i++)
         csv_out << "," << "Other Mark " << i + 1;
     csv_out << "\n";
@@ -28,7 +28,7 @@ void ExportScoreBoard2CSV(string dir, list<CourseSB>*& ScoreBoard)
     while (tmp != NULL)
     {
         csv_out << tmp->data.StuNo << "," << tmp->data.StuID << "," << tmp->data.FullName << ","
-            << tmp->data.mark[0] << "," << tmp->data.mark[1] << "," << tmp->data.mark[2];
+            << tmp->data.Total << "," << tmp->data.Final << "," << tmp->data.Midterm;
 
         for (int i = 0; i < tmp->data.OM_AmountCount(); i++)
         {
@@ -46,7 +46,6 @@ void ExportScoreBoard2CSV(string dir, list<CourseSB>*& ScoreBoard)
 void Import_StudentInfo_ScoreBoard(list<CourseSB>*& ScoreBoard)
 {
     list<CourseSB>* CurStudent = new list<CourseSB>;
-    if (ScoreBoard != NULL) CurStudent->data.StuNo = ScoreBoard->data.StuNo + 1;
 
     cout << "Please enter the student's ID: ";
     getline(cin, CurStudent->data.StuID);
@@ -57,14 +56,26 @@ void Import_StudentInfo_ScoreBoard(list<CourseSB>*& ScoreBoard)
     cout << endl;
 
     cout << "Please enter the student's midterm score: ";
-    cin >> CurStudent->data.mark[2];
+    cin >> CurStudent->data.Midterm;
     cout << endl;
 
     cout << "Please enter the student's final exam score: ";
-    cin >> CurStudent->data.mark[1];
+    cin >> CurStudent->data.Final;
     cout << endl;
 
     cout << "Please enter the student's total mark: ";
-    cin >> CurStudent->data.mark[0];
+    cin >> CurStudent->data.Total;
     cout << endl;
+    
+    if (ScoreBoard == NULL) 
+    {
+        CurStudent->data.StuNo = 1;
+        ScoreBoard = CurStudent;
+    } 
+    else 
+    {
+        CurStudent->data.StuNo = ScoreBoard->data.StuNo + 1;
+        CurStudent->next = ScoreBoard;
+        ScoreBoard = CurStudent;
+    }
 }

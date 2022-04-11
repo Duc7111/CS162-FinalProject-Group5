@@ -7,20 +7,21 @@
 #include <fstream>
 using namespace std;
 
-struct CourseSB 
-{
+struct CourseSB {
     int StuNo;
     string StuID;
     string FullName;
-    int mark[3]; //total, final, midterm mark
-    list<int>* OtherMark;
+    
+    double Midterm;
+    double Final;
+    double Total;
+    
+    list<double>* OtherMark;
 
-    int OM_AmountCount()
-    {
+    int OM_AmountCount() {
         int c = 0;
-        list<int>* tmp = OtherMark;
-        while (tmp != NULL)
-        {
+        list<double>* tmp = OtherMark;
+        while (tmp != NULL) {
             ++c;
             tmp = tmp->next;
         }
