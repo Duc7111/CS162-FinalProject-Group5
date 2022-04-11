@@ -10,6 +10,11 @@ course::course(int id)
 {
 
     ifstream fin("data\\course.txt");
+    if(!fin.is_open()) 
+    {
+        ms = 50; cur = 0; stlist = nullptr;
+        return;
+    }
     while(!fin.eof())
     {
         fin >> ID;

@@ -20,7 +20,7 @@ void ExportScoreBoard2CSV(string dir, list<CourseSB>*& ScoreBoard)
     csv_out << "No" << "," << "ID" << "," << "Full Name" << ","
         << "Total Mark" << "," << "Final" << "," << "Midterm";
 
-    list<int>* tmp_ = tmp->data.OtherMark;
+    list<double>* tmp_ = tmp->data.OtherMark;
     for (int i = 0; i < tmp->data.OM_AmountCount(); i++)
         csv_out << "," << "Other Mark " << i + 1;
     csv_out << "\n";
@@ -56,7 +56,7 @@ void Import_StudentInfo_ScoreBoard(list<CourseSB>*& ScoreBoard)
     cout << endl;
 
     cout << "Please enter the student's midterm score: ";
-    cin >> CurStudent->data.Midterm
+    cin >> CurStudent->data.Midterm;
     cout << endl;
 
     cout << "Please enter the student's final exam score: ";

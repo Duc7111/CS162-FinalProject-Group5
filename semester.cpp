@@ -14,7 +14,7 @@ using namespace std;
 
 semester::semester(): name(""), colist(nullptr){}
 
-semester::semester(const string& dir) : semester()
+semester::semester(const string& dir)
 {
     ifstream fin(dir + "\\data.txt");
     if(fin.is_open())
@@ -29,13 +29,23 @@ semester::semester(const string& dir) : semester()
         list<course>* temp = colist;
         while(!fin.eof())
         {
-            int ID;
-            fin >> ID; fin.ignore();
+            int ID = 0;
+            fin >> ID;
+            if(ID == 0) break; 
+            fin.ignore();
             temp->next = new list<course>;
             temp->next->data = course(ID);
             temp = temp->next;
         }
+        colist = colist->next;
+        delete temp;
     }
+    else
+    {
+        name = "";
+        colist = nullptr;
+    }
+    fin.close();
 }
 
 void semester::save2File(string dir)
