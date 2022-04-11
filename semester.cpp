@@ -171,17 +171,18 @@ int getnamese(AS log) {
 
 void AddCourse2Semester(semester& sem, AS log)
 {
+    string num;
     Inscreen(log);
     list<course>* cur = sem.colist;
     if (cur->data.ID == 0)
     {
-        cout << "Enter the course ID: ";
+        cout << "Enter the course ID (Input 0 to stop): ";
         string id;
         getline(cin, id);
         cur->data.ID=convert(id);
         while (cur->data.ID < 0) {
             cout << "Invalid Input. Try again." << endl;
-            cout << "Enter the course ID: ";
+            cout << "Enter the course ID (Input 0 to stop): ";
             getline(cin, id);
             cur->data.ID = convert(id);
         }
@@ -194,12 +195,12 @@ void AddCourse2Semester(semester& sem, AS log)
             cout << "Enter the teacher's name: ";
             getline(cin, cur->data.teacher, '\n');
             cout << "Enter the number of credits: ";
-            string num;
+           
             getline(cin, num);
             cur->data.credits = convert(num);
             while (cur->data.credits < 0) {
                 cout << "Invalid Input. Try again." << endl;
-                cout << "Enter the course ID: ";
+                cout << "Enter the number of credits: ";
                 getline(cin, num);
                 cur->data.credits = convert(num);
             }
@@ -208,7 +209,7 @@ void AddCourse2Semester(semester& sem, AS log)
             cur->data.ms = convert(num);
             while (cur->data.ms < 0) {
                 cout << "Invalid Input. Try again." << endl;
-                cout << "Enter the course ID: ";
+                cout << "Enter the maximum number of student: ";
                 getline(cin, num);
                 cur->data.ms = convert(num);
             }
@@ -239,11 +240,12 @@ void AddCourse2Semester(semester& sem, AS log)
             cur = cur->next;
             Inscreen(log);
             cout << "Enter the course ID: ";
+            cin.ignore(10,'\n');
             getline(cin, id);
             cur->data.ID = convert(id);
             while (cur->data.ID < 0) {
                 cout << "Invalid Input. Try again." << endl;
-                cout << "Enter the course ID: ";
+                cout << "Enter the course ID(Input 0 to stop): ";
                 getline(cin, id);
                 cur->data.ID = convert(id);
             }
@@ -276,9 +278,24 @@ void AddCourse2Semester(semester& sem, AS log)
             cout << "Enter the teacher's name: ";
             getline(cin, cur->data.teacher, '\n');
             cout << "Enter the number of credits: ";
-            cin >> cur->data.credits;
+
+            getline(cin, num);
+            cur->data.credits = convert(num);
+            while (cur->data.credits < 0) {
+                cout << "Invalid Input. Try again." << endl;
+                cout << "Enter the number of credits: ";
+                getline(cin, num);
+                cur->data.credits = convert(num);
+            }
             cout << "Enter the maximum number of student: ";
-            cin >> cur->data.ms;
+            getline(cin, num);
+            cur->data.ms = convert(num);
+            while (cur->data.ms < 0) {
+                cout << "Invalid Input. Try again." << endl;
+                cout << "Enter the maximum number of student: ";
+                getline(cin, num);
+                cur->data.ms = convert(num);
+            }
             cur->data.cur = 0;
             cout << "Enter the first session that the course will be performed:" << endl;
             cout << "(MON = 0, TUE = 1, ..., S1 = 1, S2 = 2 || Section = day*7 + S)" << endl;
@@ -303,7 +320,7 @@ void AddCourse2Semester(semester& sem, AS log)
             PrintSection(cur->data.s[0], cur->data.s[1]);
             cur->next = new list <course>;
             cur = cur->next;
-            cout << "Enter the course ID: ";
+            cout << "Enter the course ID(Input 0 to stop): ";
             cin >> cur->data.ID;
         } while (cur->data.ID != 0);
         

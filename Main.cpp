@@ -90,6 +90,7 @@ int main() {
 											se = &year.Autumn;
 										}
 										se->colist = new list<course>;
+										string save = "data\\schoolyear\\" + year.name;
 										int co1=SeScreen2(*se, log);
 										while (co1 != 3) {
 											if (co1 == 1) {
@@ -98,6 +99,7 @@ int main() {
 											else {
 												UpdateCourse(year, *se);
 											}
+											se->save2File(save);
 											co1 = SeScreen2(*se, log);
 										}
 										list<course>* del = se->colist;

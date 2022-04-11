@@ -266,7 +266,7 @@ void PrintSection(int section1, int section2)
         break;
     }
     }
-    
+    system("pause");
 }
 
 void PrintCourse(list<course>* cur)
