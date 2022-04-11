@@ -178,7 +178,7 @@ void AddCourse2Semester(semester& sem, AS log)
         if (cur->data.ID == 0) return;
         do
         {
-            cin.ignore();
+            //cin.ignore();
             cout << "Enter the course's name: ";
             getline(cin, cur->data.name, '\n');
             cout << "Enter the teacher's name: ";
@@ -186,7 +186,16 @@ void AddCourse2Semester(semester& sem, AS log)
             cout << "Enter the number of credits: ";
             cin >> cur->data.credits;
             cout << "Enter the maximum number of student: ";
-            cin >> cur->data.ms;
+            string num;
+            getline(cin, num);
+            cur->data.ms = convert(num);
+            while (cur->data.ms < 0) {
+                cout << "Invalid Input. Try again." << endl;
+                cout << "Enter the course ID: ";
+                getline(cin, num);
+                cur->data.ms = convert(num);
+            }
+            //cin >> cur->data.ms;
             cur->data.cur = 0;
             cout << "Enter the first session that the course will be performed:" << endl;
             cout << "(MON = 0, TUE = 1, ..., S1 = 1, S2 = 2 || Section = day*7 + S)" << endl;
