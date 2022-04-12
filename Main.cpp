@@ -82,12 +82,15 @@ int main() {
 										int seme=getnamese(log);
 										if (seme == 1) {
 											se = &year.Fall;
+											se->name = "Fall";
 										}
 										else if(seme==2) {
 											se = &year.Summer;
+											se->name = "Summer";
 										}
 										else {
 											se = &year.Autumn;
+											se->name = "Autumn";
 										}
 										se->colist = new list<course>;
 										string save = "data\\schoolyear\\" + year.name;
