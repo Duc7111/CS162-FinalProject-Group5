@@ -256,9 +256,9 @@ void AddCourse2Semester(semester& sem, AS log)
     }
     else
     {
-        while (cur->data.ID != 0) cur = cur->next;
-        //cur->next = new list<course>;
-        //cur = cur->next;
+        while (cur->next != nullptr) cur = cur->next;
+        cur->next = new list<course>;
+        cur = cur->next;
         cout << "Enter the course ID: ";
         string id;
         getline(cin, id);
@@ -325,11 +325,10 @@ void AddCourse2Semester(semester& sem, AS log)
         } while (cur->data.ID != 0);
         
     }
-    /*list <course> *tmp = sem.colist;
+    list <course> *tmp = sem.colist;
     while (tmp->next->next != nullptr) tmp = tmp->next;
     delete cur;
-    tmp->next = nullptr;*/
-
+    tmp->next = nullptr;
 }
 
 void ViewCourse(semester& sem)
@@ -363,11 +362,10 @@ void FindCourse(schoolyear& sy, semester& sem, int& id)
     cout << "Enter the ID of the course you want to update: ";
     cin >> temp;
     string dir = "data\\schoolyear\\";
-    ifstream fin( dir + sy.name + "\\" + sem.name + "\\data.txt");
+    ifstream fin(dir + sy.name + "\\" + sem.name + "\\data.txt");
     id = 0;
-    fin.ignore('\n');
-    fin.ignore('\n');
-    fin.ignore();
+    fin.ignore(100,'\n');
+    fin.ignore(100,'\n');
     while (id != temp)
     {
         if (fin.eof())
