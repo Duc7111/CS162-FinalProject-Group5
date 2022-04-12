@@ -331,8 +331,9 @@ void AddCourse2Semester(semester& sem, AS log)
     tmp->next = nullptr;
 }
 
-void ViewCourse(semester& sem)
+void ViewCourse(schoolyear & sy, semester& sem)
 {
+    LoadCourses(sy, sem);
     list<course>* cur = sem.colist;
 
     if (cur->data.ID == 0)
@@ -350,7 +351,7 @@ void ViewCourse(semester& sem)
             cur = cur->next;
             PrintCourse(cur);
             cout << endl;
-            
+
         }
     }
 }
@@ -510,4 +511,43 @@ void Update(list <course>* tmp, int choice)
         break;
     }
     };
+}
+
+
+
+void LoadCourses(schoolyear& sy, semester& sem)
+{
+    list<course>* cur = sem.colist;
+    int id = 0;
+    string dir = "data\\schoolyear\\";
+    ifstream fin(dir + sy.name + "\\" + sem.name + "\\data.txt");
+    fin.ignore(100, '\n');
+    fin.ignore(100, '\n');
+    while (!fin.eof())
+    {
+        fin >> id;
+        cur->data.ID = id;
+        string str = to_string(id);
+        ifstream fin1(dir + sy.name + "\\" + sem.name + "\\" + str + "\\data.txt", ios_base::in);
+        getline(fin1, cur->data.name, ',');
+        getline(fin1, cur->data.teacher, ',');
+        fin1 >> cur->data.credits; fin1.ignore();
+        fin1 >> cur->data.s[0]; fin1.ignore();
+        fin1 >> cur->data.s[1]; fin1.ignore();
+        fin1 >> cur->data.ms; fin1.ignore();
+        fin1 >> cur->data.cur; fin1.ignore();
+        fin1.close();
+        cur->next = new list<course>;
+        cur = cur->next;
+    }
+    list <course>* tmp = sem.colist;
+    while (tmp->next->next != nullptr) tmp = tmp->next;
+    delete cur;
+    tmp->next = nullptr;
+    list <course>* tmp2 = sem.colist;
+    while (tmp2->next->next != nullptr) tmp2 = tmp2->next;
+    delete tmp;
+    tmp2->next = nullptr;
+    fin.close();
+
 }
