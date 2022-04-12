@@ -34,8 +34,9 @@ struct student
 
     bool createAcc();
     void save2File();
-    void change();
+    void change(); // change in file
     bool addCourse(const course& co);
+    bool removeCourse(int ID);
 };
 
 bool login(student& s, int ID, string pass);

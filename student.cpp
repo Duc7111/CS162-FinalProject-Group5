@@ -140,6 +140,28 @@ bool student::addCourse(const course& co)
     return true;
 }
 
+bool student::removeCourse(int ID)
+{
+    list<course>* temp = colist;
+    if(colist && colist->data.ID == ID) 
+    {
+        colist = colist->next;
+        delete temp;
+        return true;
+    }
+    while(temp->next)
+    {
+        if(temp->next->data.ID == ID)
+        {
+            list<course>* t = temp->next;
+            temp->next = t->next;
+            delete t;
+            return true;
+        }
+    }
+    return false;
+}
+
 bool login(student& s, int ID, string pass)
 {
     ifstream fin("data\\student.txt", ios_base::in);
