@@ -222,17 +222,17 @@ void AddCourse2Semester(semester& sem, AS log)
             {
                 cout << "Invalid section. Try again" << endl;
                 cout << "Enter the first session that the course will be performed:" << endl;
-                cout << "(MON = 0, TUE = 1, ..., S1 = 1, S2 = 2 || Section = day*7 + S)" << endl;
+                cout << "(MON = 0, TUE = 1, ..., SUN = 6; S1 = 1, S2 = 2, S3 = 3 , S4 = 4 || Section = day*7 + S)" << endl;
                 cin >> cur->data.s[0];
             }
             cout << "Enter the second session that the course will be performed:" << endl;
-            cout << "(MON = 0, TUE = 1, ..., S1 = 1, S2 = 2 || Section = day*7 + S)" << endl;
+            cout << "(MON = 0, TUE = 1, ..., SUN = 6; S1 = 1, S2 = 2, S3 = 3 , S4 = 4 || Section = day*7 + S)" << endl;
             cin >> cur->data.s[1];
             while (!CheckSection(cur->data.s[1]) || cur->data.s[1] == cur->data.s[0])
             {
                 cout << "Invalid section. Try again" << endl;
                 cout << "Enter the second session that the course will be performed:" << endl;
-                cout << "(MON = 0, TUE = 1, ..., S1 = 1, S2 = 2 || Section = day*7 + S)" << endl;
+                cout << "(MON = 0, TUE = 1, ..., SUN = 6; S1 = 1, S2 = 2, S3 = 3 , S4 = 4 || Section = day*7 + S)" << endl;
                 cin >> cur->data.s[1];
             }
             PrintSection(cur->data.s[0], cur->data.s[1]);
@@ -298,23 +298,23 @@ void AddCourse2Semester(semester& sem, AS log)
             }
             cur->data.cur = 0;
             cout << "Enter the first session that the course will be performed:" << endl;
-            cout << "(MON = 0, TUE = 1, ..., S1 = 1, S2 = 2 || Section = day*7 + S)" << endl;
+            cout << "(MON = 0, TUE = 1, ..., SUN = 6; S1 = 1, S2 = 2, S3 = 3 , S4 = 4 || Section = day*7 + S)" << endl;
             cin >> cur->data.s[0];
             while (!CheckSection(cur->data.s[0]))
             {
                 cout << "Invalid section. Try again" << endl;
                 cout << "Enter the first session that the course will be performed:" << endl;
-                cout << "(MON = 0, TUE = 1, ..., S1 = 1, S2 = 2 || Section = day*7 + S)" << endl;
+                cout << "(MON = 0, TUE = 1, ..., SUN = 6; S1 = 1, S2 = 2, S3 = 3 , S4 = 4 || Section = day*7 + S)" << endl;
                 cin >> cur->data.s[0];
             }
             cout << "Enter the second session that the course will be performed:" << endl;
-            cout << "(MON = 0, TUE = 1, ..., S1 = 1, S2 = 2 || Section = day*7 + S)" << endl;
+            cout << "(MON = 0, TUE = 1, ..., SUN = 6; S1 = 1, S2 = 2, S3 = 3 , S4 = 4 || Section = day*7 + S)" << endl;
             cin >> cur->data.s[1];
             while (!CheckSection(cur->data.s[1]) || cur->data.s[1] == cur->data.s[0])
             {
                 cout << "Invalid section. Try again" << endl;
                 cout << "Enter the second session that the course will be performed:" << endl;
-                cout << "(MON = 0, TUE = 1, ..., S1 = 1, S2 = 2 || Section = day*7 + S)" << endl;
+                cout << "(MON = 0, TUE = 1, ..., SUN = 6; S1 = 1, S2 = 2, S3 = 3 , S4 = 4 || Section = day*7 + S)" << endl;
                 cin >> cur->data.s[1];
             }
             PrintSection(cur->data.s[0], cur->data.s[1]);
@@ -331,8 +331,9 @@ void AddCourse2Semester(semester& sem, AS log)
     tmp->next = nullptr;
 }
 
-void ViewCourse(semester& sem)
+void ViewCourse(schoolyear & sy, semester& sem)
 {
+    LoadCourses(sy, sem);
     list<course>* cur = sem.colist;
 
     if (cur->data.ID == 0)
@@ -350,7 +351,7 @@ void ViewCourse(semester& sem)
             cur = cur->next;
             PrintCourse(cur);
             cout << endl;
-            
+
         }
     }
 }
@@ -358,9 +359,12 @@ void ViewCourse(semester& sem)
 void FindCourse(schoolyear& sy, semester& sem, int& id)
 {
     
+    string str;
     int temp;
+
     cout << "Enter the ID of the course you want to update: ";
-    cin >> temp;
+    getline(cin, str);
+    temp = convert(str);
     string dir = "data\\schoolyear\\";
     ifstream fin(dir + sy.name + "\\" + sem.name + "\\data.txt");
     id = 0;
@@ -401,13 +405,9 @@ void UpdateCourse(schoolyear& sy, semester& sem)
     fin >> tmp->data.ms; fin.ignore();
     fin >> tmp->data.cur; fin.ignore();
     fin.close();
-   
-    int temp = 1;
-    do
-    {
-        system("cls");
-        cout << "Course ID: " << id << endl;
-        cout << "Course's name: " << tmp->data.name << endl;
+    system("cls");
+    cout << "Course ID: " << id << endl;
+    cout << "Course's name: " << tmp->data.name << endl;
         cout << "Teacher: " << tmp->data.teacher << endl;
         cout << "Number of credits: " << tmp->data.credits << endl;
         cout << "Maximum number of students: " << tmp->data.ms << endl;
@@ -442,9 +442,8 @@ void UpdateCourse(schoolyear& sy, semester& sem)
         cout << "Maximum number of students: " << tmp->data.ms << endl;
         cout << "Current number of students: " << tmp->data.cur << endl;
         PrintSection(tmp->data.s[0], tmp->data.s[1]);
-        cout << "Enter 1 if you want to update another information, enter 0 if you want to stop: ";
-        cin >> temp;
-    } while (temp == 1);
+        system("pause");
+        //cout << "Enter 1 if you want to update another information, enter 0 if you want to stop: ";
     ofstream fout(dir + sy.name + "\\" + sem.name + "\\" + str + "\\data.txt");
     fout << tmp->data.name << ',' << tmp->data.teacher << ',' << tmp->data.credits << ',' << tmp->data.s[0] << ',' << tmp->data.s[1] << ',' << tmp->data.ms << ',' << tmp->data.cur;
     fout.close();
@@ -510,4 +509,77 @@ void Update(list <course>* tmp, int choice)
         break;
     }
     };
+}
+
+
+void FindCoursetodo(schoolyear& sy, semester& sem, int& id)
+{
+
+    string str;
+    int temp;
+
+    cout << "Enter the ID: ";
+    getline(cin, str);
+    temp = convert(str);
+    string dir = "data\\schoolyear\\";
+    ifstream fin(dir + sy.name + "\\" + sem.name + "\\data.txt");
+    id = 0;
+    fin.ignore(100, '\n');
+    fin.ignore(100, '\n');
+    while (id != temp)
+    {
+        if (fin.eof())
+        {
+            cout << "invalid ID. Try again: " << endl;
+            return FindCourse(sy, sem, id);
+        }
+        else
+        {
+            fin >> id;
+        }
+    }
+
+
+    fin.close();
+
+
+}
+
+
+
+void LoadCourses(schoolyear& sy, semester& sem)
+{
+    list<course>* cur = sem.colist;
+    int id = 0;
+    string dir = "data\\schoolyear\\";
+    ifstream fin(dir + sy.name + "\\" + sem.name + "\\data.txt");
+    fin.ignore(100, '\n');
+    fin.ignore(100, '\n');
+    while (!fin.eof())
+    {
+        fin >> id;
+        cur->data.ID = id;
+        string str = to_string(id);
+        ifstream fin1(dir + sy.name + "\\" + sem.name + "\\" + str + "\\data.txt", ios_base::in);
+        getline(fin1, cur->data.name, ',');
+        getline(fin1, cur->data.teacher, ',');
+        fin1 >> cur->data.credits; fin1.ignore();
+        fin1 >> cur->data.s[0]; fin1.ignore();
+        fin1 >> cur->data.s[1]; fin1.ignore();
+        fin1 >> cur->data.ms; fin1.ignore();
+        fin1 >> cur->data.cur; fin1.ignore();
+        fin1.close();
+        cur->next = new list<course>;
+        cur = cur->next;
+    }
+    list <course>* tmp = sem.colist;
+    while (tmp->next->next != nullptr) tmp = tmp->next;
+    delete cur;
+    tmp->next = nullptr;
+    list <course>* tmp2 = sem.colist;
+    while (tmp2->next->next != nullptr) tmp2 = tmp2->next;
+    delete tmp;
+    tmp2->next = nullptr;
+    fin.close();
+
 }

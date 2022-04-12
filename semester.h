@@ -25,7 +25,12 @@ void SaveSemester(list<semester>*& se);
 void SemesterExecution(semester& se, AS log);
 int getnamese(AS log);
 void AddCourse2Semester(semester& sem, AS log);
+
 void ViewCourse(semester& sem);
+void FindCoursetodo(schoolyear& sy, semester& sem, int& id);
+
+void ViewCourse(schoolyear& sy, semester& sem);
+void LoadCourses(schoolyear& sy, semester& sem);
 
 void FindCourse(schoolyear& sy, semester& sem, int& id);
 void UpdateCourse(schoolyear& sy, semester& sem);
