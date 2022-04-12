@@ -37,15 +37,14 @@ int main() {
 				while (opst != 4) {
 					if (opst == 1) {
 						viewstudent(st);
-						opst = studentscreen1(st);
 					}
 					else if (opst == 2) {
 						changepassst(st);
-						opst = studentscreen1(st);
 					}
 					else {
 
 					}
+					opst = studentscreen1(st);
 				}
 				break;
 			}
