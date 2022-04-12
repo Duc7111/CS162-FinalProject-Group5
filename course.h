@@ -6,6 +6,9 @@
 
 using std::string;
 
+const string day[6] = {"MON", "TUE", "WED", "THU", "FRI", "SAT"};
+const string t[4] = {"7:30", "9:30", "13:30", "15:30"};
+
 struct course
 {
     int ID = 0;

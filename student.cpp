@@ -1,5 +1,7 @@
 #include <fstream>
 #include <string>
+#include <iomanip>
+
 #include "student.h"
 #include "const.h"
 
@@ -160,6 +162,17 @@ bool student::removeCourse(int ID)
         }
     }
     return false;
+}
+
+void student::viewCourse()
+{
+    list<course>* temp = colist;
+    cout << setw(7) << "ID" << setw(20) << "Name" << setw(12) << "Session 1" << setw(12) << "Session 2" << endl;
+    while(temp)
+    {
+        cout << setw(7) << temp->data.ID << setw(20) << temp->data.name << setw(6) << day[temp->data.s[0]/7] << ' ' << t[temp->data.s[0]%7] << setw(6) << day[temp->data.s[1]/7] << ' ' << t[temp->data.s[1]%7];
+        temp = temp->next;
+    }
 }
 
 bool login(student& s, int ID, string pass)
