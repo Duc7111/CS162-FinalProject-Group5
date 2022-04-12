@@ -512,6 +512,7 @@ void Update(list <course>* tmp, int choice)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 void FindCoursetodo(schoolyear& sy, semester& sem, int& id)
 {
 
@@ -545,6 +546,8 @@ void FindCoursetodo(schoolyear& sy, semester& sem, int& id)
 
 }
 =======
+=======
+>>>>>>> 723373618a89df51754a935902115a3e8939fbf3
 
 
 void LoadCourses(schoolyear& sy, semester& sem)
@@ -583,4 +586,7 @@ void LoadCourses(schoolyear& sy, semester& sem)
     fin.close();
 
 }
+<<<<<<< HEAD
+>>>>>>> 723373618a89df51754a935902115a3e8939fbf3
+=======
 >>>>>>> 723373618a89df51754a935902115a3e8939fbf3
