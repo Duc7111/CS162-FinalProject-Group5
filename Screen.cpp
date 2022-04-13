@@ -577,3 +577,19 @@ int SeScreen2(semester& se, AS log) {
 	}
 	return in;
 }
+
+int getnamesest(student st) {
+	Inscreenst(st);
+	cout << "Please enter which semester you want to execute:" << endl;
+	cout << "1. Fall           2. Summer           3. Autumn" << endl;
+	cout << "Your choice: ";
+	string choice;
+	//cin.ignore(10, '\n');
+	getline(cin, choice);
+	while (choice != "1" && choice != "2" && choice != "3") {
+		cout << "Invalid value. Try again." << endl << "Your choice: ";
+		getline(cin, choice);
+	}
+	int cse = convert(choice);
+	return cse;
+}

@@ -583,3 +583,4 @@ void LoadCourses(schoolyear& sy, semester& sem)
     fin.close();
 
 }
+
