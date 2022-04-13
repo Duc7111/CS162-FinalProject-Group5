@@ -77,7 +77,7 @@ int main() {
 									if (sechoice == 1) {
 										semesterscreen(log, year);
 									}
-									else {
+									else if (sechoice==2) {
 										int seme=getnamese(log);
 										if (seme == 1) {
 											se = &year.Fall;
@@ -94,12 +94,16 @@ int main() {
 										se->colist = new list<course>;
 										string save = "data\\schoolyear\\" + year.name;
 										int co1=SeScreen2(*se, log);
-										while (co1 != 3) {
+										while (co1 != 4) {
 											if (co1 == 1) {
 												AddCourse2Semester(*se,log);
 											}
-											else {
+											else if (co1 ==2) {
 												UpdateCourse(year, *se);
+											}
+											else {
+												Inscreen(log);
+												ViewCourse(year,*se);
 											}
 											se->save2File(save);
 											co1 = SeScreen2(*se, log);

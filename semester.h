@@ -26,7 +26,6 @@ void SemesterExecution(semester& se, AS log);
 int getnamese(AS log);
 void AddCourse2Semester(semester& sem, AS log);
 
-void ViewCourse(semester& sem);
 void FindCoursetodo(schoolyear& sy, semester& sem, int& id);
 
 void ViewCourse(schoolyear& sy, semester& sem);
