@@ -9,23 +9,23 @@ course::course(): ms(50), cur(0) ,stlist(nullptr){};
 course::course(int id)
 {
 
-    ifstream fin("data\\course.txt");
+    ifstream fin("data\\data.txt");
     if(!fin.is_open()) 
     {
         ms = 50; cur = 0; stlist = nullptr;
         return;
     }
-    while(!fin.eof())
-    {
-        fin >> ID;
-        if(ID == id) break;
-        else fin.ignore(1000, '\n');
-    }
-    fin.ignore();
     string dir;
     getline(fin, dir);
     fin.close();
+    dir += "\\" + to_string(id);
     fin.open(dir);
+    if(!fin.is_open())
+    {
+        ms = 50; cur = 0; stlist = nullptr;
+        return;
+    }
+    ID = id;
     getline(fin, name, ',');
     getline(fin, teacher, ',');
     fin >> credits; fin.ignore();

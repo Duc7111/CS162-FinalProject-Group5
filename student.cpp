@@ -41,9 +41,12 @@ student::student(int id)
                     while(fin.get() != '\n')
                     {
                         ++conum;
+                        int ID;
+                        fin >> ID;
                         temp->next = new list<course>;
-                        temp = temp->next;
-                        fin >> temp->data.ID;
+                        temp->data = course(ID);
+                        if(temp->data.ID == 0) delete temp->next;
+                        else temp = temp->next;
                     }
                 }
             }
