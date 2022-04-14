@@ -91,6 +91,18 @@ bool course::checkCourse(const string& dir)
     }
     return false;
 }
+
+bool course::checkStudent(int id)
+{
+    list<int[5]>* temp = stlist;
+    while(temp)
+    {
+        if(temp->data[0] == id) return true;
+        temp = temp->next;
+    }
+    return false;
+}
+
 /*
 void PreCourseRegisttration(CourseRegister& CR)
 {

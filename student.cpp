@@ -45,7 +45,11 @@ student::student(int id)
                         fin >> ID;
                         temp->next = new list<course>;
                         temp->data = course(ID);
-                        if(temp->data.ID == 0) delete temp->next;
+                        if(temp->data.ID == 0 || !temp->data.checkStudent(ID)) 
+                        {
+                            delete temp->next;
+                            temp->next = nullptr;
+                        }
                         else temp = temp->next;
                     }
                 }
