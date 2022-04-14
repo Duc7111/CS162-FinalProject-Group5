@@ -31,11 +31,11 @@ course::course(int id)
     fin >> credits; fin.ignore();
     fin >> ms; fin.ignore();
     fin >> cur; fin.ignore();
-    stlist = new list<float[5]>;
-    list<float[5]>* temp = stlist;
+    stlist = new list<int[5]>;
+    list<int[5]>* temp = stlist;
     for(int i = 0; i < cur; ++i)
     {
-        temp->next = new list<float[5]>;
+        temp->next = new list<int[5]>;
         temp = temp->next;
         fin >> temp->data[0]; fin.ignore();
         fin >> temp->data[1]; fin.ignore();
@@ -67,7 +67,7 @@ void course::save2File(string dir)
     _mkdir(d);
     ofstream fout(dir + "\\data.txt", ios_base::trunc);
     fout << name << ',' << teacher << ',' << credits << ',' << s[0] << ',' << s[1] << ',' << ms << ',' << cur;
-    list<float[5]>* temp = stlist;
+    list<int[5]>* temp = stlist;
     while(temp)
     {
         fout << temp->data[0] << ',' << temp->data[1] << ',' << temp->data[2] << ',' << temp->data[3] << temp->data[4] << endl;
