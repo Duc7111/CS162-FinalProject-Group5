@@ -26,4 +26,3 @@ void CreateGeneralInfo(schoolyear& year, AS log);
 bool checkSchoolYear(schoolyear& sy);
 bool checkyear(string year);
 void getschoolyear(schoolyear& year, AS log);
-void getschoolyearst(schoolyear& year, student st)

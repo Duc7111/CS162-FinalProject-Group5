@@ -34,13 +34,15 @@ int main() {
 				student st;
 				loginSt(st);
 				int opst = studentscreen1(st);
-				while (opst != 4) {
+				while (opst != 5) {
 					if (opst == 1) {
 						viewstudent(st);
 					}
 					else if (opst == 2) {
 						changepassst(st);
 					}
+					else if (opst == 3) {
+						 }
 					else {
 						getschoolyearst(year,st);
 						int seme = getnamesest(st);
@@ -57,6 +59,19 @@ int main() {
 							se->name = "Autumn";
 						}
 						se->colist = new list<course>;
+						int co1 = SeScreen2st(*se, st);
+						while (co1 != 4) {
+							if (co1 == 1) {
+
+							}
+							else if (co1 == 2) {
+								ViewCourse(year, *se);
+							}
+							else {
+
+							}
+							co1 = SeScreen2st(*se,st);
+						}
 					}
 					opst = studentscreen1(st);
 				}
