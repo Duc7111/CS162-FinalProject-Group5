@@ -62,7 +62,21 @@ int main() {
 						int co1 = SeScreen2st(*se, st);
 						while (co1 != 4) {
 							if (co1 == 1) {
-
+								ViewCourse(year, *se);
+								int id;
+								FindCourse(year, *se, id);
+								string dir = "data\\schoolyear\\";
+								string str = to_string(id);
+								ifstream fin(dir + year.name + "\\" + se->name + "\\" + str + "\\data.txt", ios_base::in);
+								list <course>* tmp = new list<course>;
+								getline(fin, tmp->data.name, ',');
+								getline(fin, tmp->data.teacher, ',');
+								fin >> tmp->data.credits; fin.ignore();
+								fin >> tmp->data.s[0]; fin.ignore();
+								fin >> tmp->data.s[1]; fin.ignore();
+								fin >> tmp->data.ms; fin.ignore();
+								fin >> tmp->data.cur; fin.ignore();
+								fin.close();
 							}
 							else if (co1 == 2) {
 								ViewCourse(year, *se);
