@@ -112,17 +112,17 @@ void student::change()
             getline(fin, temp);
             fout << temp;
         }
-        while(!fin.eof())
-        {
-            getline(fin, temp);
-            fout << temp;
-        }
-        fin.close();
-        fout.close();
-        const char* d = ("data\\class\\" + clname + ".txt").c_str();
-        remove(d);
-        rename("temp", d);
     }
+    while(!fin.eof())
+    {
+        getline(fin, temp);
+        fout << temp;
+    }
+    fin.close();
+    fout.close();
+    const char* d = ("data\\class\\" + clname + ".txt").c_str();
+    remove(d);
+    rename("temp", d);
 }
 
 bool student::addCourse(const course& co)
