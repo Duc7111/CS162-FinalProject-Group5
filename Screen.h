@@ -34,3 +34,5 @@ int SeScreen2(semester& se, AS log);
 void FindCourse(schoolyear& sy, semester& sem, int& id);
 void UpdateCourse(schoolyear& sy, semester& sem);
 int getnamesest(student st);
+int SeScreen2st(semester& se, student st);
+void getschoolyearst(schoolyear& year, student st);

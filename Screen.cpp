@@ -479,14 +479,15 @@ int studentscreen1(student& st) {
 	cout << "Option:" << endl;
 	cout << "1.View your profile." << endl;
 	cout << "2.Change password." << endl;
-	cout << "3.Go to main section." << endl;
-	cout << "4.Log out of system." << endl;
+	cout << "3.View Student in your class." << endl;
+	cout << "4.Go to main section." << endl;
+	cout << "5.Log out of system." << endl;
 	cout << "Your option: ";
 	//cin.ignore(100, '\n');
 	string opin;
 	getline(cin, opin);
 	int in = convert(opin);
-	while (in < 0 || in >= 5) {
+	while (in < 0 || in >= 6) {
 		cout << "Invalid option. Try again." << endl;
 		cout << "Your option: ";
 		getline(cin, opin);
@@ -592,4 +593,24 @@ int getnamesest(student st) {
 	}
 	int cse = convert(choice);
 	return cse;
+}
+
+int SeScreen2st(semester& se, student st) {
+	Inscreenst(st);
+	cout << "Semester: " << se.name << endl;
+	cout << "1. Register course in this semester." << endl;	
+	cout << "2. View all course on this semester." << endl;
+	cout << "3. Go to a course you register." << endl;
+	cout << "4. Go back to last section.\n";
+	cout << "Option: ";
+	string opin;
+	getline(cin, opin);
+	int in = convert(opin);
+	while (in < 0 || in >= 5) {
+		cout << "Invalid option. Try again." << endl;
+		cout << "Your option: ";
+		getline(cin, opin);
+		in = convert(opin);
+	}
+	return in;
 }
