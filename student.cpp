@@ -132,6 +132,7 @@ void student::change()
     }
     fin.close();
     fout.close();
+
     const char* d = ("data\\class\\" + clname + ".txt").c_str();
     remove(d);
     rename("temp.txt", d);

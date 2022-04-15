@@ -79,7 +79,15 @@ int main() {
 								fin.close();
 								student st1(st.ID);
 								st=st1;
-								st.addCourse(tmp->data);
+								
+								if (st.addCourse(tmp->data) == true) {
+									cout << "Register this course successfully!!\n";
+									system("pause");
+								}
+								else {
+									cout << "Register this course fail!!\n";
+									system("pause");
+								}
 								st.change();
 								dellist(tmp);
 							}
