@@ -356,6 +356,29 @@ void ViewCourse(schoolyear & sy, semester& sem)
     }
 }
 
+void ViewCoursese(semester& sem) {// Semester Existed
+    list<course>* cur = sem.colist;
+
+    if (cur->data.ID == 0)
+    {
+        cout << "There are no courses" << endl;
+        return;
+    }
+    else
+    {
+        cout << "Courses list:" << endl;
+        PrintCourse(cur);
+        cout << endl;
+        while (cur->next != nullptr)
+        {
+            cur = cur->next;
+            PrintCourse(cur);
+            cout << endl;
+
+        }
+    }
+}
+
 void FindCourse(schoolyear& sy, semester& sem, int& id)
 {
     
@@ -387,6 +410,26 @@ void FindCourse(schoolyear& sy, semester& sem, int& id)
     fin.close();
 
 
+}
+
+bool FindCoursest(semester& sem,int & id)
+{
+    string str;
+    int temp;
+    cout << "Enter the ID of the course you want to register: ";
+    getline(cin, str);
+    temp = convert(str);
+    list<course>* colist=sem.colist;
+    while (colist != nullptr) {
+        if (colist->data.ID == temp) {
+            id = colist->data.ID;
+            return true;
+        }
+        else {
+            colist = colist->next;
+        }
+    }
+    return false;
 }
 
 void UpdateCourse(schoolyear& sy, semester& sem)
@@ -512,38 +555,6 @@ void Update(list <course>* tmp, int choice)
 }
 
 
-void FindCoursetodo(schoolyear& sy, semester& sem, int& id)
-{
-
-    string str;
-    int temp;
-
-    cout << "Enter the ID: ";
-    getline(cin, str);
-    temp = convert(str);
-    string dir = "data\\schoolyear\\";
-    ifstream fin(dir + sy.name + "\\" + sem.name + "\\data.txt");
-    id = 0;
-    fin.ignore(100, '\n');
-    fin.ignore(100, '\n');
-    while (id != temp)
-    {
-        if (fin.eof())
-        {
-            cout << "invalid ID. Try again: " << endl;
-            return FindCourse(sy, sem, id);
-        }
-        else
-        {
-            fin >> id;
-        }
-    }
-
-
-    fin.close();
-
-
-}
 
 
 

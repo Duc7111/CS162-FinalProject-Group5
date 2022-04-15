@@ -445,16 +445,22 @@ void semesterscreen(AS log, schoolyear& year) {
 		year.Fall.name = "Fall";
 		SemesterExecution(year.Fall, log);
 		year.Fall.save2File(save);
+		save = save + "\\Fall";
+		year.Fall.setCur(save);
 	}
 	else if (sedo == 2) {
 		year.Summer.name = "Summer";
 		SemesterExecution(year.Summer, log);
 		year.Summer.save2File(save);
+		save = save + "\\Summer";
+		year.Summer.setCur(save);
 	}
 	else {
 		year.Autumn.name = "Autumn";
 		SemesterExecution(year.Autumn, log);
 		year.Autumn.save2File(save);
+		save = save + "\\Autumn";
+		year.Autumn.setCur(save);
 	}
 }
 

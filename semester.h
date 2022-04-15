@@ -34,3 +34,6 @@ void LoadCourses(schoolyear& sy, semester& sem);
 void FindCourse(schoolyear& sy, semester& sem, int& id);
 void UpdateCourse(schoolyear& sy, semester& sem);
 void Update(list <course>* tmp, int choice);
+
+void ViewCoursese(semester& sem);
+bool FindCoursest(semester& sem, int& id);

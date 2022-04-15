@@ -44,7 +44,7 @@ int main() {
 					else if (opst == 3) {
 						 }
 					else {
-						getschoolyearst(year,st);
+						/*getschoolyearst(year,st);
 						int seme = getnamesest(st);
 						if (seme == 1) {
 							se = &year.Fall;
@@ -57,48 +57,55 @@ int main() {
 						else {
 							se = &year.Autumn;
 							se->name = "Autumn";
-						}
-						se->colist = new list<course>;
-						int co1 = SeScreen2st(*se, st);
+						}*/
+						ifstream in;
+						in.open("data\\data.txt");
+						string savest;
+						getline(in, savest);
+						in.close();
+						semester se1(savest);
+						
+						se1.colist = new list<course>;
+						int co1 = SeScreen2st(se1, st);
 						while (co1 != 4) {
 							if (co1 == 1) {
-								ViewCourse(year, *se);
+								ViewCoursese(se1);
 								int id;
-								FindCourse(year, *se, id);
-								string dir = "data\\schoolyear\\";
+								//FindCourse(se1,id)
+								while (FindCoursest(se1, id) == false) {
+									cout << "That course do not available!!!" << " Try again." << endl;
+								}
 								string str = to_string(id);
-								ifstream fin(dir + year.name + "\\" + se->name + "\\" + str + "\\data.txt", ios_base::in);
-								list <course>* tmp = new list<course>;
-								tmp->data.ID = id;
-								getline(fin, tmp->data.name, ',');
-								getline(fin, tmp->data.teacher, ',');
-								fin >> tmp->data.credits; fin.ignore();
-								fin >> tmp->data.s[0]; fin.ignore();
-								fin >> tmp->data.s[1]; fin.ignore();
-								fin >> tmp->data.ms; fin.ignore();
-								fin >> tmp->data.cur; fin.ignore();
-								fin.close();
-								student st1(st.ID);
-								st=st1;
+								ifstream fin(savest + "\\" + str + "\\data.txt", ios_base::in);
+								course tmp(id);
+
 								
-								if (st.addCourse(tmp->data) == true) {
+								
+								if (st.addCourse(tmp) == true) {
 									cout << "Register this course successfully!!\n";
+									st.change();
+									tmp.cur++;
+									list<int[5]>* cur = new list<int[5]>;
+									cur->data[0] = st.ID;
+									cur->next = tmp.stlist;
+									tmp.stlist = cur;
+									tmp.save2File(savest);
 									system("pause");
 								}
 								else {
 									cout << "Register this course fail!!\n";
 									system("pause");
 								}
-								st.change();
-								dellist(tmp);
+				
 							}
 							else if (co1 == 2) {
-								ViewCourse(year, *se);
+								ViewCourse(year, se1);
 							}
 							else {
 
 							}
-							co1 = SeScreen2st(*se,st);
+							dellist(se1.colist);
+							co1 = SeScreen2st(se1,st);
 						}
 					}
 					opst = studentscreen1(st);
