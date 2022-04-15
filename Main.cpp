@@ -69,6 +69,7 @@ int main() {
 								string str = to_string(id);
 								ifstream fin(dir + year.name + "\\" + se->name + "\\" + str + "\\data.txt", ios_base::in);
 								list <course>* tmp = new list<course>;
+								tmp->data.ID = id;
 								getline(fin, tmp->data.name, ',');
 								getline(fin, tmp->data.teacher, ',');
 								fin >> tmp->data.credits; fin.ignore();

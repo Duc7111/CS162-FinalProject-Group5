@@ -128,12 +128,17 @@ void student::change()
     while(!fin.eof())
     {
         getline(fin, temp);
-        fout << temp;
+        fout << temp << endl;
     }
     fin.close();
     fout.close();
+<<<<<<< HEAD
 
     const char* d = ("data\\class\\" + clname + ".txt").c_str();
+=======
+    string dir = "data\\class\\" + clname + ".txt";
+    const char* d = dir.c_str();
+>>>>>>> cc724783b0682be6b70af5b1ce604069a65aef3f
     remove(d);
     rename("temp.txt", d);
 }
