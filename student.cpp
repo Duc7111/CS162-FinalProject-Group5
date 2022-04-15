@@ -2,6 +2,7 @@
 #include <string>
 #include <iomanip>
 
+#include "course.h"
 #include "student.h"
 #include "const.h"
 
@@ -21,12 +22,13 @@ student::student(int id)
             getline(fin, pass, ',');
             getline(fin, clname);
             fin.close();
-            fin.open("data\\class\\" + clname + "\\student.txt");
+            fin.open("data\\class\\" + clname + ".txt");
             while(!fin.eof())
             {
                 fin >> id;
                 if(ID == id)
                 {
+                    fin.ignore();
                     getline(fin, fname, ',');
                     getline(fin, lname, ',');
                     fin >> gender; fin.ignore();
@@ -52,6 +54,7 @@ student::student(int id)
                         }
                         else temp = temp->next;
                     }
+                    return;
                 }
             }
         }
