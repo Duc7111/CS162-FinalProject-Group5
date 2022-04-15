@@ -564,11 +564,13 @@ void LoadCourses(schoolyear& sy, semester& sem)
     int id = 0;
     string dir = "data\\schoolyear\\";
     ifstream fin(dir + sy.name + "\\" + sem.name + "\\data.txt");
+    if (!fin.is_open()) return;
     fin.ignore(100, '\n');
     fin.ignore(100, '\n');
     while (!fin.eof())
     {
         fin >> id;
+        if (id == 0) return;
         cur->data.ID = id;
         string str = to_string(id);
         ifstream fin1(dir + sy.name + "\\" + sem.name + "\\" + str + "\\data.txt", ios_base::in);
@@ -583,6 +585,7 @@ void LoadCourses(schoolyear& sy, semester& sem)
         cur->next = new list<course>;
         cur = cur->next;
     }
+    fin.close();
     list <course>* tmp = sem.colist;
     while (tmp->next->next != nullptr) tmp = tmp->next;
     delete cur;
@@ -591,7 +594,6 @@ void LoadCourses(schoolyear& sy, semester& sem)
     while (tmp2->next->next != nullptr) tmp2 = tmp2->next;
     delete tmp;
     tmp2->next = nullptr;
-    fin.close();
+    
 
 }
-

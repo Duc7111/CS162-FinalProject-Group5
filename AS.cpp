@@ -4,6 +4,7 @@
 
 #include "AS.h"
 #include "const.h"
+#include "student.h"
 
 using namespace std;
 
@@ -96,4 +97,89 @@ void changeAS(AS& as) // change info of an AS in file
     fin.close(), fout.close();
     remove("data\\AS.txt");
     rename("temp.txt", "data\\AS.txt");
+}
+
+
+
+void viewClasslist()
+{
+    cout << "Class list: " << endl;
+    ifstream fin("data\\class\\class.txt");
+    fin.seekg(0, ios::end);
+    int spot = fin.tellg();
+    if (spot == 0)
+    {
+        cout << "Empty";
+    }
+    else
+    {
+        fin.seekg(0);
+        while (!fin.eof())
+        {
+           string str;
+           getline(fin, str, '\n');
+           cout << str << endl;
+        }
+    }
+    
+    fin.close();
+   
+}
+
+
+void viewClassStudent()
+{
+    ifstream fin("data\\class\\class.txt");
+    fin.seekg(0, ios::end);
+    int spot = fin.tellg();
+    if (spot == 0)
+    {
+        cout << "There are no classes";
+        return;
+    }
+    string cl;
+    cout << "Enter the class: ";
+    getline(cin, cl, '\n');
+    string tmp;
+    
+    while (tmp != cl)
+    {
+
+        getline(fin, tmp, '\n');
+        if (fin.eof())
+        {
+            cout << "The ID is invalid" << endl;
+            cout << "Enter the class: ";
+            getline(cin, cl, '\n');
+            fin.close();
+            fin.open("data\\class\\class.txt");
+        }
+    }
+    fin.close();
+    tmp = "data\\class\\";
+    ifstream fin1(tmp + cl + ".txt");
+    student st;
+    while (!fin1.eof())
+    {
+        fin1 >> st.ID;
+        fin1.ignore();
+        getline(fin1, st.fname, ',');
+        getline(fin1, st.lname, ',');
+        fin1 >> st.gender; fin1.ignore();
+        fin1 >> st.dob[0]; fin1.ignore();
+        fin1 >> st.dob[1]; fin1.ignore();
+        fin1 >> st.dob[2]; fin1.ignore();
+        getline(fin1, st.SID, ',');
+        fin1 >> st.No;
+        cout << "No: " << st.No << endl;
+        cout << "ID: " << st.ID << endl;
+        cout << "Fullname: " << st.fname << " " << st.lname << endl;
+        cout << "Gender: ";
+        if (st.gender == 1) cout << "Male" << endl;
+        else cout << "Female" << endl;
+        cout << "D.O.B: " << st.dob[0] << "/" << st.dob[1] << "/" << st.dob[2] << endl;
+        cout << "SID: " << st.SID << endl;
+        cout << '\n';
+    }
+    fin1.close();
 }
