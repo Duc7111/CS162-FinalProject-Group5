@@ -134,7 +134,7 @@ void student::change()
     fout.close();
     const char* d = ("data\\class\\" + clname + ".txt").c_str();
     remove(d);
-    rename("temp", d);
+    rename("temp.txt", d);
 }
 
 bool student::addCourse(const course& co)
