@@ -25,6 +25,7 @@ struct course
     course(int id);
     void save2File(string dir);
     bool checkCourse(const string& dir);
+    bool checkStudent(int ID);
 };
 /*
 struct CourseRegister
