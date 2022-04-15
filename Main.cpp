@@ -77,6 +77,8 @@ int main() {
 								fin >> tmp->data.ms; fin.ignore();
 								fin >> tmp->data.cur; fin.ignore();
 								fin.close();
+								student st1(st.ID);
+								st=st1;
 							}
 							else if (co1 == 2) {
 								ViewCourse(year, *se);
