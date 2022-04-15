@@ -21,7 +21,12 @@ student::student(int id)
             getline(fin, pass, ',');
             getline(fin, clname);
             fin.close();
-            fin.open("data\\class\\" + clname + "\\student.txt");
+            fin.open("data\\class\\" + clname + ".txt");
+            if(!fin.is_open())
+            {
+                cout << "Cannot open data\\class\\" << clname << ".txt";
+                return;
+            }
             while(!fin.eof())
             {
                 fin >> id;
@@ -38,7 +43,7 @@ student::student(int id)
                     conum = 0;
                     colist = new list<course>;
                     list<course>* temp = colist;
-                    while(fin.get() != '\n')
+                    while(!fin.eof() && fin.get() != '\n')
                     {
                         ++conum;
                         int ID;
