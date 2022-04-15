@@ -2,6 +2,7 @@
 #include <string>
 #include <iomanip>
 
+#include "course.h"
 #include "student.h"
 #include "const.h"
 
@@ -32,6 +33,7 @@ student::student(int id)
                 fin >> id;
                 if(ID == id)
                 {
+                    fin.ignore();
                     getline(fin, fname, ',');
                     getline(fin, lname, ',');
                     fin >> gender; fin.ignore();
@@ -57,6 +59,7 @@ student::student(int id)
                         }
                         else temp = temp->next;
                     }
+                    return;
                 }
             }
         }
@@ -96,7 +99,7 @@ void student::save2File()
 void student::change()
 {
     ifstream fin("data\\class\\" + clname + ".txt");
-    ofstream fout("temp");
+    ofstream fout("temp.txt");
     string temp;
     while(!fin.eof())
     {

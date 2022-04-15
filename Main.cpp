@@ -79,6 +79,9 @@ int main() {
 								fin.close();
 								student st1(st.ID);
 								st=st1;
+								st.addCourse(tmp->data);
+								st.change();
+								dellist(tmp);
 							}
 							else if (co1 == 2) {
 								ViewCourse(year, *se);
