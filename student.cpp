@@ -204,37 +204,7 @@ bool login(student& s, int ID, string pass)
             getline(fin, s.pass, ',');
             if (s.pass == pass)
             {
-                string clname;
-                //fin.ignore(1000, '\n');
-                getline(fin, clname);
-                fin.close();
-                fin.open("data\\class\\" + clname + ".txt");
-                while(!fin.eof())
-                {
-                    fin >> ID; fin.ignore();
-                    if(ID == s.ID) break;
-                    else fin.ignore(1000, '\n');
-                }
-                getline(fin, s.fname, ',');
-                getline(fin, s.lname, ',');
-                fin >> s.gender; fin.ignore();
-                fin >> s.dob[0]; fin.ignore();
-                fin >> s.dob[1]; fin.ignore();
-                fin >> s.dob[2]; fin.ignore();
-                getline(fin, s.SID, ',');
-                s.clname = clname;
-                fin >> s.No;
-                s.colist = new list<course>;
-                list<course>* temp = s.colist;
-                while(fin.get() == ',')
-                {
-                    temp->next = new list<course>;
-                    temp = temp->next;
-                    fin >> temp->data.ID;
-                    
-                }
-                fin.close();
-                return true;
+                s = student(ID);
             }
             fin.close();
             return false;
