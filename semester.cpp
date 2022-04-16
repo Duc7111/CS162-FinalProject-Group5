@@ -48,6 +48,11 @@ semester::semester(const string& dir)
     fin.close();
 }
 
+semester::~semester()
+{
+    dellist(colist);
+}
+
 void semester::save2File(string dir)
 {
     if(name == "") return;

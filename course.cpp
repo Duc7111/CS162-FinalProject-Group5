@@ -60,6 +60,11 @@ course::course(const course& co) : stlist(co.stlist)
     cur = co.cur;
 }
 
+course::~course()
+{
+    dellist(stlist);
+}
+
 void course::save2File(string dir)
 {
     dir += "\\" + to_string(ID);

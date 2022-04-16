@@ -67,6 +67,11 @@ student::student(int id)
     }
 }
 
+student::~student()
+{
+    dellist(colist);
+}
+
 bool student::createAcc()
 {
     ifstream fin("data\\student.txt");
