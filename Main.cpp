@@ -65,7 +65,7 @@ int main() {
 						in.close();
 						semester se1(savest);
 						
-						se1.colist = new list<course>;
+						//se1.colist = new list<course>;
 						int co1 = SeScreen2st(se1, st);
 						while (co1 != 4) {
 							if (co1 == 1) {
@@ -99,7 +99,7 @@ int main() {
 				
 							}
 							else if (co1 == 2) {
-								ViewCourse(year, se1);
+								ViewCoursese(se1);
 							}
 							else {
 
