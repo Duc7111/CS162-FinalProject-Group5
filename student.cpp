@@ -67,11 +67,6 @@ student::student(int id)
     }
 }
 
-student::~student()
-{
-    dellist(colist);
-}
-
 bool student::createAcc()
 {
     ifstream fin("data\\student.txt");
@@ -209,7 +204,43 @@ bool login(student& s, int ID, string pass)
             getline(fin, s.pass, ',');
             if (s.pass == pass)
             {
-                s = student(ID);
+                string clname;
+                //fin.ignore(1000, '\n');
+                getline(fin, clname);
+                fin.close();
+                fin.open("data\\class\\" + clname + ".txt");
+                while(!fin.eof())
+                {
+                    fin >> ID; fin.ignore();
+                    if(ID == s.ID) break;
+                    else fin.ignore(1000, '\n');
+                }
+                getline(fin, s.fname, ',');
+                getline(fin, s.lname, ',');
+                fin >> s.gender; fin.ignore();
+                fin >> s.dob[0]; fin.ignore();
+                fin >> s.dob[1]; fin.ignore();
+                fin >> s.dob[2]; fin.ignore();
+                getline(fin, s.SID, ',');
+                s.clname = clname;
+                fin >> s.No;
+                s.colist = new list<course>;
+                list<course>* temp = s.colist;
+                while(!fin.eof() && fin.get() == ',')
+                {
+                    ++s.conum;
+                    int ID;
+                    fin >> ID;
+                    temp->next = new list<course>;
+                    temp->data = course(ID);
+                    if(temp->data.ID == 0 || !temp->data.checkStudent(ID)) 
+                    {
+                        delete temp->next;
+                        temp->next = nullptr;
+                    }
+                    else temp = temp->next;
+                }
+                fin.close();
                 return true;
             }
             fin.close();
