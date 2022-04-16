@@ -205,6 +205,7 @@ bool login(student& s, int ID, string pass)
             if (s.pass == pass)
             {
                 s = student(ID);
+                return true;
             }
             fin.close();
             return false;
