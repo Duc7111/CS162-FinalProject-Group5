@@ -13,6 +13,11 @@ using namespace std;
 
 Class::Class() : name(""), stlist(nullptr){}
 
+Class::~Class()
+{
+    dellist(stlist);
+}
+
 void Class::save2File()
 {
     ofstream fout("data\\class\\class.txt", ios_base::app);

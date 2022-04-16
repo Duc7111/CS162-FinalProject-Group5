@@ -17,6 +17,7 @@ struct semester
 
     semester();
     semester(const string& dir);//full dir
+    ~semester();
 
     void save2File(string dir);//schoolyear dir
     void setCur(const string& dir);
