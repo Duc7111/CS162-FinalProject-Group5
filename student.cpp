@@ -85,6 +85,7 @@ bool student::createAcc()
 
 void student::save2File()
 {
+    if(clname == "") return;
     ofstream fout("data\\class\\" + clname + ".txt", ios_base::app);
     fout << ID << ',' << fname << ',' << lname << ',' << gender << ',' << dob[0] << ',' << dob[1] << ',' << dob[2] << ',' << SID << ',' << No;
     list<course>* temp = colist;
