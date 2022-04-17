@@ -23,7 +23,6 @@ struct course
     course();
     course(const course& co);
     course(int id);
-    ~course();
     
     void save2File(string dir);
     bool checkCourse(const string& dir);

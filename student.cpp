@@ -45,7 +45,7 @@ student::student(int id)
                     conum = 0;
                     colist = new list<course>;
                     list<course>* temp = colist;
-                    while(!fin.eof() && fin.get() != '\n')
+                    while(!fin.eof() && fin.get() == ',')
                     {
                         ++conum;
                         int ID;
@@ -69,6 +69,7 @@ student::student(int id)
 
 bool student::createAcc()
 {
+    ofstream fout("data\\student.txt", ios_base::app);
     ifstream fin("data\\student.txt");
     int id;
     while(!fin.eof())
@@ -78,8 +79,8 @@ bool student::createAcc()
         else fin.ignore(1000, '\n');
     }
     fin.close();
-    ofstream fout("data\\student.txt", ios_base::app);
     fout << ID << ',' << pass << ',' << clname << endl;
+    fout.close();
 }
 
 void student::save2File()
@@ -128,6 +129,7 @@ void student::change()
     while(!fin.eof())
     {
         getline(fin, temp);
+        if(temp == "") break;
         fout << temp << endl;
     }
     fin.close();
@@ -142,6 +144,7 @@ void student::change()
 
 bool student::addCourse(const course& co)
 {
+    if(co.ID == 0) return false;
     if(conum == 5) return false;
     if(conum == 0)
     {

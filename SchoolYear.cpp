@@ -15,9 +15,9 @@ using namespace std;
 
 schoolyear::schoolyear() : name(""), Fall(), Summer(), Autumn(){};
 
-schoolyear::schoolyear(const string& name)
+schoolyear::schoolyear(const string& n)
 {
-	this->name = name;
+	name = n;
     Fall = semester("data\\schoolyear\\" + name + "\\Fall");
     Autumn = semester("data\\schoolyear\\" + name + "\\Autumn");
     Summer = semester("data\\schoolyear\\" + name + "\\Summner");
@@ -31,7 +31,6 @@ void schoolyear::save2File()
 	string dir = "data\\schoolyear\\" + name;
 	const char* d = dir.c_str();
 	_mkdir(d);
-    fout.open(dir + "\\data.txt");
 	Fall.save2File(dir);
 	Autumn.save2File(dir);
 	Summer.save2File(dir);
@@ -48,9 +47,11 @@ bool checkSchoolYear(schoolyear& sy)
         if(sy.name == temp)
         {
             sy = schoolyear(temp);
+            fin.close();
             return true;
         }
     }
+    fin.close();
     return false;
 }
 

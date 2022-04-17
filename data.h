@@ -8,9 +8,9 @@ struct list
     T data;
     list<T>* next;
 
-    list() : data(), next(nullptr){};
-    list(const T& d) : data(d), next(nullptr){};
-    list(const T& d, list<T>* n) : data(d), next(n){};
+    list<T>() : data(), next(nullptr){};
+    list<T>(const T& d) : data(d), next(nullptr){};
+    list<T>(const T& d, list<T>* n) : data(d), next(n){};
 };
 
 template<class T>

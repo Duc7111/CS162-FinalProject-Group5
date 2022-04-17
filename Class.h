@@ -13,7 +13,6 @@ struct Class
     list<student>* stlist;
 
     Class();
-    ~Class();
 
     void save2File();
     void save2FileE();

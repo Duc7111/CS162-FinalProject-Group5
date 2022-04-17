@@ -96,7 +96,7 @@ int main() {
 									cout << "Register this course fail!!\n";
 									system("pause");
 								}
-				
+				;
 							}
 							else if (co1 == 2) {
 								ViewCoursese(se1);
@@ -104,8 +104,8 @@ int main() {
 							else {
 
 							}
-							dellist(se1.colist);
 							co1 = SeScreen2st(se1,st);
+							if(co1 == 4) dellist(se1.colist);
 						}
 					}
 					opst = studentscreen1(st);

@@ -37,6 +37,7 @@ semester::semester(const string& dir)
             temp->next->data = course(ID);
             temp = temp->next;
         }
+        temp = colist;
         colist = colist->next;
         delete temp;
     }
@@ -46,11 +47,6 @@ semester::semester(const string& dir)
         colist = nullptr;
     }
     fin.close();
-}
-
-semester::~semester()
-{
-    dellist(colist);
 }
 
 void semester::save2File(string dir)
