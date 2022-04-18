@@ -74,3 +74,36 @@ void ImportScoreBoard(string dir, course CurCourse) {
     csv_in.close();
 
 }
+
+void ViewCourseScoreBoard(string dir, course CurCourse) {
+
+    ifstream csv_in(dir + "CourseScoreBoard.csv");
+
+    string content, parts;
+
+    if (csv_in.is_open()) {
+
+        getline(csv_in, content);
+
+        while (getline(csv_in, content)) {
+
+            int i = 0;
+            stringstream str(content);
+
+            while (getline(str, parts, ',')) {
+                if (i == 1) cout << "Student's ID: " << stoi(parts) << endl;
+                if (i == 2) cout << "Student's name: " << parts << endl;
+                if (i == 3) cout << "Midterm score: " << stoi(parts) << endl;
+                if (i == 4) cout << "Final score: " << stoi(parts) << endl;
+                if (i == 5) cout << "Other score: " << stoi(parts) << endl;
+                if (i == 6) cout << "Total score: " << stoi(parts) << endl;
+                i++;
+            }
+
+            cout << endl;
+        }
+    }
+
+    csv_in.close();
+
+}
