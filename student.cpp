@@ -49,10 +49,10 @@ student::student(int id)
                     while(!fin.eof() && fin.get() == ',')
                     {
                         ++conum;
-                        int ID;
-                        fin >> ID;
+                        int ID1;
+                        fin >> ID1;
                         temp->next = new list<course>;
-                        temp->data = course(ID);
+                        temp->data = course(ID1);
                         if(temp->data.ID == 0 || !temp->data.checkStudent(ID)) 
                         {
                             delete temp->next;
@@ -159,7 +159,7 @@ bool student::addCourse(const course& co)
     while(temp->next != nullptr)
     {
         if(co.s[0] == temp->next->data.s[0] || co.s[0] == temp->next->data.s[1] || 
-           co.s[1] == temp->next->data.s[0] || co.s[1] == temp->next->data.s[1] ) return false;
+           co.s[1] == temp->next->data.s[0] || co.s[1] == temp->next->data.s[1] || co.cur >= co.ms) return false;
     }
     ++conum;
     temp->next = new list<course>(co);
@@ -192,7 +192,7 @@ void student::viewCourse()
 {
     list<course>* temp = colist;
     
-    while(temp)
+    while(temp->data.ID!=0)
     {
         cout << "ID: " << temp->data.ID << endl;
         cout << "Name" << temp->data.name << endl;
@@ -242,7 +242,7 @@ bool login(student& s, int ID, string pass)
                     fin >> ID;
                     temp->next = new list<course>;
                     temp->data = course(ID);
-                    if(temp->data.ID == 0 || !temp->data.checkStudent(ID)) 
+                    if(temp->data.ID == 0 || !temp->data.checkStudent(s.ID)) 
                     {
                         delete temp->next;
                         temp->next = nullptr;
