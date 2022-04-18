@@ -11,71 +11,99 @@ void ExportStudentName2CSV(string dir)
     fin.close();
 }
 
-void ExportScoreBoard2CSV(string dir, list<CourseSB>*& ScoreBoard)
+void ExportScoreBoard2CSV(string dir, course CurCourse)
 {
-    list<CourseSB>* tmp = ScoreBoard;
-
-    ofstream csv_out("SB_TeacherVer.csv");
+    ofstream csv_out(dir + "CourseScoreBoard.csv");
 
     csv_out << "No" << "," << "ID" << "," << "Full Name" << ","
-        << "Total Mark" << "," << "Final" << "," << "Midterm";
+        << "Midterm" << "," << "Final" << "," << "Other" << "," << "Total";
 
-    list<double>* tmp_ = tmp->data.OtherMark;
-    for (int i = 0; i < tmp->data.OM_AmountCount(); i++)
-        csv_out << "," << "Other Mark " << i + 1;
-    csv_out << "\n";
+    int n = 1;
+    list<int[5]>* tmp = CurCourse.stlist;
 
-    while (tmp != NULL)
+    while (tmp)
     {
-        csv_out << tmp->data.StuNo << "," << tmp->data.StuID << "," << tmp->data.FullName << ","
-            << tmp->data.Total << "," << tmp->data.Final << "," << tmp->data.Midterm;
-
-        for (int i = 0; i < tmp->data.OM_AmountCount(); i++)
-        {
-            csv_out << "," << tmp_->data;
-            tmp_ = tmp_->next;
-        }
-
-        csv_out << "\n";
-        tmp = tmp->next;
+        csv_out << n << "," << tmp->data[0] << "," << "abcxyz"
+            << "," << tmp->data[1] << "," << tmp->data[2] << "," << tmp->data[3] << "," << tmp->data[4] << endl;
+        ++n;
+        tmp = tmp->next
     }
 
     csv_out.close();
 }
 
-void Import_StudentInfo_ScoreBoard(list<CourseSB>*& ScoreBoard)
-{
-    list<CourseSB>* CurStudent = new list<CourseSB>;
+void ImportScoreBoard(string dir, course CurCourse) {
 
-    cout << "Please enter the student's ID: ";
-    getline(cin, CurStudent->data.StuID);
-    cout << endl;
+    ifstream csv_in(dir + "CourseScoreBoard.csv");
 
-    cout << "Please enter the student's full name: ";
-    getline(cin, CurStudent->data.FullName);
-    cout << endl;
+    string content, parts;
 
-    cout << "Please enter the student's midterm score: ";
-    cin >> CurStudent->data.Midterm;
-    cout << endl;
+    if (csv_in.is_open()) {
 
-    cout << "Please enter the student's final exam score: ";
-    cin >> CurStudent->data.Final;
-    cout << endl;
+        getline(csv_in, content);
 
-    cout << "Please enter the student's total mark: ";
-    cin >> CurStudent->data.Total;
-    cout << endl;
-    
-    if (ScoreBoard == NULL) 
-    {
-        CurStudent->data.StuNo = 1;
-        ScoreBoard = CurStudent;
-    } 
-    else 
-    {
-        CurStudent->data.StuNo = ScoreBoard->data.StuNo + 1;
-        CurStudent->next = ScoreBoard;
-        ScoreBoard = CurStudent;
+        while (getline(csv_in, content)) {
+
+            int* tmp = new int[7]; //No - ID - name - mid - fin - ex - tol
+            int i = 0;
+            stringstream str(content);
+
+            while (getline(str, parts, ',')) {
+                tmp[i] = stoi(parts);
+                i++;
+            }
+
+            list<int[5]>* new_stlist = new list<int[5]>;
+            new_stlist->data[0] = tmp[1];
+            new_stlist->data[1] = tmp[2];
+            new_stlist->data[2] = tmp[4];
+            new_stlist->data[3] = tmp[5];
+            new_stlist->data[4] = tmp[6];
+            new_stlist->next = NULL;
+
+            list<int[5]>* tmp_stlist = CurCourse.stlist;
+            while (tmp_stlist->next != NULL)
+                tmp_stlist = tmp_stlist->next;
+            tmp_stlist->next = new_stlist;
+        }
+
+        CurCourse.save2File();
+
     }
+
+    csv_in.close();
+
+}
+
+void ViewCourseScoreBoard(string dir, course CurCourse) {
+
+    ifstream csv_in(dir + "CourseScoreBoard.csv");
+
+    string content, parts;
+
+    if (csv_in.is_open()) {
+
+        getline(csv_in, content);
+
+        while (getline(csv_in, content)) {
+
+            int i = 0;
+            stringstream str(content);
+
+            while (getline(str, parts, ',')) {
+                if (i == 1) cout << "Student's ID: " << stoi(parts) << endl;
+                if (i == 2) cout << "Student's name: " << parts << endl;
+                if (i == 3) cout << "Midterm score: " << stoi(parts) << endl;
+                if (i == 4) cout << "Final score: " << stoi(parts) << endl;
+                if (i == 5) cout << "Other score: " << stoi(parts) << endl;
+                if (i == 6) cout << "Total score: " << stoi(parts) << endl;
+                i++;
+            }
+
+            cout << endl;
+        }
+    }
+
+    csv_in.close();
+
 }
