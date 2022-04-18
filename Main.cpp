@@ -110,7 +110,8 @@ int main() {
 
 							}
 							co1 = SeScreen2st(se1,st);
-							if(co1 == 4) dellist(se1.colist);
+							st = student(st.ID);
+							if(co1 == 5) dellist(se1.colist);
 						}
 					}
 					opst = studentscreen1(st);

@@ -115,7 +115,8 @@ void student::change()
             list<course>* temp = colist;
             while(temp)
             {
-                fout << ',' << temp->data.ID;
+                if(temp->data.ID!=0)
+                    fout << ',' << temp->data.ID;
                 temp = temp->next;
             }
             fout << endl;
@@ -152,17 +153,20 @@ bool student::addCourse(const course& co)
     if(conum == 0)
     {
         colist = new list<course>(co);
+        colist->next = nullptr;
         ++conum;
         return true;
     }
     list<course>* temp = colist;
-    while(temp->next != nullptr)
+    while(temp != nullptr)
     {
-        if(co.s[0] == temp->next->data.s[0] || co.s[0] == temp->next->data.s[1] || 
-           co.s[1] == temp->next->data.s[0] || co.s[1] == temp->next->data.s[1] || co.cur >= co.ms) return false;
+        if(co.s[0] == temp->data.s[0] || co.s[0] == temp->data.s[1] || 
+           co.s[1] == temp->data.s[0] || co.s[1] == temp->data.s[1] || co.cur >= co.ms) return false;
+        temp = temp->next;
     }
     ++conum;
-    temp->next = new list<course>(co);
+    temp = new list<course>(co);
+    temp->next = nullptr;
     return true;
 }
 
@@ -192,7 +196,7 @@ void student::viewCourse()
 {
     list<course>* temp = colist;
     
-    while(temp->data.ID!=0)
+    while (temp->data.ID != 0 && temp != nullptr)
     {
         cout << "ID: " << temp->data.ID << endl;
         cout << "Name" << temp->data.name << endl;
