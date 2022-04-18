@@ -30,6 +30,7 @@ student::student(int id)
             }
             while(!fin.eof())
             {
+            
                 fin >> id;
                 if(ID == id)
                 {
@@ -61,6 +62,7 @@ student::student(int id)
                     }
                     return;
                 }
+                else fin.ignore(1000, '\n');
             }
         }
         else fin.ignore(1000, '\n');
@@ -123,7 +125,7 @@ void student::change()
         {
             fout << id;
             getline(fin, temp);
-            fout << temp;
+            fout << temp << endl;
         }
     }
     while(!fin.eof())
@@ -153,7 +155,7 @@ bool student::addCourse(const course& co)
         return true;
     }
     list<course>* temp = colist;
-    while(temp->next)
+    while(temp->next != nullptr)
     {
         if(co.s[0] == temp->next->data.s[0] || co.s[0] == temp->next->data.s[1] || 
            co.s[1] == temp->next->data.s[0] || co.s[1] == temp->next->data.s[1] ) return false;
@@ -188,12 +190,15 @@ bool student::removeCourse(int ID)
 void student::viewCourse()
 {
     list<course>* temp = colist;
-    cout << setw(7) << "ID" << setw(20) << "Name" << setw(12) << "Session 1" << setw(12) << "Session 2" << endl;
+    
     while(temp)
     {
-        cout << setw(7) << temp->data.ID << setw(20) << temp->data.name << setw(6) << day[temp->data.s[0]/7] << ' ' << t[temp->data.s[0]%7] << setw(6) << day[temp->data.s[1]/7] << ' ' << t[temp->data.s[1]%7];
+        cout << "ID: " << temp->data.ID << endl;
+        cout << "Name" << temp->data.name << endl;
+        cout << "Session: "  << day[temp->data.s[0] / 7] << ' ' << t[temp->data.s[0] % 7] << " " << day[temp->data.s[1] / 7] << ' ' << t[temp->data.s[1] % 7] << endl << endl;
         temp = temp->next;
     }
+    system("pause");
 }
 
 bool login(student& s, int ID, string pass)

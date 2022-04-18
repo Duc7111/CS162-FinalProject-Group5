@@ -606,13 +606,14 @@ int SeScreen2st(semester& se, student st) {
 	cout << "Semester: " << se.name << endl;
 	cout << "1. Register course in this semester." << endl;	
 	cout << "2. View all course on this semester." << endl;
-	cout << "3. Go to a course you register." << endl;
-	cout << "4. Go back to last section.\n";
+	cout << "3. View all course you registered." << endl;
+	cout << "4. Go to a course you register." << endl;
+	cout << "5. Go back to last section.\n";
 	cout << "Option: ";
 	string opin;
 	getline(cin, opin);
 	int in = convert(opin);
-	while (in < 0 || in >= 5) {
+	while (in < 0 || in >= 6) {
 		cout << "Invalid option. Try again." << endl;
 		cout << "Your option: ";
 		getline(cin, opin);

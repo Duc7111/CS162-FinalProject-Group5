@@ -58,6 +58,8 @@ int main() {
 							se = &year.Autumn;
 							se->name = "Autumn";
 						}*/
+						student st1(st.ID);
+						st = st1;
 						ifstream in;
 						in.open("data\\data.txt");
 						string savest;
@@ -67,7 +69,7 @@ int main() {
 						
 						//se1.colist = new list<course>;
 						int co1 = SeScreen2st(se1, st);
-						while (co1 != 4) {
+						while (co1 != 5) {
 							if (co1 == 1) {
 								ViewCoursese(se1);
 								int id;
@@ -96,10 +98,13 @@ int main() {
 									cout << "Register this course fail!!\n";
 									system("pause");
 								}
-				;
+				
 							}
 							else if (co1 == 2) {
 								ViewCoursese(se1);
+							}
+							else if (co1 == 3) {
+								st.viewCourse();
 							}
 							else {
 
