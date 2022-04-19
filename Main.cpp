@@ -42,7 +42,13 @@ int main() {
 						changepassst(st);
 					}
 					else if (opst == 3) {
-						 }
+						Inscreenst(st);
+						viewClasslist();
+						}
+					else if (opst == 4) {
+						Inscreenst(st);
+						viewClassStudent();
+					}
 					else {
 						/*getschoolyearst(year,st);
 						int seme = getnamesest(st);

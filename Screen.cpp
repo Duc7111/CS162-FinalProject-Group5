@@ -485,15 +485,16 @@ int studentscreen1(student& st) {
 	cout << "Option:" << endl;
 	cout << "1.View your profile." << endl;
 	cout << "2.Change password." << endl;
-	cout << "3.View Student in your class." << endl;
-	cout << "4.Go to main section." << endl;
-	cout << "5.Log out of system." << endl;
+	cout << "3.View a list of classes" << endl;
+	cout << "4.View Student in a class." << endl;
+	cout << "5.Go to main section." << endl;
+	cout << "6.Log out of system." << endl;
 	cout << "Your option: ";
 	//cin.ignore(100, '\n');
 	string opin;
 	getline(cin, opin);
 	int in = convert(opin);
-	while (in < 0 || in >= 6) {
+	while (in < 0 || in >= 7) {
 		cout << "Invalid option. Try again." << endl;
 		cout << "Your option: ";
 		getline(cin, opin);

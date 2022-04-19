@@ -1,3 +1,5 @@
+#include <iostream>
+
 #include "save2csv.h"
 
 void ExportStudentName2CSV(string dir)
@@ -26,7 +28,7 @@ void ExportScoreBoard2CSV(string dir, course CurCourse)
         csv_out << n << "," << tmp->data[0] << "," << "abcxyz"
             << "," << tmp->data[1] << "," << tmp->data[2] << "," << tmp->data[3] << "," << tmp->data[4] << endl;
         ++n;
-        tmp = tmp->next
+        tmp = tmp->next;
     }
 
     csv_out.close();

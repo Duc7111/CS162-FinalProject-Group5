@@ -199,7 +199,7 @@ void student::viewCourse()
     while (temp->data.ID != 0 && temp != nullptr)
     {
         cout << "ID: " << temp->data.ID << endl;
-        cout << "Name" << temp->data.name << endl;
+        cout << "Name: " << temp->data.name << endl;
         cout << "Session: "  << day[temp->data.s[0] / 7] << ' ' << t[temp->data.s[0] % 7] << " " << day[temp->data.s[1] / 7] << ' ' << t[temp->data.s[1] % 7] << endl << endl;
         temp = temp->next;
     }
