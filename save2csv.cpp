@@ -1,4 +1,5 @@
 #include <iostream>
+#include <sstream>
 
 #include "save2csv.h"
 
@@ -69,7 +70,7 @@ void ImportScoreBoard(string dir, course CurCourse) {
             tmp_stlist->next = new_stlist;
         }
 
-        CurCourse.save2File();
+        CurCourse.save2File(dir);
 
     }
 

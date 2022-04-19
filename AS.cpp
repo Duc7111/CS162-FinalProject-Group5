@@ -121,7 +121,7 @@ void viewClasslist()
            cout << str << endl;
         }
     }
-    
+    system("pause");
     fin.close();
    
 }
