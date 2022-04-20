@@ -606,8 +606,8 @@ void viewCourseStudent(schoolyear& sy, semester& sem)
     string dir = "data\\schoolyear\\";
     string str = to_string(id);
     ifstream fin(dir + sy.name + "\\" + sem.name + "\\" + str + "\\data.txt", ios_base::in);
-    list<int>* courseid = new list<int>;
-    list<int>* cur = courseid;
+    list<int>* studentid = new list<int>;
+    list<int>* cur = studentid;
     fin.ignore(1000,'\n');
     while (!fin.eof())
     {
@@ -618,13 +618,13 @@ void viewCourseStudent(schoolyear& sy, semester& sem)
     }
     fin.close();
     cur->next = nullptr;
-    FindStudent(courseid);
+    FindStudent(studentid);
 }
 
-void FindStudent(list<int>* courseid)
+void FindStudent(list<int>* studentid)
 {
-    list<int>* cur = courseid;
-    int tmp = courseid->data;
+    list<int>* cur = studentid;
+    int tmp = studentid->data;
     if (tmp == 0) return;
     ifstream fin("data\\class\\class.txt");
     string str;
@@ -669,6 +669,6 @@ void FindStudent(list<int>* courseid)
     }
     fin.close();
     
-    if (courseid->next != nullptr) return FindStudent(courseid->next);
+    if (studentid->next != nullptr) return FindStudent(studentid->next);
 }
 
