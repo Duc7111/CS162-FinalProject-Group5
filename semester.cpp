@@ -386,7 +386,7 @@ void FindCourse(schoolyear& sy, semester& sem, int& id)
     string str;
     int temp;
 
-    cout << "Enter the ID of the course you want to update: ";
+    cout << "Enter the ID of the course: ";
     getline(cin, str);
     temp = convert(str);
     string dir = "data\\schoolyear\\";
@@ -598,3 +598,77 @@ void LoadCourses(schoolyear& sy, semester& sem)
     
 
 }
+
+void viewCourseStudent(schoolyear& sy, semester& sem)
+{
+    int id;
+    FindCourse(sy, sem, id);
+    string dir = "data\\schoolyear\\";
+    string str = to_string(id);
+    ifstream fin(dir + sy.name + "\\" + sem.name + "\\" + str + "\\data.txt", ios_base::in);
+    list<int>* courseid = new list<int>;
+    list<int>* cur = courseid;
+    fin.ignore(1000,'\n');
+    while (!fin.eof())
+    {
+        fin >> cur->data;
+        cur->next = new list<int>;
+        cur = cur->next;
+        fin.ignore(1000,'\n');
+    }
+    fin.close();
+    cur->next = nullptr;
+    FindStudent(courseid);
+}
+
+void FindStudent(list<int>* courseid)
+{
+    list<int>* cur = courseid;
+    int tmp = courseid->data;
+    if (tmp == 0) return;
+    ifstream fin("data\\class\\class.txt");
+    string str;
+    while (!fin.eof())
+    {
+        getline(fin, str, '\n');
+        ifstream fin1("data\\class\\" + str + ".txt");
+        int result;
+        fin1 >> result;
+
+        while (result != tmp)
+        {
+            if (fin1.eof()) break;
+            fin1.ignore(1000, '\n');
+            fin1 >> result;
+        }
+        if (result == tmp)
+        {
+            student st;
+            st.ID = tmp;
+            fin1.ignore();
+            getline(fin1, st.fname, ',');
+            getline(fin1, st.lname, ',');
+            fin1 >> st.gender; fin1.ignore();
+            fin1 >> st.dob[0]; fin1.ignore();
+            fin1 >> st.dob[1]; fin1.ignore();
+            fin1 >> st.dob[2]; fin1.ignore();
+            getline(fin1, st.SID, ',');
+            fin1 >> st.No;
+            cout << "ID: " << st.ID << endl;
+            cout << "Fullname: " << st.fname << " " << st.lname << endl;
+            cout << "Gender: ";
+            if (st.gender == 1) cout << "Male" << endl;
+            else cout << "Female" << endl;
+            cout << "D.O.B: " << st.dob[0] << "/" << st.dob[1] << "/" << st.dob[2] << endl;
+            cout << "SID: " << st.SID << endl;
+            cout << '\n';
+            break;
+        }
+        fin1.close();
+        
+    }
+    fin.close();
+    
+    if (courseid->next != nullptr) return FindStudent(courseid->next);
+}
+

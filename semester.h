@@ -37,3 +37,5 @@ void Update(list <course>* tmp, int choice);
 
 void ViewCoursese(semester& sem);
 bool FindCoursest(semester& sem, int& id);
+void viewCourseStudent(schoolyear& sy, semester& sem);
+void FindStudent(list<int>* courseid);
