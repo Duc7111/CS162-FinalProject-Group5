@@ -139,14 +139,18 @@ void viewClassStudent()
     }
     string cl;
     cout << "Enter the class: ";
+    fin.seekg(0, fin.beg);
     getline(cin, cl, '\n');
+
     string tmp;
     fin.seekg(0);
     while (tmp != cl)
     {
-
-        getline(fin, tmp, '\n');
-        if (fin.eof())
+        if (!fin.eof())
+        {
+            getline(fin, tmp, '\n');
+        }
+        else
         {
             cout << "The ID is invalid" << endl;
             cout << "Enter the class: ";
@@ -159,14 +163,22 @@ void viewClassStudent()
     tmp = "data\\class\\";
     ifstream fin1(tmp + cl + ".txt");
     student st;
+    st.ID = 0;
     while (!fin1.eof())
     {
+<<<<<<< HEAD
         st.ID = 0;
         fin1 >> st.ID;
         if (st.ID == 0) {
             system("pause");
             return; 
         }
+=======
+        int tmp;
+        fin1 >> tmp;
+        if (tmp != st.ID) st.ID = tmp;
+        else return;
+>>>>>>> 39ee5486efd51e901a21540e5817ad88c1013f24
         fin1.ignore();
         getline(fin1, st.fname, ',');
         getline(fin1, st.lname, ',');
@@ -189,3 +201,6 @@ void viewClassStudent()
     }
     fin1.close();
 }
+
+
+
