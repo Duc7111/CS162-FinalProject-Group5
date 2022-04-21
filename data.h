@@ -16,7 +16,7 @@ struct list
 template<class T>
 void dellist(list<T>* pHead)
 {
-    while(pHead)
+    while (pHead)
     {
         list<T>* temp = pHead;
         pHead = pHead->next;

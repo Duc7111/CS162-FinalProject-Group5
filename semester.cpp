@@ -273,7 +273,7 @@ void AddCourse2Semester(semester& sem, AS log)
         if (cur->data.ID == 0) return;
         do
         {
-            cin.ignore();
+            //cin.ignore();
             cout << "Enter the course's name: ";
             getline(cin, cur->data.name, '\n');
             cout << "Enter the teacher's name: ";

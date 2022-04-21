@@ -141,7 +141,7 @@ void viewClassStudent()
     cout << "Enter the class: ";
     getline(cin, cl, '\n');
     string tmp;
-    
+    fin.seekg(0);
     while (tmp != cl)
     {
 
@@ -161,7 +161,12 @@ void viewClassStudent()
     student st;
     while (!fin1.eof())
     {
+        st.ID = 0;
         fin1 >> st.ID;
+        if (st.ID == 0) {
+            system("pause");
+            return; 
+        }
         fin1.ignore();
         getline(fin1, st.fname, ',');
         getline(fin1, st.lname, ',');
@@ -171,6 +176,7 @@ void viewClassStudent()
         fin1 >> st.dob[2]; fin1.ignore();
         getline(fin1, st.SID, ',');
         fin1 >> st.No;
+        fin1.ignore(1000, '\n');
         cout << "No: " << st.No << endl;
         cout << "ID: " << st.ID << endl;
         cout << "Fullname: " << st.fname << " " << st.lname << endl;

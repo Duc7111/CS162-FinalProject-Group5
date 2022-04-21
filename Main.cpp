@@ -34,7 +34,7 @@ int main() {
 				student st;
 				loginSt(st);
 				int opst = studentscreen1(st);
-				while (opst != 5) {
+				while (opst != 6) {
 					if (opst == 1) {
 						viewstudent(st);
 					}
@@ -50,20 +50,7 @@ int main() {
 						viewClassStudent();
 					}
 					else {
-						/*getschoolyearst(year,st);
-						int seme = getnamesest(st);
-						if (seme == 1) {
-							se = &year.Fall;
-							se->name = "Fall";
-						}
-						else if (seme == 2) {
-							se = &year.Summer;
-							se->name = "Summer";
-						}
-						else {
-							se = &year.Autumn;
-							se->name = "Autumn";
-						}*/
+						
 						student st1(st.ID);
 						st = st1;
 						ifstream in;
@@ -122,7 +109,7 @@ int main() {
 					}
 					opst = studentscreen1(st);
 				}
-				break;
+				choice = StartScreen();
 			}
 			else if (opt == 2) {
 				AS log;
@@ -202,7 +189,7 @@ int main() {
 						op1 = start(log);
 					}
 				}
-				break;
+				choice = StartScreen();
 			}
 			else {
 				choice = StartScreen();

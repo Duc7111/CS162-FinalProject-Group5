@@ -152,6 +152,7 @@ bool student::addCourse(const course& co)
     if(conum == 5) return false;
     if(conum == 0)
     {
+        if (co.cur >= co.ms) return false;
         colist = new list<course>(co);
         colist->next = nullptr;
         ++conum;
@@ -164,8 +165,13 @@ bool student::addCourse(const course& co)
            co.s[1] == temp->data.s[0] || co.s[1] == temp->data.s[1] || co.cur >= co.ms) return false;
         temp = temp->next;
     }
+    temp = colist;
+    while (temp->next != nullptr) {
+        temp = temp->next;
+    }
     ++conum;
-    temp = new list<course>(co);
+    temp->next = new list<course>(co);
+    temp = temp->next;
     temp->next = nullptr;
     return true;
 }
@@ -196,7 +202,7 @@ void student::viewCourse()
 {
     list<course>* temp = colist;
     
-    while (temp->data.ID != 0 && temp != nullptr)
+    while (temp != nullptr && temp->data.ID != 0)
     {
         cout << "ID: " << temp->data.ID << endl;
         cout << "Name: " << temp->data.name << endl;
