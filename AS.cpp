@@ -166,19 +166,13 @@ void viewClassStudent()
     st.ID = 0;
     while (!fin1.eof())
     {
-<<<<<<< HEAD
         st.ID = 0;
         fin1 >> st.ID;
         if (st.ID == 0) {
             system("pause");
             return; 
         }
-=======
-        int tmp;
-        fin1 >> tmp;
-        if (tmp != st.ID) st.ID = tmp;
-        else return;
->>>>>>> 39ee5486efd51e901a21540e5817ad88c1013f24
+        st = student(st.ID);
         fin1.ignore();
         getline(fin1, st.fname, ',');
         getline(fin1, st.lname, ',');
