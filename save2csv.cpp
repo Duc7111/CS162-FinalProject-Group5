@@ -49,7 +49,7 @@ void ExportScoreBoard2CSV(string dir, course CurCourse)
     ofstream csv_out(dir + "CourseScoreBoard.csv");
 
     csv_out << "No" << "," << "ID" << "," << "Full Name" << ","
-        << "Midterm" << "," << "Final" << "," << "Other" << "," << "Total";
+        << "Midterm" << "," << "Final" << "," << "Other" << "," << "Total" << endl;
 
     int n = 1;
     list<int[5]>* tmp = CurCourse.stlist;

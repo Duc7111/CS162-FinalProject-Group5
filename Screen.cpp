@@ -572,12 +572,13 @@ int SeScreen2(semester& se, AS log) {
 	cout << "1. Add course to this semester." << endl;
 	cout << "2. Update information for a course." << endl;
 	cout << "3. View all course on this semester." << endl;
-	cout << "4. Go back to last section.\n";
+	cout << "4. Update score for a course." << endl;
+	cout << "5. Go back to last section.\n";
 	cout << "Option: ";
 	string opin;
 	getline(cin, opin);
 	int in = convert(opin);
-	while (in < 0 || in >= 5) {
+	while (in < 0 || in >= 6) {
 		cout << "Invalid option. Try again." << endl;
 		cout << "Your option: ";
 		getline(cin, opin);

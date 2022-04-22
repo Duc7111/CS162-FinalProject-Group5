@@ -12,6 +12,7 @@
 #include "Class.h"
 #include "data.h"
 #include "addstudent.h"
+#include "save2csv.h"
 
 using namespace std;
 
@@ -130,16 +131,25 @@ int main() {
 										se->colist = new list<course>;
 										string save = "data\\schoolyear\\" + year.name;
 										int co1=SeScreen2(*se, log);
-										while (co1 != 4) {
+										while (co1 != 5) {
 											if (co1 == 1) {
 												AddCourse2Semester(*se,log);
 											}
 											else if (co1 ==2) {
 												UpdateCourse(year, *se);
 											}
-											else {
+											else if (co1==3) {
 												Inscreen(log);
 												ViewCourse(year,*se);
+											}
+											else {
+												Inscreen(log);
+												int id123;
+												ViewCourse(year, *se);
+												FindCourse(year, *se, id123);
+												save = save + "\\"+ se->name + "\\" + to_string(id123) + "\\";
+												course cur(id123);
+												ExportScoreBoard2CSV(save, cur);
 											}
 											se->save2File(save);
 											co1 = SeScreen2(*se, log);
