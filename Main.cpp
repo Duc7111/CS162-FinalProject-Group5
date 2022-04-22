@@ -59,39 +59,11 @@ int main() {
 						getline(in, savest);
 						in.close();
 						semester se1(savest);
-						
 						//se1.colist = new list<course>;
 						int co1 = SeScreen2st(se1, st);
 						while (co1 != 5) {
 							if (co1 == 1) {
-								ViewCoursese(se1);
-								int id;
-								//FindCourse(se1,id)
-								while (FindCoursest(se1, id) == false) {
-									cout << "That course do not available!!!" << " Try again." << endl;
-								}
-								string str = to_string(id);
-								ifstream fin(savest + "\\" + str + "\\data.txt", ios_base::in);
-								course tmp(id);
-
-								
-								
-								if (st.addCourse(tmp) == true) {
-									cout << "Register this course successfully!!\n";
-									st.change();
-									tmp.cur++;
-									list<int[5]>* cur = new list<int[5]>;
-									cur->data[0] = st.ID;
-									cur->next = tmp.stlist;
-									tmp.stlist = cur;
-									tmp.save2File(savest);
-									system("pause");
-								}
-								else {
-									cout << "Register this course fail!!\n";
-									system("pause");
-								}
-				
+								ScreenSignCourse(st, se1, savest);
 							}
 							else if (co1 == 2) {
 								ViewCoursese(se1);
@@ -100,7 +72,8 @@ int main() {
 								st.viewCourse();
 							}
 							else {
-
+								viewCourseStudent(se1, savest);
+								system("pause");
 							}
 							co1 = SeScreen2st(se1,st);
 							st = student(st.ID);

@@ -599,13 +599,17 @@ void LoadCourses(schoolyear& sy, semester& sem)
 
 }
 
-void viewCourseStudent(schoolyear& sy, semester& sem)
+void viewCourseStudent(semester& sem, string savest)
 {
+    ViewCoursese(sem);
     int id;
-    FindCourse(sy, sem, id);
+    //FindCourse(se1,id)
+    while (FindCoursest(sem, id) == false) {
+        cout << "That course do not available!!!" << " Try again." << endl;
+    }
     string dir = "data\\schoolyear\\";
     string str = to_string(id);
-    ifstream fin(dir + sy.name + "\\" + sem.name + "\\" + str + "\\data.txt", ios_base::in);
+    ifstream fin(savest + "\\" + str + "\\data.txt", ios_base::in);
     list<int>* studentid = new list<int>;
     list<int>* cur = studentid;
     fin.ignore(1000,'\n');

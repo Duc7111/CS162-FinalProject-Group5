@@ -56,7 +56,12 @@ void ExportScoreBoard2CSV(string dir, course CurCourse)
 
     while (tmp)
     {
+<<<<<<< Updated upstream
         csv_out << n << "," << tmp->data[0] << "," << StudentName(tmp->data[0])
+=======
+
+        csv_out << n << "," << tmp->data[0] << "," << "abcxyz"
+>>>>>>> Stashed changes
             << "," << tmp->data[1] << "," << tmp->data[2] << "," << tmp->data[3] << "," << tmp->data[4] << endl;
         ++n;
         tmp = tmp->next;

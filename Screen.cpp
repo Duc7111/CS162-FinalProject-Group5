@@ -622,3 +622,34 @@ int SeScreen2st(semester& se, student st) {
 	}
 	return in;
 }
+
+void ScreenSignCourse(student& st, semester se1,string savest) {
+	ViewCoursese(se1);
+	int id;
+	//FindCourse(se1,id)
+	while (FindCoursest(se1, id) == false) {
+		cout << "That course do not available!!!" << " Try again." << endl;
+	}
+	string str = to_string(id);
+	ifstream fin(savest + "\\" + str + "\\data.txt", ios_base::in);
+	course tmp(id);
+
+
+
+	if (st.addCourse(tmp) == true) {
+		cout << "Register this course successfully!!\n";
+		st.change();
+		tmp.cur++;
+		list<int[5]>* cur = new list<int[5]>;
+		cur->data[0] = st.ID;
+		cur->next = tmp.stlist;
+		tmp.stlist = cur;
+		tmp.save2File(savest);
+		system("pause");
+	}
+	else {
+		cout << "Register this course fail!!\n";
+		system("pause");
+	}
+
+}
