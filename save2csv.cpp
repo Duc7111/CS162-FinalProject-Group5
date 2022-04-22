@@ -3,6 +3,36 @@
 
 #include "save2csv.h"
 
+string StudentName(int StuID)
+{
+    ifstream fin_1("data\\class\\class.txt");
+    string str;
+    
+    while (!fin_1.eof()) {
+        getline(fin_1, str, '\n');
+        ifstream fin_2("data\\class\\" + str + ".txt");
+        int ID; fin_2 >> ID;
+
+        while (ID != StuID) {
+            if (fin_2.eof()) break;
+            fin_2.ignore(1000, '\n');
+            fin_2 >> ID;
+        }
+        
+        if (ID == StuID) {
+            string fname, lname;
+            fin_2.ignore();
+            getline(fin_2, fname, ',');
+            getline(fin_2, lname, ',');
+            return fname + lname;
+        }
+        fin_2.close();
+    }
+    fin_1.close();
+  
+    return "#ERROR#";
+}
+
 void ExportStudentName2CSV(string dir)
 {
     //string dir = "data\\course\\";
@@ -26,7 +56,7 @@ void ExportScoreBoard2CSV(string dir, course CurCourse)
 
     while (tmp)
     {
-        csv_out << n << "," << tmp->data[0] << "," << "abcxyz"
+        csv_out << n << "," << tmp->data[0] << "," << StudentName(tmp->data[0])
             << "," << tmp->data[1] << "," << tmp->data[2] << "," << tmp->data[3] << "," << tmp->data[4] << endl;
         ++n;
         tmp = tmp->next;
