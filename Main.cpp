@@ -131,7 +131,7 @@ int main() {
 										se->colist = new list<course>;
 										string save = "data\\schoolyear\\" + year.name;
 										int co1=SeScreen2(*se, log);
-										while (co1 != 5) {
+										while (co1 != 6) {
 											if (co1 == 1) {
 												AddCourse2Semester(*se,log);
 											}
@@ -142,14 +142,32 @@ int main() {
 												Inscreen(log);
 												ViewCourse(year,*se);
 											}
-											else {
+											else if (co1 == 4){
 												Inscreen(log);
 												int id123;
 												ViewCourse(year, *se);
 												FindCourse(year, *se, id123);
-												save = save + "\\"+ se->name + "\\" + to_string(id123) + "\\";
+												string work;
+												work = save + "\\"+ se->name + "\\" + to_string(id123) + "\\";
 												course cur(id123);
-												ExportScoreBoard2CSV(save, cur);
+												ExportScoreBoard2CSV(work, cur);
+											}
+											else {
+												Inscreen(log);
+												int id123;
+												string work1;
+												ViewCourse(year, *se);
+												FindCourse(year, *se, id123);
+												work1 = save + "\\" + se->name + "\\" + to_string(id123) + "\\";
+												course cur(id123);
+												Inscreen(log);
+												cout << "Remember to prepare a csv file name: CourseScoreBoard.csv" << endl;
+												system("pause");
+												ImportScoreBoard(work1, cur);
+												system("cls");
+												Inscreen(log);
+												cout << "Import ScoreBoard successfully." << endl;
+												system("pause");
 											}
 											se->save2File(save);
 											co1 = SeScreen2(*se, log);

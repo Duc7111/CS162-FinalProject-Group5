@@ -89,7 +89,7 @@ void ImportScoreBoard(string dir, course CurCourse) {
 
             list<int[5]>* new_stlist = new list<int[5]>;
             new_stlist->data[0] = tmp[1];
-            new_stlist->data[1] = tmp[2];
+            new_stlist->data[1] = tmp[3];
             new_stlist->data[2] = tmp[4];
             new_stlist->data[3] = tmp[5];
             new_stlist->data[4] = tmp[6];
