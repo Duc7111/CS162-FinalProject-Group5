@@ -76,43 +76,34 @@ void ImportScoreBoard(string dir, course CurCourse) {
 
     ifstream csv_in(dir + "CourseScoreBoard.csv");
 
-    string content, parts;
-
     if (csv_in.is_open()) {
+        string cont, part;
+        getline(csv_in, cont);
 
-        getline(csv_in, content);
+        while (getline(csv_in, cont)) {
+            int i = -1;
+            lists<int[5]>* new_stlist = new lists<int[5]>;
+            stringstream str(cont);
 
-        while (getline(csv_in, content)) {
-
-            int* tmp = new int[6]; //No - ID - mid - fin - ex - tol
-            int i = 0;
-            stringstream str(content);
-
-            while (getline(str, parts, ',')) {
-                if (IsNum(parts)) {
-                    tmp[i] = stoi(parts);
+            while (getline(str, part, ',')) {
+                if (isNum(part)) {
+                    if (i != -1) new_stlist->data[i] = stoi(part);
                     i++;
                 }
             }
-
-            list<int[5]>* new_stlist = new list<int[5]>;
-            new_stlist->data[0] = tmp[1];
-            new_stlist->data[1] = tmp[2];
-            new_stlist->data[2] = tmp[3];
-            new_stlist->data[3] = tmp[4];
-            new_stlist->data[4] = tmp[5];
             new_stlist->next = NULL;
 
-            list<int[5]>* tmp_stlist = CurCourse.stlist;
-            while (tmp_stlist->next != NULL)
-                tmp_stlist = tmp_stlist->next;
-            tmp_stlist->next = new_stlist;
+            if (CurCourse.stlist == NULL) CurCourse.stlist = new_stlist;
+            else {
+                lists<int[5]>* tmp_stlist = CurCourse.stlist;
+                while (tmp_stlist->next != NULL)
+                    tmp_stlist = tmp_stlist->next;
+                tmp_stlist->next = new_stlist;      
+            }
         }
-
-        CurCourse.save2File(dir);
-
     }
-
+    
+    CurCourse.save2File(dir + "student.txt");
     csv_in.close();
 
 }
