@@ -3,6 +3,12 @@
 
 #include "save2csv.h"
 
+bool isNum(string s) {
+    for (int i = 0; i < s.size(); i++)
+        if ((s[i] < '0') || (s[i] > '9')) return false;
+    return true;
+}
+
 string StudentName(int StuID)
 {
     ifstream fin_1("data\\class\\class.txt");
@@ -78,21 +84,23 @@ void ImportScoreBoard(string dir, course CurCourse) {
 
         while (getline(csv_in, content)) {
 
-            int* tmp = new int[7]; //No - ID - name - mid - fin - ex - tol
+            int* tmp = new int[6]; //No - ID - mid - fin - ex - tol
             int i = 0;
             stringstream str(content);
 
             while (getline(str, parts, ',')) {
-                tmp[i] = stoi(parts);
-                i++;
+                if (IsNum(parts)) {
+                    tmp[i] = stoi(parts);
+                    i++;
+                }
             }
 
             list<int[5]>* new_stlist = new list<int[5]>;
             new_stlist->data[0] = tmp[1];
-            new_stlist->data[1] = tmp[3];
-            new_stlist->data[2] = tmp[4];
-            new_stlist->data[3] = tmp[5];
-            new_stlist->data[4] = tmp[6];
+            new_stlist->data[1] = tmp[2];
+            new_stlist->data[2] = tmp[3];
+            new_stlist->data[3] = tmp[4];
+            new_stlist->data[4] = tmp[5];
             new_stlist->next = NULL;
 
             list<int[5]>* tmp_stlist = CurCourse.stlist;
