@@ -103,7 +103,7 @@ void ImportScoreBoard(string dir, course CurCourse) {
         }
     }
     
-    CurCourse.save2File(dir + "student.txt");
+    CurCourse.save2File(dir);
     csv_in.close();
 
 }
