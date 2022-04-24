@@ -82,7 +82,7 @@ void ImportScoreBoard(string dir, course CurCourse) {
 
         while (getline(csv_in, cont)) {
             int i = -1;
-            list<int[5]>* new_stlist = new lists<int[5]>;
+            list<int[5]>* new_stlist = new list<int[5]>;
             stringstream str(cont);
 
             while (getline(str, part, ',')) {

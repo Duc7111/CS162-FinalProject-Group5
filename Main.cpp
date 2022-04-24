@@ -167,6 +167,7 @@ int main() {
 												system("cls");
 												Inscreen(log);
 												cout << "Import ScoreBoard successfully." << endl;
+												cur.save2File(save + "\\" + se->name);
 												system("pause");
 											}
 											se->save2File(save);
