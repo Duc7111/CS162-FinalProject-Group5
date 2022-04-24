@@ -607,7 +607,6 @@ void viewCourseStudent(semester& sem, string savest)
     while (FindCoursest(sem, id) == false) {
         cout << "That course do not available!!!" << " Try again." << endl;
     }
-    string dir = "data\\schoolyear\\";
     string str = to_string(id);
     ifstream fin(savest + "\\" + str + "\\data.txt", ios_base::in);
     list<int>* studentid = new list<int>;
@@ -622,6 +621,8 @@ void viewCourseStudent(semester& sem, string savest)
     }
     fin.close();
     cur->next = nullptr;
+    if (studentid->data == 0) cout << "The course have no students" << endl;
+    else
     FindStudent(studentid);
 }
 
@@ -675,4 +676,3 @@ void FindStudent(list<int>* studentid)
     
     if (studentid->next != nullptr) return FindStudent(studentid->next);
 }
-
