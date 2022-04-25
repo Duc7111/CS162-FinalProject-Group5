@@ -74,7 +74,7 @@ void ExportScoreBoard2CSV(string dir, course CurCourse)
 
 void ImportScoreBoard(string dir, course CurCourse) {
     
-    CurCourse.stlist = NULL;
+    //CurCourse.stlist = NULL;
     ifstream csv_in(dir + "\\" + to_string(CurCourse.ID) + "\\" + "CourseScoreBoard.csv");
 
     if (csv_in.is_open()) {
