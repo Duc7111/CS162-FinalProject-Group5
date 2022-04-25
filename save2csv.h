@@ -10,6 +10,7 @@ using namespace std;
 void ExportStudentName2CSV(string dir);
 void ExportScoreBoard2CSV(string dir, course CurCourse);
 void ImportScoreBoard(string dir, course CurCourse);
+void ImportScoreBoard2(course& co);
 void ViewCourseScoreBoard(string dir, course CurCourse);
 
 bool isNum(string s);

@@ -37,3 +37,7 @@ int getnamesest(student st);
 int SeScreen2st(semester& se, student st);
 void getschoolyearst(schoolyear& year, student st);
 void ScreenSignCourse(student& st, semester se1, string savest);
+int ScoreScreen(AS log);
+void ExportScreen(schoolyear& year, semester& se, AS log, string save);
+void ImportScreen(schoolyear& year, semester& se, AS log, string save);
+void ViewScoreScreen(schoolyear& year, semester& se, AS log, string save);

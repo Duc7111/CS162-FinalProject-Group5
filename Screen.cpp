@@ -11,6 +11,7 @@
 #include "semester.h"
 #include "Class.h"
 #include "data.h"
+#include "save2csv.h"
 #include "addstudent.h"
 
 
@@ -572,15 +573,13 @@ int SeScreen2(semester& se, AS log) {
 	cout << "1. Add course to this semester." << endl;
 	cout << "2. Update information for a course." << endl;
 	cout << "3. View all course on this semester." << endl;
-	cout << "4. Export file score for a course." << endl;
-	cout << "5. Import file score for a course. (Warning: Remember to export first)." << endl;
-	cout << "6. View Score board of a course." << endl;
-	cout << "7. Go back to last section.\n";
+	cout << "4. Go to next section(Score board)." << endl;
+	cout << "5. Go back to last section." << endl;
 	cout << "Option: ";
 	string opin;
 	getline(cin, opin);
 	int in = convert(opin);
-	while (in < 0 || in >= 8) {
+	while (in < 0 || in >= 6) {
 		cout << "Invalid option. Try again." << endl;
 		cout << "Your option: ";
 		getline(cin, opin);
@@ -656,4 +655,66 @@ void ScreenSignCourse(student& st, semester se1,string savest) {
 		system("pause");
 	}
 
+}
+
+int ScoreScreen(AS log) {
+	Inscreen(log);
+	cout << "1. Export Score Board into a Csv file." << endl;
+	cout << "2. Import Score Board into a Csv file." << endl;
+	cout << "3. View Score Board in a Course." << endl;
+	cout << "4. Go back to last section." << endl;
+	cout << "Option: ";
+	string opin;
+	getline(cin, opin);
+	int in = convert(opin);
+	while (in < 0 || in >= 5) {
+		cout << "Invalid option. Try again." << endl;
+		cout << "Your option: ";
+		getline(cin, opin);
+		in = convert(opin);
+	}
+	return in;
+}
+
+void ExportScreen(schoolyear& year, semester& se, AS log, string save) {
+	Inscreen(log);
+	int id123;
+	ViewCourse(year, se);
+	FindCourse(year, se, id123);
+	string work;
+	work = save + "\\" + se.name + "\\" + to_string(id123) + "\\";
+	course cur(id123);
+	ExportScoreBoard2CSV(work, cur);
+}
+
+void ImportScreen(schoolyear& year, semester& se, AS log, string save) {
+	Inscreen(log);
+	int id123;
+	string work1;
+	ViewCourse(year, se);
+	FindCourse(year, se, id123);
+	work1 = save + "\\" + se.name;
+	course cur(id123);
+	Inscreen(log);
+	cout << "Remember to prepare a csv file name: CourseScoreBoard.csv" << endl;
+	system("pause");
+	ImportScoreBoard(work1, cur);
+	system("cls");
+	Inscreen(log);
+	cout << "Import ScoreBoard successfully." << endl;
+	system("pause");
+}
+
+void ViewScoreScreen(schoolyear& year, semester& se, AS log, string save){
+	Inscreen(log);
+	int id123;
+	string work1;
+	ViewCourse(year, se);
+	FindCourse(year, se, id123);
+	course cur(id123);
+	Inscreen(log);
+	string work2;
+	work2 = save + "\\" + se.name + "\\" + to_string(id123) + "\\";
+	ViewCourseScoreBoard(work2, cur);
+	system("pause");
 }
