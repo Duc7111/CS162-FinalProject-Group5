@@ -5,8 +5,11 @@
 #include "course.h"
 #include "student.h"
 #include "const.h"
+#include "SchoolYear.h"
+#include "semester.h"
 
 using namespace std;
+
 
 student::student() : colist(nullptr){}
 
@@ -292,4 +295,63 @@ void changeStudent(student& s)
     fin.close(); fout.close();
     remove("data\\student.txt");
     rename("temp.txt", "data\\student.txt");
+}
+
+
+void viewScoreboard(student& st, schoolyear& sy, semester& sem)
+{
+    string dir = "data\\schoolyear\\";
+    ifstream fin(dir + sy.name + "\\" + sem.name + "\\data.txt");
+    if (!fin.is_open()) return;
+    fin.ignore(100, '\n');
+    fin.ignore(100, '\n');
+    list<int>* courseid = new list <int>;
+    list<int>* cur = courseid;
+    while (!fin.eof())
+    {
+        fin >> cur->data;
+        cur->next = new list<int>;
+        cur = cur->next;
+        fin.ignore(1000, '\n');
+    }
+    fin.close();
+    cur->next = nullptr;
+    list<int>* tmp = courseid;
+    while (tmp->data != 0)
+    {
+        string id = to_string(tmp->data);
+        ifstream fin1(dir + sy.name + "\\" + sem.name + "\\" + id + "\\data.txt");
+        int tmpID = 0;
+        string coursename;
+        fin1.ignore(1000, ',');
+        getline(fin1, coursename, ',');
+        fin1.ignore(1000, '\n');
+        fin1 >> tmpID;
+        while (tmpID != st.ID)
+        {
+            if (fin1.eof()) break;
+            fin1.ignore(1000, '\n');
+            fin1 >> tmpID;
+        }
+        if (tmpID == st.ID)
+        {
+            fin1.ignore();
+            int* score = new int[4];
+            fin1 >> score[0]; fin1.ignore();
+            fin1 >> score[1]; fin1.ignore();
+            fin1 >> score[2]; fin1.ignore();
+            fin1 >> score[3]; fin1.ignore();
+            cout << "Course name: " << coursename << endl;
+            cout << "Midterm score: " << score[0] << endl;
+            cout << "Final score: " << score[1] << endl;
+            cout << "Other score:  " << score[2] << endl;
+            cout << "Total score:  " << score[3] << endl;
+            cout << '\n';
+        }
+        fin1.close();
+        tmp = tmp->next;
+        
+    }
+    
+
 }

@@ -8,6 +8,9 @@
 
 #include "data.h"
 #include "course.h"
+#include "SchoolYear.h"
+#include "semester.h"
+
 
 using std::string;
 
@@ -44,3 +47,5 @@ struct student
 bool login(student& s, int ID, string pass);
 
 void changeStudent(student& s);
+
+void viewScoreboard(student& st, schoolyear& sy, semester& sem);
