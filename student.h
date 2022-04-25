@@ -8,8 +8,6 @@
 
 #include "data.h"
 #include "course.h"
-#include "SchoolYear.h"
-#include "semester.h"
 
 
 using std::string;
@@ -48,4 +46,4 @@ bool login(student& s, int ID, string pass);
 
 void changeStudent(student& s);
 
-void viewScoreboard(student& st, schoolyear& sy, semester& sem);
+void viewScoreboard(student& st);

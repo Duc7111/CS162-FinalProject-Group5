@@ -5,8 +5,6 @@
 #include "course.h"
 #include "student.h"
 #include "const.h"
-#include "SchoolYear.h"
-#include "semester.h"
 
 using namespace std;
 
@@ -298,10 +296,14 @@ void changeStudent(student& s)
 }
 
 
-void viewScoreboard(student& st, schoolyear& sy, semester& sem)
+void viewScoreboard(student& st)
 {
-    string dir = "data\\schoolyear\\";
-    ifstream fin(dir + sy.name + "\\" + sem.name + "\\data.txt");
+    cout << st.fname << " " << st.lname << endl;
+    ifstream fin("data\\data.txt");
+    string dir;
+    getline(fin, dir, '\n');
+    fin.close();
+    fin.open(dir + "\\data.txt");
     if (!fin.is_open()) return;
     fin.ignore(100, '\n');
     fin.ignore(100, '\n');
@@ -320,7 +322,7 @@ void viewScoreboard(student& st, schoolyear& sy, semester& sem)
     while (tmp->data != 0)
     {
         string id = to_string(tmp->data);
-        ifstream fin1(dir + sy.name + "\\" + sem.name + "\\" + id + "\\data.txt");
+        ifstream fin1(dir + "\\" + id + "\\data.txt");
         int tmpID = 0;
         string coursename;
         fin1.ignore(1000, ',');
