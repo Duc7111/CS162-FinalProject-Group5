@@ -109,6 +109,30 @@ void ImportScoreBoard(string dir, course CurCourse) {
 
 }
 
+void ImportScoreBoard(course& co) {
+    
+    ifstream fin("data\\data.txt");
+    string dir;
+    getline(fin, dir);
+    fin.close();
+    fin.open(dir + "\\" + to_string(co.ID) + "\\" + "CourseScoreBoard.csv");
+    if(!fin.is_open()) return;
+    fin.ignore(1000, '\n');
+    list<int[5]>* temp = co.stlist;
+    while(temp)
+    {
+        fin.ignore(10, ',');
+        for(int i = 0; i <= 4; ++i)
+        {
+            fin >> temp->data[i];
+            if(fin.get() == '\n') break;
+        }
+        temp = temp->next;
+    }
+    co.save2File(dir);
+    fin.close();
+}
+
 void ViewCourseScoreBoard(string dir, course CurCourse) {
 
     ifstream csv_in(dir + "CourseScoreBoard.csv");
