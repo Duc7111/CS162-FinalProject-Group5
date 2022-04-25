@@ -45,9 +45,5 @@ struct student
 bool login(student& s, int ID, string pass);
 
 void changeStudent(student& s);
-
-<<<<<<< Updated upstream
-void viewScoreboard(student& st);
-=======
 void viewScoreboard(student& st, string savest);
->>>>>>> Stashed changes
+

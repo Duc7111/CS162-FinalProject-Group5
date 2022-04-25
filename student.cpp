@@ -296,20 +296,9 @@ void changeStudent(student& s)
 }
 
 
-<<<<<<< Updated upstream
-void viewScoreboard(student& st)
-{
-    cout << st.fname << " " << st.lname << endl;
-    ifstream fin("data\\data.txt");
-    string dir;
-    getline(fin, dir, '\n');
-    fin.close();
-    fin.open(dir + "\\data.txt");
-=======
 void viewScoreboard(student& st, string savest)
 {
     ifstream fin(savest + "\\data.txt");
->>>>>>> Stashed changes
     if (!fin.is_open()) return;
     fin.ignore(100, '\n');
     fin.ignore(100, '\n');
@@ -328,11 +317,7 @@ void viewScoreboard(student& st, string savest)
     while (tmp->data != 0)
     {
         string id = to_string(tmp->data);
-<<<<<<< Updated upstream
-        ifstream fin1(dir + "\\" + id + "\\data.txt");
-=======
         ifstream fin1(savest + "\\" + id + "\\data.txt");
->>>>>>> Stashed changes
         int tmpID = 0;
         string coursename;
         fin1.ignore(1000, ',');
