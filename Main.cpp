@@ -158,7 +158,7 @@ int main() {
 												string work1;
 												ViewCourse(year, *se);
 												FindCourse(year, *se, id123);
-												work1 = save + "\\" + se->name + "\\" + to_string(id123) + "\\";
+												work1 = save + "\\" + se->name ;
 												course cur(id123);
 												Inscreen(log);
 												cout << "Remember to prepare a csv file name: CourseScoreBoard.csv" << endl;
@@ -167,7 +167,7 @@ int main() {
 												system("cls");
 												Inscreen(log);
 												cout << "Import ScoreBoard successfully." << endl;
-												cur.save2File(save + "\\" + se->name);
+												//cur.save2File(save + "\\" + se->name);
 												system("pause");
 											}
 											se->save2File(save);
