@@ -135,7 +135,7 @@ int main() {
 										se->colist = new list<course>;
 										string save = "data\\schoolyear\\" + year.name;
 										int co1=SeScreen2(*se, log);
-										while (co1 != 5) {
+										while (co1 != 8) {
 											if (co1 == 1) {
 												AddCourse2Semester(*se,log);
 												se->save2File(save);
@@ -146,6 +146,21 @@ int main() {
 											else if (co1==3) {
 												Inscreen(log);
 												ViewCourse(year,*se);
+											}
+											else if (co1 == 4) {//ViewClass
+												Inscreen(log);
+												viewClasslist();
+											}
+											else if (co1 == 5) {
+												Inscreen(log);
+												viewClassStudent();
+											}
+											else if (co1 == 6) {
+												Inscreen(log);
+												string saveas1 = "data\\schoolyear\\" + year.name + "\\" + se->name;
+												semester view(saveas1);
+												viewCourseStudent(view, saveas1);
+												system("pause");
 											}
 											else {
 												int ScoreSc = ScoreScreen(log);
