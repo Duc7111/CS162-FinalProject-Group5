@@ -41,6 +41,7 @@ int main() {
 					}
 					else if (opst == 2) {
 						changepassst(st);
+						break;
 					}
 					else if (opst == 3) {
 						Inscreenst(st);
