@@ -283,7 +283,8 @@ void changeStudent(student& s)
         fin >> id;
         if(id == s.ID)
         {
-            fout << s.ID << s.pass << s.clname << endl;
+            fout << s.ID << ',' << s.pass << ',' << s.clname << endl;
+            fin.ignore(1000, '\n');
             break;
         }
         getline(fin, temp);
