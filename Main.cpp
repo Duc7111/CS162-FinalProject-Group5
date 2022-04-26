@@ -134,6 +134,8 @@ int main() {
 										}
 										se->colist = new list<course>;
 										string save = "data\\schoolyear\\" + year.name;
+										string saveas1 = "data\\schoolyear\\" + year.name + "\\" + se->name;
+										*se = semester(saveas1);
 										int co1=SeScreen2(*se, log);
 										while (co1 != 8) {
 											if (co1 == 1) {
@@ -145,7 +147,8 @@ int main() {
 											}
 											else if (co1==3) {
 												Inscreen(log);
-												ViewCourse(year,*se);
+												semester view2(saveas1);
+												ViewCourse(year,view2);
 											}
 											else if (co1 == 4) {//ViewClass
 												Inscreen(log);
@@ -157,7 +160,6 @@ int main() {
 											}
 											else if (co1 == 6) {
 												Inscreen(log);
-												string saveas1 = "data\\schoolyear\\" + year.name + "\\" + se->name;
 												semester view(saveas1);
 												viewCourseStudent(view, saveas1);
 												system("pause");
