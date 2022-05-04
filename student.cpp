@@ -321,7 +321,7 @@ void viewScoreboard(student& st, string savest)
         ifstream fin1(savest + "\\" + id + "\\data.txt");
         int tmpID = 0;
         string coursename;
-        fin1.ignore(1000, ',');
+        //fin1.ignore(1000, ',');
         getline(fin1, coursename, ',');
         fin1.ignore(1000, '\n');
         fin1 >> tmpID;
