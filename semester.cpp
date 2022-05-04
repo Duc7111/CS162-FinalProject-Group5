@@ -240,7 +240,7 @@ void AddCourse2Semester(semester& sem, AS log)
             cur->next = new list <course>;
             cur = cur->next;
             Inscreen(log);
-            cout << "Enter the course ID: ";
+            cout << "Enter the course ID(Input 0 to stop): ";
             cin.ignore(10,'\n');
             getline(cin, id);
             cur->data.ID = convert(id);
@@ -260,7 +260,7 @@ void AddCourse2Semester(semester& sem, AS log)
         while (cur->next != nullptr) cur = cur->next;
         cur->next = new list<course>;
         cur = cur->next;
-        cout << "Enter the course ID: ";
+        cout << "Enter the course ID(Input 0 to Stop): ";
         string id;
         getline(cin, id);
         cur->data.ID = convert(id);
@@ -321,8 +321,17 @@ void AddCourse2Semester(semester& sem, AS log)
             PrintSection(cur->data.s[0], cur->data.s[1]);
             cur->next = new list <course>;
             cur = cur->next;
+            Inscreen(log);
             cout << "Enter the course ID(Input 0 to stop): ";
-            cin >> cur->data.ID;
+            cin.ignore(10, '\n');
+            getline(cin, id);
+            cur->data.ID = convert(id);
+            while (cur->data.ID < 0) {
+                cout << "Invalid Input. Try again." << endl;
+                cout << "Enter the course ID: ";
+                getline(cin, id);
+                cur->data.ID = convert(id);
+            }
         } while (cur->data.ID != 0);
         
     }

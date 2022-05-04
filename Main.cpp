@@ -133,10 +133,12 @@ int main() {
 											se = &year.Autumn;
 											se->name = "Autumn";
 										}
+										string a = se->name;
 										se->colist = new list<course>;
 										string save = "data\\schoolyear\\" + year.name;
 										string saveas1 = "data\\schoolyear\\" + year.name + "\\" + se->name;
 										*se = semester(saveas1);
+										se->name = a;
 										int co1=SeScreen2(*se, log);
 										while (co1 != 8) {
 											if (co1 == 1) {
