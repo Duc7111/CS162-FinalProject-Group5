@@ -1,3 +1,4 @@
+#pragma once
 #include "AS.h"
 #include "const.h"
 #include "const.h"
